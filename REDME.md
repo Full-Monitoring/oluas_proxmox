@@ -1,0 +1,53 @@
+# INSTRUÇÕES
+
+## modelo de filtro de contadem de itens correspondentes
+
+```sh
+$[?(@.canal== "whatsapp")].length()
+```
+
+## macro LLD pata pegar o nome
+
+```md
+{#NAME} -> $.name
+{#TYPE} -> 
+{#VMID} -> $.type
+```
+
+## contador de vms e storage (total)
+
+```sh
+$.[?(@.type == 'qemu')].length()
+$.[?(@.type == 'storage')].length()
+```
+
+## contador de vms (ligadas)
+
+```sh
+$.[?(@.status == 'running') & $.[?(@.type == 'qemu')]].length()
+```
+
+## contador de vms (deligadas)
+
+```sh
+$.[?(@.status == 'sttoped') || $.[?(@.type == 'qemu')]].length()
+```
+
+## filtro de cada item por nome
+
+```sh
+$.[?(@.name == '{#NAME}')].cpu.first()
+$.[?(@.name == '{#NAME}')].uptime.first()
+$.[?(@.name == '{#NAME}')].mem.first()
+$.[?(@.name == '{#NAME}')].status.first()
+$.[?(@.name == '{#NAME}')].maxcpu.first()
+$.[?(@.name == '{#NAME}')].maxmem.first()
+$.[?(@.name == '{#NAME}')].netin.first()
+$.[?(@.name == '{#NAME}')].netout.first()
+```
+
+100*last("vfs.fs.size[/,free]")/last("vfs.fs.size[/,total]")
+
+100*last("vm.mem[{#NAME}]")/last("vm.maxmem[{#NAME}]")
+
+100*last("vm.mem[{#NAME}]")/last("vm.maxmem[{#NAME}]")
