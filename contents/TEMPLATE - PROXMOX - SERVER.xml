@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2021-07-09T23:28:27Z</date>
+    <groups>
+        <group>
+            <name>PROXMOX</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>PROXMOX - SERVER</template>
+            <name>PROXMOX - SERVER</name>
+            <description>###### Inicio do script python&#13;
+from proxmoxer import ProxmoxAPI&#13;
+import json&#13;
+proxmox = ProxmoxAPI('seuip', user='root@pam', password='suaSenha', verify_ssl=False)&#13;
+&#13;
+### print(&quot;########## Exibe todos os dados dos resoruces do tipo 'vm'&quot;)&#13;
+### Troque o type abaixo pelos tipos suportados: vm|storage|node|sdn&#13;
+### vm = proxmox.cluster.resources.get(type='vm')&#13;
+vm = proxmox.cluster.resources.get()&#13;
+s1 = json.dumps(vm, indent=2)&#13;
+#d2 = json.loads(s1)&#13;
+print(s1)</description>
+            <groups>
+                <group>
+                    <name>PROXMOX</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>promoc storage</name>
+                </application>
+                <application>
+                    <name>proxmox</name>
+                </application>
+                <application>
+                    <name>proxmox total</name>
+                </application>
+                <application>
+                    <name>proxmox vm</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>Total de Storages</name>
+                    <type>DEPENDENT</type>
+                    <key>storage.total</key>
+                    <delay>0</delay>
+                    <applications>
+                        <application>
+                            <name>promoc storage</name>
+                        </application>
+                        <application>
+                            <name>proxmox total</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$.[?(@.type == 'storage')].length()</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>system.run[python3 {$SCRIPTPY}]</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>get Proxmox Data Json</name>
+                    <key>system.run[python3 {$SCRIPTPY}]</key>
+                    <delay>3m</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <applications>
+                        <application>
+                            <name>proxmox</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Total de VM's</name>
+                    <type>DEPENDENT</type>
+                    <key>vm.total</key>
+                    <delay>0</delay>
+                    <applications>
+                        <application>
+                            <name>proxmox total</name>
+                        </application>
+                        <application>
+                            <name>proxmox vm</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$.[?(@.type == 'qemu')].length()</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>system.run[python3 {$SCRIPTPY}]</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>Total de VM's Offline</name>
+                    <type>DEPENDENT</type>
+                    <key>vm.total.desligadas</key>
+                    <delay>0</delay>
+                    <applications>
+                        <application>
+                            <name>proxmox total</name>
+                        </application>
+                        <application>
+                            <name>proxmox vm</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$.[?(@.status == 'stopped')].length()</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>system.run[python3 {$SCRIPTPY}]</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>Total de VM's Online</name>
+                    <type>DEPENDENT</type>
+                    <key>vm.total.ligadas</key>
+                    <delay>0</delay>
+                    <applications>
+                        <application>
+                            <name>proxmox total</name>
+                        </application>
+                        <application>
+                            <name>proxmox vm</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$.[?(@.status == 'running')].length()</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>system.run[python3 {$SCRIPTPY}]</key>
+                    </master_item>
+                </item>
+            </items>
+            <discovery_rules>
+                <discovery_rule>
+                    <name>Proxmox Discovery</name>
+                    <type>DEPENDENT</type>
+                    <key>discovery.vms</key>
+                    <delay>0</delay>
+                    <filter>
+                        <conditions>
+                            <condition>
+                                <macro>{#TYPE}</macro>
+                                <value>qemu</value>
+                                <formulaid>A</formulaid>
+                            </condition>
+                        </conditions>
+                    </filter>
+                    <lifetime>0d</lifetime>
+                    <description>proxmox.cluster.resources</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>{#NAME} MEMORIA PERCENT</name>
+                            <type>CALCULATED</type>
+                            <key>memoria.percent[{#NAME}]</key>
+                            <delay>3m</delay>
+                            <units>%</units>
+                            <params>100*last(&quot;vm.mem[{#NAME}]&quot;)/last(&quot;vm.maxmem[{#NAME}]&quot;)</params>
+                            <applications>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                                <application>
+                                    <name>proxmox vm</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NAME} CPU</name>
+                            <type>DEPENDENT</type>
+                            <key>vm.cpu[{#NAME}]</key>
+                            <delay>0</delay>
+                            <value_type>FLOAT</value_type>
+                            <units>%</units>
+                            <applications>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                                <application>
+                                    <name>proxmox vm</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.name == '{#NAME}')].cpu.first()</params>
+                                </step>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>100</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>system.run[python3 {$SCRIPTPY}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NAME} MAXCPU</name>
+                            <type>DEPENDENT</type>
+                            <key>vm.maxcpu[{#NAME}]</key>
+                            <delay>0</delay>
+                            <applications>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                                <application>
+                                    <name>proxmox vm</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.name == '{#NAME}')].maxcpu.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>system.run[python3 {$SCRIPTPY}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NAME} MAXMEN</name>
+                            <type>DEPENDENT</type>
+                            <key>vm.maxmem[{#NAME}]</key>
+                            <delay>0</delay>
+                            <units>b</units>
+                            <applications>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                                <application>
+                                    <name>proxmox vm</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.name == '{#NAME}')].maxmem.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>system.run[python3 {$SCRIPTPY}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NAME} MEMORIA</name>
+                            <type>DEPENDENT</type>
+                            <key>vm.mem[{#NAME}]</key>
+                            <delay>0</delay>
+                            <units>b</units>
+                            <applications>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                                <application>
+                                    <name>proxmox vm</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.name == '{#NAME}')].mem.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>system.run[python3 {$SCRIPTPY}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NAME} NETIN TOTAL</name>
+                            <type>DEPENDENT</type>
+                            <key>vm.netin[{#NAME}]</key>
+                            <delay>0</delay>
+                            <units>B</units>
+                            <description>Tráfego total de entrada da VM {#NAME}</description>
+                            <applications>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                                <application>
+                                    <name>proxmox vm</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.name == '{#NAME}')].netin.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>system.run[python3 {$SCRIPTPY}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NAME} NETOUT TOTAL</name>
+                            <type>DEPENDENT</type>
+                            <key>vm.netout[{#NAME}]</key>
+                            <delay>0</delay>
+                            <units>B</units>
+                            <description>Tráfego total de saida da VM {#NAME}</description>
+                            <applications>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                                <application>
+                                    <name>proxmox vm</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.name == '{#NAME}')].netout.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>system.run[python3 {$SCRIPTPY}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NAME} STATUS</name>
+                            <type>DEPENDENT</type>
+                            <key>vm.status[{#NAME}]</key>
+                            <delay>0</delay>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <applications>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                                <application>
+                                    <name>proxmox vm</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.name == '{#NAME}')].status.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>system.run[python3 {$SCRIPTPY}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NAME} UPTIME</name>
+                            <type>DEPENDENT</type>
+                            <key>vm.uptime[{#NAME}]</key>
+                            <delay>0</delay>
+                            <value_type>FLOAT</value_type>
+                            <units>uptime</units>
+                            <applications>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                                <application>
+                                    <name>proxmox vm</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.name == '{#NAME}')].uptime.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>system.run[python3 {$SCRIPTPY}]</key>
+                            </master_item>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>CPU - {#NAME}</name>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>F63100</color>
+                                    <item>
+                                        <host>PROXMOX - SERVER</host>
+                                        <key>vm.cpu[{#NAME}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <name>MEMORIA -  - {#NAME}</name>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>1A7C11</color>
+                                    <item>
+                                        <host>PROXMOX - SERVER</host>
+                                        <key>vm.mem[{#NAME}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <name>Trafego Total In Ount - {#NAME}</name>
+                            <show_work_period>NO</show_work_period>
+                            <show_triggers>NO</show_triggers>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>1A7C11</color>
+                                    <item>
+                                        <host>PROXMOX - SERVER</host>
+                                        <key>vm.netin[{#NAME}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>2</sortorder>
+                                    <color>F63100</color>
+                                    <item>
+                                        <host>PROXMOX - SERVER</host>
+                                        <key>vm.netout[{#NAME}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                    <master_item>
+                        <key>system.run[python3 {$SCRIPTPY}]</key>
+                    </master_item>
+                    <lld_macro_paths>
+                        <lld_macro_path>
+                            <lld_macro>{#NAME}</lld_macro>
+                            <path>$.name</path>
+                        </lld_macro_path>
+                        <lld_macro_path>
+                            <lld_macro>{#TYPE}</lld_macro>
+                            <path>$.type</path>
+                        </lld_macro_path>
+                        <lld_macro_path>
+                            <lld_macro>{#VMID}</lld_macro>
+                            <path>$.vmid</path>
+                        </lld_macro_path>
+                    </lld_macro_paths>
+                </discovery_rule>
+            </discovery_rules>
+            <macros>
+                <macro>
+                    <macro>{$SCRIPTPY}</macro>
+                    <value>/home/script/py/proxmox.py</value>
+                    <description>localização do script python da api</description>
+                </macro>
+                <macro>
+                    <macro>{$SERVERIP}</macro>
+                    <value>127.0.0.1</value>
+                    <description>ip do servidor proxmox</description>
+                </macro>
+                <macro>
+                    <macro>{$USERLOGIN}</macro>
+                    <value>root@pam</value>
+                    <description>usuario com acesso as informacoes do proxmox</description>
+                </macro>
+                <macro>
+                    <macro>{$USERPASS}</macro>
+                    <type>SECRET_TEXT</type>
+                    <description>senha do usuario</description>
+                </macro>
+            </macros>
+        </template>
+    </templates>
+</zabbix_export>
