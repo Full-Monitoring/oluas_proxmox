@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2021-07-09T23:28:27Z</date>
+    <date>2021-07-12T19:18:15Z</date>
     <groups>
         <group>
             <name>PROXMOX</name>
@@ -13,16 +13,14 @@
             <name>PROXMOX - SERVER</name>
             <description>###### Inicio do script python&#13;
 from proxmoxer import ProxmoxAPI&#13;
-import json&#13;
-proxmox = ProxmoxAPI('seuip', user='root@pam', password='suaSenha', verify_ssl=False)&#13;
-&#13;
-### print(&quot;########## Exibe todos os dados dos resoruces do tipo 'vm'&quot;)&#13;
+import json, sys&#13;
+# parametros&#13;
+params = sys.argv&#13;
+proxmox = ProxmoxAPI(params[1], user=params[2], password=params[3], verify_ssl=False)&#13;
 ### Troque o type abaixo pelos tipos suportados: vm|storage|node|sdn&#13;
-### vm = proxmox.cluster.resources.get(type='vm')&#13;
 vm = proxmox.cluster.resources.get()&#13;
-s1 = json.dumps(vm, indent=2)&#13;
-#d2 = json.loads(s1)&#13;
-print(s1)</description>
+#s1 = json.dumps(vm, indent=2)&#13;
+print(vm)</description>
             <groups>
                 <group>
                     <name>PROXMOX</name>
@@ -30,48 +28,156 @@ print(s1)</description>
             </groups>
             <applications>
                 <application>
-                    <name>promoc storage</name>
+                    <name>node</name>
                 </application>
                 <application>
                     <name>proxmox</name>
                 </application>
                 <application>
-                    <name>proxmox total</name>
+                    <name>storage</name>
                 </application>
                 <application>
-                    <name>proxmox vm</name>
+                    <name>total</name>
+                </application>
+                <application>
+                    <name>vm</name>
                 </application>
             </applications>
             <items>
                 <item>
-                    <name>Total de Storages</name>
+                    <name>get Proxmox Data - NODE</name>
                     <type>DEPENDENT</type>
-                    <key>storage.total</key>
+                    <key>getProxmoxDataNode</key>
                     <delay>0</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
                     <applications>
                         <application>
-                            <name>promoc storage</name>
+                            <name>node</name>
                         </application>
                         <application>
-                            <name>proxmox total</name>
+                            <name>proxmox</name>
                         </application>
                     </applications>
                     <preprocessing>
                         <step>
                             <type>JSONPATH</type>
-                            <params>$.[?(@.type == 'storage')].length()</params>
+                            <params>$.[?(@.type == 'node')]</params>
                         </step>
                     </preprocessing>
                     <master_item>
-                        <key>system.run[python3 {$SCRIPTPY}]</key>
+                        <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
                     </master_item>
                 </item>
                 <item>
-                    <name>get Proxmox Data Json</name>
-                    <key>system.run[python3 {$SCRIPTPY}]</key>
-                    <delay>3m</delay>
+                    <name>get Proxmox Data - STORAGE</name>
+                    <type>DEPENDENT</type>
+                    <key>getProxmoxDataStorage</key>
+                    <delay>0</delay>
                     <trends>0</trends>
                     <value_type>CHAR</value_type>
+                    <applications>
+                        <application>
+                            <name>proxmox</name>
+                        </application>
+                        <application>
+                            <name>storage</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$.[?(@.type == 'storage')]</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>get Proxmox Data - VM</name>
+                    <type>DEPENDENT</type>
+                    <key>getProxmoxDataVms</key>
+                    <delay>0</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <applications>
+                        <application>
+                            <name>proxmox</name>
+                        </application>
+                        <application>
+                            <name>vm</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$.[?(@.type == 'qemu')]</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>Node Total</name>
+                    <type>DEPENDENT</type>
+                    <key>node.total</key>
+                    <delay>0</delay>
+                    <applications>
+                        <application>
+                            <name>node</name>
+                        </application>
+                        <application>
+                            <name>proxmox</name>
+                        </application>
+                        <application>
+                            <name>total</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$.length()</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>getProxmoxDataNode</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>Storage Total</name>
+                    <type>DEPENDENT</type>
+                    <key>storage.total</key>
+                    <delay>0</delay>
+                    <applications>
+                        <application>
+                            <name>proxmox</name>
+                        </application>
+                        <application>
+                            <name>storage</name>
+                        </application>
+                        <application>
+                            <name>total</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$.length()</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>getProxmoxDataStorage</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>get Proxmox Data</name>
+                    <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
+                    <delay>15s</delay>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                    <description>get Proxmox Data (VM, STORAGE, NODE, SDN)</description>
                     <applications>
                         <application>
                             <name>proxmox</name>
@@ -85,10 +191,10 @@ print(s1)</description>
                     <delay>0</delay>
                     <applications>
                         <application>
-                            <name>proxmox total</name>
+                            <name>total</name>
                         </application>
                         <application>
-                            <name>proxmox vm</name>
+                            <name>vm</name>
                         </application>
                     </applications>
                     <preprocessing>
@@ -98,7 +204,7 @@ print(s1)</description>
                         </step>
                     </preprocessing>
                     <master_item>
-                        <key>system.run[python3 {$SCRIPTPY}]</key>
+                        <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
                     </master_item>
                 </item>
                 <item>
@@ -108,10 +214,10 @@ print(s1)</description>
                     <delay>0</delay>
                     <applications>
                         <application>
-                            <name>proxmox total</name>
+                            <name>total</name>
                         </application>
                         <application>
-                            <name>proxmox vm</name>
+                            <name>vm</name>
                         </application>
                     </applications>
                     <preprocessing>
@@ -121,7 +227,7 @@ print(s1)</description>
                         </step>
                     </preprocessing>
                     <master_item>
-                        <key>system.run[python3 {$SCRIPTPY}]</key>
+                        <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
                     </master_item>
                 </item>
                 <item>
@@ -131,10 +237,10 @@ print(s1)</description>
                     <delay>0</delay>
                     <applications>
                         <application>
-                            <name>proxmox total</name>
+                            <name>total</name>
                         </application>
                         <application>
-                            <name>proxmox vm</name>
+                            <name>vm</name>
                         </application>
                     </applications>
                     <preprocessing>
@@ -144,13 +250,13 @@ print(s1)</description>
                         </step>
                     </preprocessing>
                     <master_item>
-                        <key>system.run[python3 {$SCRIPTPY}]</key>
+                        <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
                     </master_item>
                 </item>
             </items>
             <discovery_rules>
                 <discovery_rule>
-                    <name>Proxmox Discovery</name>
+                    <name>Proxmox Discovery - VM</name>
                     <type>DEPENDENT</type>
                     <key>discovery.vms</key>
                     <delay>0</delay>
@@ -178,7 +284,7 @@ print(s1)</description>
                                     <name>proxmox</name>
                                 </application>
                                 <application>
-                                    <name>proxmox vm</name>
+                                    <name>vm</name>
                                 </application>
                             </applications>
                         </item_prototype>
@@ -194,7 +300,7 @@ print(s1)</description>
                                     <name>proxmox</name>
                                 </application>
                                 <application>
-                                    <name>proxmox vm</name>
+                                    <name>vm</name>
                                 </application>
                             </applications>
                             <preprocessing>
@@ -208,7 +314,7 @@ print(s1)</description>
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>system.run[python3 {$SCRIPTPY}]</key>
+                                <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
@@ -221,7 +327,7 @@ print(s1)</description>
                                     <name>proxmox</name>
                                 </application>
                                 <application>
-                                    <name>proxmox vm</name>
+                                    <name>vm</name>
                                 </application>
                             </applications>
                             <preprocessing>
@@ -231,7 +337,7 @@ print(s1)</description>
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>system.run[python3 {$SCRIPTPY}]</key>
+                                <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
@@ -245,7 +351,7 @@ print(s1)</description>
                                     <name>proxmox</name>
                                 </application>
                                 <application>
-                                    <name>proxmox vm</name>
+                                    <name>vm</name>
                                 </application>
                             </applications>
                             <preprocessing>
@@ -255,7 +361,7 @@ print(s1)</description>
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>system.run[python3 {$SCRIPTPY}]</key>
+                                <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
@@ -269,7 +375,7 @@ print(s1)</description>
                                     <name>proxmox</name>
                                 </application>
                                 <application>
-                                    <name>proxmox vm</name>
+                                    <name>vm</name>
                                 </application>
                             </applications>
                             <preprocessing>
@@ -279,7 +385,7 @@ print(s1)</description>
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>system.run[python3 {$SCRIPTPY}]</key>
+                                <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
@@ -294,7 +400,7 @@ print(s1)</description>
                                     <name>proxmox</name>
                                 </application>
                                 <application>
-                                    <name>proxmox vm</name>
+                                    <name>vm</name>
                                 </application>
                             </applications>
                             <preprocessing>
@@ -304,7 +410,7 @@ print(s1)</description>
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>system.run[python3 {$SCRIPTPY}]</key>
+                                <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
@@ -319,7 +425,7 @@ print(s1)</description>
                                     <name>proxmox</name>
                                 </application>
                                 <application>
-                                    <name>proxmox vm</name>
+                                    <name>vm</name>
                                 </application>
                             </applications>
                             <preprocessing>
@@ -329,7 +435,7 @@ print(s1)</description>
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>system.run[python3 {$SCRIPTPY}]</key>
+                                <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
@@ -337,14 +443,12 @@ print(s1)</description>
                             <type>DEPENDENT</type>
                             <key>vm.status[{#NAME}]</key>
                             <delay>0</delay>
-                            <trends>0</trends>
-                            <value_type>TEXT</value_type>
                             <applications>
                                 <application>
                                     <name>proxmox</name>
                                 </application>
                                 <application>
-                                    <name>proxmox vm</name>
+                                    <name>vm</name>
                                 </application>
                             </applications>
                             <preprocessing>
@@ -352,9 +456,17 @@ print(s1)</description>
                                     <type>JSONPATH</type>
                                     <params>$.[?(@.name == '{#NAME}')].status.first()</params>
                                 </step>
+                                <step>
+                                    <type>JAVASCRIPT</type>
+                                    <params>if (value == 'running'){
+    return 1;
+} else {
+    return 0;
+}</params>
+                                </step>
                             </preprocessing>
                             <master_item>
-                                <key>system.run[python3 {$SCRIPTPY}]</key>
+                                <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
@@ -369,7 +481,7 @@ print(s1)</description>
                                     <name>proxmox</name>
                                 </application>
                                 <application>
-                                    <name>proxmox vm</name>
+                                    <name>vm</name>
                                 </application>
                             </applications>
                             <preprocessing>
@@ -379,7 +491,7 @@ print(s1)</description>
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>system.run[python3 {$SCRIPTPY}]</key>
+                                <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
                             </master_item>
                         </item_prototype>
                     </item_prototypes>
@@ -435,7 +547,7 @@ print(s1)</description>
                         </graph_prototype>
                     </graph_prototypes>
                     <master_item>
-                        <key>system.run[python3 {$SCRIPTPY}]</key>
+                        <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
                     </master_item>
                     <lld_macro_paths>
                         <lld_macro_path>
@@ -452,27 +564,109 @@ print(s1)</description>
                         </lld_macro_path>
                     </lld_macro_paths>
                 </discovery_rule>
+                <discovery_rule>
+                    <name>Proxmox Discovery - STORAGE</name>
+                    <type>DEPENDENT</type>
+                    <key>ProxmoxDiscoveryStorage</key>
+                    <delay>0</delay>
+                    <lifetime>0d</lifetime>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>{#STORAGE} DISK</name>
+                            <type>DEPENDENT</type>
+                            <key>storage.disk[{#STORAGE}]</key>
+                            <delay>0</delay>
+                            <units>b</units>
+                            <applications>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                                <application>
+                                    <name>storage</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.storage == '{#STORAGE}')].disk.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>getProxmoxDataStorage</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#STORAGE} MAXDISK</name>
+                            <type>DEPENDENT</type>
+                            <key>storage.maxdisk[{#STORAGE}]</key>
+                            <delay>0</delay>
+                            <units>b</units>
+                            <applications>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                                <application>
+                                    <name>storage</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.storage == '{#STORAGE}')].maxdisk.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>getProxmoxDataStorage</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#STORAGE} PERCENT DISK</name>
+                            <type>CALCULATED</type>
+                            <key>storage.percent.disk[{#STORAGE}]</key>
+                            <delay>3m</delay>
+                            <units>%</units>
+                            <params>100*last(&quot;storage.disk[{#STORAGE}]&quot;)/last(&quot;storage.maxdisk[{#STORAGE}]&quot;)</params>
+                            <applications>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                                <application>
+                                    <name>storage</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                    </item_prototypes>
+                    <master_item>
+                        <key>getProxmoxDataStorage</key>
+                    </master_item>
+                    <lld_macro_paths>
+                        <lld_macro_path>
+                            <lld_macro>{#STORAGE}</lld_macro>
+                            <path>$.storage</path>
+                        </lld_macro_path>
+                    </lld_macro_paths>
+                </discovery_rule>
             </discovery_rules>
             <macros>
                 <macro>
-                    <macro>{$SCRIPTPY}</macro>
-                    <value>/home/script/py/proxmox.py</value>
-                    <description>localização do script python da api</description>
+                    <macro>{$LOGIN_PASS}</macro>
+                    <type>SECRET_TEXT</type>
+                    <description>senha do usuario</description>
                 </macro>
                 <macro>
-                    <macro>{$SERVERIP}</macro>
-                    <value>127.0.0.1</value>
-                    <description>ip do servidor proxmox</description>
-                </macro>
-                <macro>
-                    <macro>{$USERLOGIN}</macro>
+                    <macro>{$LOGIN_USER}</macro>
                     <value>root@pam</value>
                     <description>usuario com acesso as informacoes do proxmox</description>
                 </macro>
                 <macro>
-                    <macro>{$USERPASS}</macro>
-                    <type>SECRET_TEXT</type>
-                    <description>senha do usuario</description>
+                    <macro>{$SCRIPT_PY}</macro>
+                    <value>python3 /home/script/py/proxmox.py</value>
+                    <description>python3 + localização do script python da api</description>
+                </macro>
+                <macro>
+                    <macro>{$SERVER_IP}</macro>
+                    <value>127.0.0.1</value>
+                    <description>ip do servidor proxmox</description>
                 </macro>
             </macros>
         </template>
