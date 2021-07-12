@@ -47,7 +47,7 @@ print(s1)
 
 > macros LLD
 
-```md
+```js
 {#NAME} -> $.name
 {#TYPE} -> $.type
 {#VMID} -> $.vmid
