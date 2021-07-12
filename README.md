@@ -6,11 +6,11 @@
 
 - Tutorial [Zabbix Remote Commands](https://blog.zabbix.com/zabbix-remote-commands/7500/ "blog.zabbix.com")
 
-![tutorial](./contents/img/zabbix_remote_command.jpg "blog.zabbix.com")
+![tutorial](./contents/img/zabbix_remote_command.jpg "Zabbix Remote Commands")
 
-- Video [Click aki](https://www.youtube.com/embed/CMlpFuGBruE "YouTube video player")
+- Video [Zabbix Remote Commands](https://www.youtube.com/embed/CMlpFuGBruE "Zabbix Remote Commands")
 
-![youtube](./contents/img/zabbix_remote_command.jpg "blog.zabbix.com")
+![youtube](./contents/img/remote_commands_youtube.png "blog.zabbix.com")
 
 ## Python
 
