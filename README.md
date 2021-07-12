@@ -25,7 +25,7 @@ print(s1)
 $[?(@.canal== "whatsapp")].length()
 ```
 
-## macro LLD pata pegar o nome
+## macro LLD para armazenar o nome, tipo e id da vm
 
 ```md
 {#NAME} -> $.name
@@ -33,23 +33,24 @@ $[?(@.canal== "whatsapp")].length()
 {#VMID} -> $.vmid
 ```
 
-## contador de vms e storage (total)
+## contador de vms, storages e nodes (total)
 
 ```sh
 $.[?(@.type == 'qemu')].length()
 $.[?(@.type == 'storage')].length()
+$.[?(@.type == 'node')].length()
 ```
 
 ## contador de vms (ligadas)
 
 ```sh
-$.[?(@.status == 'running') & $.[?(@.type == 'qemu')]].length()
+$.[?(@.status == 'running')].length()
 ```
 
 ## contador de vms (deligadas)
 
 ```sh
-$.[?(@.status == 'sttoped') || $.[?(@.type == 'qemu')]].length()
+$.[?(@.status == 'stopped')].length()
 ```
 
 ## filtro de cada item por nome
@@ -70,3 +71,4 @@ $.[?(@.name == '{#NAME}')].netout.first()
 100*last("vm.mem[{#NAME}]")/last("vm.maxmem[{#NAME}]")
 
 100*last("vm.mem[{#NAME}]")/last("vm.maxmem[{#NAME}]")
+
