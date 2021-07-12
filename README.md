@@ -59,7 +59,8 @@ $[?(@.canal== "whatsapp")].length()
 
 > contador de vms, storages e nodes (total)
 
-```sh
+```js
+$.length()
 $.[?(@.type == 'qemu')].length()
 $.[?(@.type == 'storage')].length()
 $.[?(@.type == 'node')].length()
@@ -67,7 +68,7 @@ $.[?(@.type == 'node')].length()
 
 > contador de vms (ligadas)
 
-```sh
+```js
 $.[?(@.status == 'running')].length()
 ```
 
