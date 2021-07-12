@@ -55,6 +55,7 @@ $[?(@.canal== "whatsapp")].length()
 {#NAME} -> $.name
 {#TYPE} -> $.type
 {#VMID} -> $.vmid
+{#STORAGE} -> $.storage
 ```
 
 > contador de vms, storages e nodes (total)
@@ -91,14 +92,37 @@ $.[?(@.name == '{#NAME}')].netin.first()
 $.[?(@.name == '{#NAME}')].netout.first()
 ```
 
+> Item de calculo de porcentagem de memória ram da vm
+
+```js
+100*last("vm.mem[{#NAME}]")/last("vm.maxmem[{#NAME}]")
+```
+
+> filtros de contagem dos protótipos de itens tipo storage
+
+```js
+$.[?(@.storage == '{#STORAGE}')].disk.first()
+$.[?(@.storage == '{#STORAGE}')].maxdisk.first()
+```
+
+> Item de calculo de porcentagem de armazenamento do storage
+
+```js
+100*last("storage.disk[{#STORAGE}]")/last("storage.maxdisk[{#STORAGE}]")
+```
+
 > filtros de contagem dos protótipos de itens tipo strage
 
 ```sh
 $.[?(@.id == '{#id}')].disk.first()
 ```
 
-> Item de calculo de porcentagem de memória ram
+> Alterando valores de retorno de status da vm de running ou stopped para 1 ou 0
 
-```sh
-100*last("vm.mem[{#NAME}]")/last("vm.maxmem[{#NAME}]")
+```js
+if (value == 'running'){
+    return 1;
+} else {
+    return 0;
+}
 ```
