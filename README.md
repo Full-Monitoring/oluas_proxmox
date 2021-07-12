@@ -45,12 +45,6 @@ print(s1)
 
 ## Sobre o Template Zabbix
 
-> filtro de contadem de itens correspondentes
-
-```sh
-$[?(@.canal== "whatsapp")].length()
-```
-
 > macros LLD
 
 ```md
@@ -92,6 +86,8 @@ $.[?(@.name == '{#NAME}')].maxcpu.first()
 $.[?(@.name == '{#NAME}')].mem.first()
 $.[?(@.name == '{#NAME}')].maxmem.first()
 $.[?(@.name == '{#NAME}')].netin.first()
+$.[?(@.name == '{#NAME}')].netout.first()
+$.[?(@.name == '{#NAME}')].netout.first()
 $.[?(@.name == '{#NAME}')].netout.first()
 ```
 
