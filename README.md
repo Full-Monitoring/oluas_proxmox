@@ -22,9 +22,7 @@ print(s1)
 
 ## como execultar o script?
 
-python3 + local do script + ip do servidor + usurario do proxmox + senha do proxmox
-
-Ex: ...
+- python3 + local do script + ip do servidor + usurario do proxmox + senha do proxmox
 
 ```sh
 python3 /home/script/py/proxmox.py 127.0.0.1 root@pam superSenha123
