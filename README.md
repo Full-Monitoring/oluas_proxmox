@@ -3,7 +3,9 @@
 ## libs python
 
 ```sh
-pip3 install proxmoxer
+1 - proxmoxer
+2 - json
+3 - sys
 ```
 
 ## Script python
