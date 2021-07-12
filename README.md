@@ -51,13 +51,14 @@ print(s1)
 $[?(@.canal== "whatsapp")].length()
 ```
 
-> macro LLD para armazenar o nome, tipo e id da vm
+> macros LLD
 
 ```md
 {#NAME} -> $.name
 {#TYPE} -> $.type
 {#VMID} -> $.vmid
 {#STORAGE} -> $.storage
+{#NODE} -> $.node
 ```
 
 > contador de vms, storages e nodes (total)
@@ -105,6 +106,13 @@ $.[?(@.name == '{#NAME}')].netout.first()
 ```js
 $.[?(@.storage == '{#STORAGE}')].disk.first()
 $.[?(@.storage == '{#STORAGE}')].maxdisk.first()
+```
+
+> filtros de contagem dos protótipos de itens tipo node
+
+```js
+$.[?(@.node == '{#NODE}')].disk.first()
+$.[?(@.node == '{#NODE}')].maxdisk.first()
 ```
 
 > Item de calculo de porcentagem de armazenamento do storage
