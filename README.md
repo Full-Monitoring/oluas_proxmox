@@ -101,18 +101,21 @@ $.[?(@.name == '{#NAME}')].netout.first()
 100*last("vm.mem[{#NAME}]")/last("vm.maxmem[{#NAME}]")
 ```
 
+> Alterando valores de retorno de status da vm de running ou stopped para 1 ou 0
+
+```js
+if (value == 'running'){
+    return 1;
+} else {
+    return 0;
+}
+```
+
 > filtros de contagem dos protótipos de itens tipo storage
 
 ```js
 $.[?(@.storage == '{#STORAGE}')].disk.first()
 $.[?(@.storage == '{#STORAGE}')].maxdisk.first()
-```
-
-> filtros de contagem dos protótipos de itens tipo node
-
-```js
-$.[?(@.node == '{#NODE}')].disk.first()
-$.[?(@.node == '{#NODE}')].maxdisk.first()
 ```
 
 > Item de calculo de porcentagem de armazenamento do storage
@@ -127,12 +130,21 @@ $.[?(@.node == '{#NODE}')].maxdisk.first()
 $.[?(@.id == '{#id}')].disk.first()
 ```
 
-> Alterando valores de retorno de status da vm de running ou stopped para 1 ou 0
+> filtros de contagem dos protótipos de itens tipo node
 
 ```js
-if (value == 'running'){
-    return 1;
-} else {
-    return 0;
-}
+$.[?(@.node == '{#NODE}')].disk.first()
+$.[?(@.node == '{#NODE}')].maxdisk.first()
+$.[?(@.node == '{#NODE}')].uptime.first()
+$.[?(@.node == '{#NODE}')].mem.first()
+$.[?(@.node == '{#NODE}')].maxmem.first()
+$.[?(@.node == '{#NODE}')].maxcpu.first()
+$.[?(@.node == '{#NODE}')].status.first()
+```
+
+> Item de calculo de porcentagem de memoria ram  e disco do node
+
+```js
+100*last("node.mem[{#NODE}]")/last("node.maxmem[{#NODE}]")
+100*last("node.disk[{#NODE}]")/last("node.maxdisk[{#NODE}]")
 ```
