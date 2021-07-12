@@ -140,6 +140,7 @@ $.[?(@.node == '{#NODE}')].mem.first()
 $.[?(@.node == '{#NODE}')].maxmem.first()
 $.[?(@.node == '{#NODE}')].maxcpu.first()
 $.[?(@.node == '{#NODE}')].status.first()
+$.[?(@.node == '{#NODE}')].cpu.first()
 ```
 
 > Item de calculo de porcentagem de memoria ram  e disco do node
