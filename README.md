@@ -87,8 +87,6 @@ $.[?(@.name == '{#NAME}')].mem.first()
 $.[?(@.name == '{#NAME}')].maxmem.first()
 $.[?(@.name == '{#NAME}')].netin.first()
 $.[?(@.name == '{#NAME}')].netout.first()
-$.[?(@.name == '{#NAME}')].netout.first()
-$.[?(@.name == '{#NAME}')].netout.first()
 ```
 
 > Item de calculo de porcentagem de memória ram da vm
