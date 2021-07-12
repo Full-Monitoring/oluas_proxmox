@@ -85,11 +85,11 @@ $.[?(@.status == 'stopped')].length()
 > filtros de contagem dos protótipos de itens tipo vm
 
 ```sh
-$.[?(@.name == '{#NAME}')].cpu.first()
-$.[?(@.name == '{#NAME}')].uptime.first()
-$.[?(@.name == '{#NAME}')].mem.first()
 $.[?(@.name == '{#NAME}')].status.first()
+$.[?(@.name == '{#NAME}')].uptime.first()
+$.[?(@.name == '{#NAME}')].cpu.first()
 $.[?(@.name == '{#NAME}')].maxcpu.first()
+$.[?(@.name == '{#NAME}')].mem.first()
 $.[?(@.name == '{#NAME}')].maxmem.first()
 $.[?(@.name == '{#NAME}')].netin.first()
 $.[?(@.name == '{#NAME}')].netout.first()
