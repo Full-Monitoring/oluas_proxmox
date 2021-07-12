@@ -77,7 +77,7 @@ $.[?(@.status == 'running')].length()
 $.[?(@.status == 'stopped')].length()
 ```
 
-> filtros de contagem dos protótipos de itens
+> filtros de contagem dos protótipos de itens tipo vm
 
 ```sh
 $.[?(@.name == '{#NAME}')].cpu.first()
@@ -88,6 +88,12 @@ $.[?(@.name == '{#NAME}')].maxcpu.first()
 $.[?(@.name == '{#NAME}')].maxmem.first()
 $.[?(@.name == '{#NAME}')].netin.first()
 $.[?(@.name == '{#NAME}')].netout.first()
+```
+
+> filtros de contagem dos protótipos de itens tipo strage
+
+```sh
+$.[?(@.id == '{#id}')].disk.first()
 ```
 
 > Item de calculo de porcentagem de memória ram
