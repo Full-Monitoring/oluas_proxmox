@@ -9,14 +9,23 @@ pip3 install proxmoxer
 ## Script python
 
 ```py
-###### Inicio do script python
 from proxmoxer import ProxmoxAPI
-import json
-proxmox = ProxmoxAPI('SERVER_IP', user='root@pam', password='SENHA', verify_ssl=False)
-### Troque o type abaixo pelos tipos suportados: vm|storage|node|sdn
-vm = proxmox.cluster.resources.get(type='vm')
-s1 = json.dumps(vm, indent=2)
+import json, sys
+params = sys.argv
+proxmox = ProxmoxAPI(params[1], user=params[2], password=params[3], verify_ssl=False)
+result = proxmox.cluster.resources.get()
+s1 = json.dumps(result)
 print(s1)
+```
+
+## como execultar o script?
+
+python3 + local do script + ip do servidor + usurario do proxmox + senha do proxmox
+
+Ex: ...
+
+```sh
+python3 /home/script/py/proxmox.py 127.0.0.1 root@pam superSenha123
 ```
 
 ## modelo de filtro de contadem de itens correspondentes
@@ -71,4 +80,3 @@ $.[?(@.name == '{#NAME}')].netout.first()
 100*last("vm.mem[{#NAME}]")/last("vm.maxmem[{#NAME}]")
 
 100*last("vm.mem[{#NAME}]")/last("vm.maxmem[{#NAME}]")
-
