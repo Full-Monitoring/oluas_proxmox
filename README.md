@@ -1,14 +1,35 @@
 # INSTRUÇÕES
 
-## libs python
+## Comandos Remotos
+
+> Habilite os comando remotos no zabbix agent
+
+- Tutorial [Zabbix Remote Commands](https://blog.zabbix.com/zabbix-remote-commands/7500/ "blog.zabbix.com")
+
+![tutorial](./contents/img/zabbix_remote_command.jpg "blog.zabbix.com")
+
+- Video [Click aki](https://www.youtube.com/embed/CMlpFuGBruE "YouTube video player")
+
+![youtube](./contents/img/zabbix_remote_command.jpg "blog.zabbix.com")
+
+## Python
+
+> Bibliotecas ultilizadas
+
+1) proxmoxer
+2) json
+3) sys
+
+> Como execultar o script ?
+
+- python3 + local do script + ip do servidor + usurario do proxmox + senha do proxmox
 
 ```sh
-1 - proxmoxer
-2 - json
-3 - sys
+# Exemplo:
+python3 /home/script/py/proxmox.py 127.0.0.1 root@pam superSenha123
 ```
 
-## Script python
+> Script
 
 ```py
 from proxmoxer import ProxmoxAPI
@@ -20,21 +41,15 @@ s1 = json.dumps(result)
 print(s1)
 ```
 
-## como execultar o script?
+## Sobre o Template Zabbix
 
-- python3 + local do script + ip do servidor + usurario do proxmox + senha do proxmox
-
-```sh
-python3 /home/script/py/proxmox.py 127.0.0.1 root@pam superSenha123
-```
-
-## modelo de filtro de contadem de itens correspondentes
+> filtro de contadem de itens correspondentes
 
 ```sh
 $[?(@.canal== "whatsapp")].length()
 ```
 
-## macro LLD para armazenar o nome, tipo e id da vm
+> macro LLD para armazenar o nome, tipo e id da vm
 
 ```md
 {#NAME} -> $.name
@@ -42,7 +57,7 @@ $[?(@.canal== "whatsapp")].length()
 {#VMID} -> $.vmid
 ```
 
-## contador de vms, storages e nodes (total)
+> contador de vms, storages e nodes (total)
 
 ```sh
 $.[?(@.type == 'qemu')].length()
@@ -50,19 +65,19 @@ $.[?(@.type == 'storage')].length()
 $.[?(@.type == 'node')].length()
 ```
 
-## contador de vms (ligadas)
+> contador de vms (ligadas)
 
 ```sh
 $.[?(@.status == 'running')].length()
 ```
 
-## contador de vms (deligadas)
+> contador de vms (deligadas)
 
 ```sh
 $.[?(@.status == 'stopped')].length()
 ```
 
-## filtro de cada item por nome
+> filtros de contagem dos protótipos de itens
 
 ```sh
 $.[?(@.name == '{#NAME}')].cpu.first()
@@ -75,8 +90,8 @@ $.[?(@.name == '{#NAME}')].netin.first()
 $.[?(@.name == '{#NAME}')].netout.first()
 ```
 
-100*last("vfs.fs.size[/,free]")/last("vfs.fs.size[/,total]")
+> Item de calculo de porcentagem de memória ram
 
+```sh
 100*last("vm.mem[{#NAME}]")/last("vm.maxmem[{#NAME}]")
-
-100*last("vm.mem[{#NAME}]")/last("vm.maxmem[{#NAME}]")
+```
