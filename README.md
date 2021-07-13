@@ -16,9 +16,15 @@
 
 ## Python
 
+> Instalando o PIP
+
+```sh
+apt install python3-pip
+```
+
 > Bibliotecas ultilizadas
 
-- proxmoxer
+- proxmoxer ([https://pypi.org/project/proxmoxer/](https://blog.zabbix.com/zabbix-remote-commands/7500/ "libs"))
   - pip3 install proxmoxer
 - json
 - sys
