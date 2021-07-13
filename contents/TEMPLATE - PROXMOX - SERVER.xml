@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2021-07-12T19:18:15Z</date>
+    <date>2021-07-13T12:31:31Z</date>
     <groups>
         <group>
             <name>PROXMOX</name>
@@ -11,16 +11,6 @@
         <template>
             <template>PROXMOX - SERVER</template>
             <name>PROXMOX - SERVER</name>
-            <description>###### Inicio do script python&#13;
-from proxmoxer import ProxmoxAPI&#13;
-import json, sys&#13;
-# parametros&#13;
-params = sys.argv&#13;
-proxmox = ProxmoxAPI(params[1], user=params[2], password=params[3], verify_ssl=False)&#13;
-### Troque o type abaixo pelos tipos suportados: vm|storage|node|sdn&#13;
-vm = proxmox.cluster.resources.get()&#13;
-#s1 = json.dumps(vm, indent=2)&#13;
-print(vm)</description>
             <groups>
                 <group>
                     <name>PROXMOX</name>
@@ -174,7 +164,7 @@ print(vm)</description>
                 <item>
                     <name>get Proxmox Data</name>
                     <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
-                    <delay>15s</delay>
+                    <delay>3m</delay>
                     <trends>0</trends>
                     <value_type>CHAR</value_type>
                     <description>get Proxmox Data (VM, STORAGE, NODE, SDN)</description>
@@ -255,6 +245,205 @@ print(vm)</description>
                 </item>
             </items>
             <discovery_rules>
+                <discovery_rule>
+                    <name>Proxmox Discovery - NODE</name>
+                    <type>DEPENDENT</type>
+                    <key>discovery.node</key>
+                    <delay>0</delay>
+                    <lifetime>0d</lifetime>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>{#NODE} DISK PERCENT</name>
+                            <type>CALCULATED</type>
+                            <key>disk.percent[{#NODE}]</key>
+                            <delay>3m</delay>
+                            <units>%</units>
+                            <params>100*last(&quot;node.disk[{#NODE}]&quot;)/last(&quot;node.maxdisk[{#NODE}]&quot;)</params>
+                            <applications>
+                                <application>
+                                    <name>node</name>
+                                </application>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NODE} MEMORIA PERCENT</name>
+                            <type>CALCULATED</type>
+                            <key>memoria.percent[{#NODE}]</key>
+                            <delay>3m</delay>
+                            <units>%</units>
+                            <params>100*last(&quot;node.mem[{#NODE}]&quot;)/last(&quot;node.maxmem[{#NODE}]&quot;)</params>
+                            <applications>
+                                <application>
+                                    <name>node</name>
+                                </application>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NODE} CPU PERCENT</name>
+                            <type>DEPENDENT</type>
+                            <key>node.cpu[{#NODE}]</key>
+                            <delay>0</delay>
+                            <value_type>FLOAT</value_type>
+                            <units>%</units>
+                            <applications>
+                                <application>
+                                    <name>node</name>
+                                </application>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.node == '{#NODE}')].cpu.first()</params>
+                                </step>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>100</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>getProxmoxDataNode</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NODE} DISK</name>
+                            <type>DEPENDENT</type>
+                            <key>node.disk[{#NODE}]</key>
+                            <delay>0</delay>
+                            <units>b</units>
+                            <applications>
+                                <application>
+                                    <name>node</name>
+                                </application>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.node == '{#NODE}')].disk.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>getProxmoxDataNode</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NODE} MAXDISK</name>
+                            <type>DEPENDENT</type>
+                            <key>node.maxdisk[{#NODE}]</key>
+                            <delay>0</delay>
+                            <units>b</units>
+                            <applications>
+                                <application>
+                                    <name>node</name>
+                                </application>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.node == '{#NODE}')].maxdisk.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>getProxmoxDataNode</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NODE} MAXMEM</name>
+                            <type>DEPENDENT</type>
+                            <key>node.maxmem[{#NODE}]</key>
+                            <delay>0</delay>
+                            <units>b</units>
+                            <applications>
+                                <application>
+                                    <name>node</name>
+                                </application>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.node == '{#NODE}')].maxmem.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>getProxmoxDataNode</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NODE} MEM</name>
+                            <type>DEPENDENT</type>
+                            <key>node.mem[{#NODE}]</key>
+                            <delay>0</delay>
+                            <units>b</units>
+                            <applications>
+                                <application>
+                                    <name>node</name>
+                                </application>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.node == '{#NODE}')].mem.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>getProxmoxDataNode</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NODE} UPTIME</name>
+                            <type>DEPENDENT</type>
+                            <key>node.uptime[{#NODE}]</key>
+                            <delay>0</delay>
+                            <units>uptime</units>
+                            <applications>
+                                <application>
+                                    <name>node</name>
+                                </application>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.node == '{#NODE}')].uptime.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>getProxmoxDataNode</key>
+                            </master_item>
+                        </item_prototype>
+                    </item_prototypes>
+                    <master_item>
+                        <key>getProxmoxDataNode</key>
+                    </master_item>
+                    <lld_macro_paths>
+                        <lld_macro_path>
+                            <lld_macro>{#NODE}</lld_macro>
+                            <path>$.node</path>
+                        </lld_macro_path>
+                    </lld_macro_paths>
+                </discovery_rule>
                 <discovery_rule>
                     <name>Proxmox Discovery - VM</name>
                     <type>DEPENDENT</type>
@@ -341,7 +530,7 @@ print(vm)</description>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#NAME} MAXMEN</name>
+                            <name>{#NAME} MAXMEM</name>
                             <type>DEPENDENT</type>
                             <key>vm.maxmem[{#NAME}]</key>
                             <delay>0</delay>
@@ -620,7 +809,7 @@ print(vm)</description>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#STORAGE} PERCENT DISK</name>
+                            <name>{#STORAGE} DISK PERCENT</name>
                             <type>CALCULATED</type>
                             <key>storage.percent.disk[{#STORAGE}]</key>
                             <delay>3m</delay>
