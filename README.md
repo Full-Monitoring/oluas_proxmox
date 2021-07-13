@@ -14,6 +14,18 @@
 
 ![youtube](./contents/img/remote_commands_youtube.png "blog.zabbix.com")
 
+> Edite as configurações do agent pata liberar o acesso ao server em...
+
+```sh
+nano /etc/zabbix/zabbix_agentd.conf
+```
+
+![-](./contents/img/allow_key.png"-")
+
+![-](./contents/img/server_zabbix_agent.png"-")
+
+![-](./contents/img/server_zabbix_agent2.png"-")
+
 > Para testar a conexão entre o zabbix server e o agent...
 
 - zabbix_get -s IP_DO_PROXMOX -k "system.uptime"
