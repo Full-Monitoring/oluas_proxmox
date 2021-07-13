@@ -53,9 +53,7 @@ zabbix_get -s 172.31.255.2 -k "system.uptime"
 
 ![-](./contents/img/zabbix_ok.png "-")
 
-## Python
-
-### by [Ananias Filho](https://github.com/ananiasfilho "github.com")
+## Python - by [Ananias Filho](https://github.com/ananiasfilho "github.com")
 
 > Instalando o PIP
 
