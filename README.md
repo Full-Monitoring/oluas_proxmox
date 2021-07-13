@@ -20,11 +20,11 @@
 nano /etc/zabbix/zabbix_agentd.conf
 ```
 
-![-](./contents/img/allow_key.png"-")
+![-](./contents/img/allow_key.png "-")
 
-![-](./contents/img/server_zabbix_agent.png"-")
+![-](./contents/img/server_zabbix_agent.png "-")
 
-![-](./contents/img/server_zabbix_agent2.png"-")
+![-](./contents/img/server_zabbix_agent2.png "-")
 
 > Para testar a conexão entre o zabbix server e o agent...
 
