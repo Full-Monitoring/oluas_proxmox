@@ -43,6 +43,10 @@ s1 = json.dumps(result)
 print(s1)
 ```
 
+> O script deve retornar o JSON com todos os dados
+
+![print json](./contents/img/print_json.png "Print Json")
+
 ## Sobre o Template Zabbix
 
 > macros LLD
