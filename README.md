@@ -4,7 +4,7 @@
 
 ## Comandos Remotos
 
-> Habilite os comando remotos no zabbix agent
+> Instale e habilite os comando remotos no zabbix agent
 
 - Tutorial [Zabbix Remote Commands](https://blog.zabbix.com/zabbix-remote-commands/7500/ "blog.zabbix.com")
 
@@ -13,6 +13,18 @@
 - Video [Zabbix Remote Commands](https://www.youtube.com/embed/CMlpFuGBruE "Zabbix Remote Commands")
 
 ![youtube](./contents/img/remote_commands_youtube.png "blog.zabbix.com")
+
+> Intale o zabbix-get no servidor zabbix
+
+```sh
+apt install zabbix-get
+```
+
+> Intale o zabbix-agent no servidor proxmox
+
+```sh
+apt install zabbix-agent
+```
 
 > Edite as configurações do agent para liberar o acesso ao server em...
 
@@ -34,6 +46,10 @@ nano /etc/zabbix/zabbix_agentd.conf
 # Exemplo:
 zabbix_get -s 172.31.255.2 -k "system.uptime"
 ```
+
+> Se tudo estiver ok no zabbix o host ficará assim...
+
+![-](./contents/img/zabbix_ok.png "-")
 
 ## Python
 
