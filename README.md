@@ -49,6 +49,10 @@ print(s1)
 
 ## Sobre o Template Zabbix
 
+> Add suas macros no host
+
+![macros](./contents/img/macros.png "macros")
+
 > macros LLD
 
 ```js
