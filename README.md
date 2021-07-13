@@ -18,9 +18,10 @@
 
 > Bibliotecas ultilizadas
 
-1) proxmoxer
-2) json
-3) sys
+- proxmoxer
+  - pip3 install proxmoxer
+- json
+- sys
 
 > Como execultar o script ?
 
