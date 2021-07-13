@@ -2,6 +2,8 @@
 
 ![print](./contents/img/print.png "Print")
 
+- [Dashborad Grafana](/contents/dash_grafana.json "Dashborad Grafana")
+
 ## Comandos Remotos
 
 > Instale e habilite os comando remotos no zabbix agent
