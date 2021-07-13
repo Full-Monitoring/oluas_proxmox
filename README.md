@@ -14,7 +14,7 @@
 
 ![youtube](./contents/img/remote_commands_youtube.png "blog.zabbix.com")
 
-> Edite as configurações do agent pata liberar o acesso ao server em...
+> Edite as configurações do agent para liberar o acesso ao server em...
 
 ```sh
 nano /etc/zabbix/zabbix_agentd.conf
