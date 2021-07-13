@@ -14,6 +14,15 @@
 
 ![youtube](./contents/img/remote_commands_youtube.png "blog.zabbix.com")
 
+> Para testar a conexão entre o zabbix server e o agent...
+
+- zabbix_get -s IP_DO_PROXMOX -k "system.uptime"
+
+```sh
+# Exemplo:
+zabbix_get -s 172.31.255.2 -k "system.uptime"
+```
+
 ## Python
 
 > Instalando o PIP
