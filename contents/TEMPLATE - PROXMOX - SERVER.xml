@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2021-07-13T12:31:31Z</date>
+    <date>2021-07-13T13:57:08Z</date>
     <groups>
         <group>
             <name>PROXMOX</name>
@@ -445,6 +445,88 @@
                     </lld_macro_paths>
                 </discovery_rule>
                 <discovery_rule>
+                    <name>Proxmox Discovery - STORAGE</name>
+                    <type>DEPENDENT</type>
+                    <key>discovery.storage</key>
+                    <delay>0</delay>
+                    <lifetime>0d</lifetime>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>{#STORAGE} DISK</name>
+                            <type>DEPENDENT</type>
+                            <key>storage.disk[{#STORAGE}]</key>
+                            <delay>0</delay>
+                            <units>b</units>
+                            <applications>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                                <application>
+                                    <name>storage</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.storage == '{#STORAGE}')].disk.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>getProxmoxDataStorage</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#STORAGE} MAXDISK</name>
+                            <type>DEPENDENT</type>
+                            <key>storage.maxdisk[{#STORAGE}]</key>
+                            <delay>0</delay>
+                            <units>b</units>
+                            <applications>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                                <application>
+                                    <name>storage</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.storage == '{#STORAGE}')].maxdisk.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>getProxmoxDataStorage</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#STORAGE} DISK PERCENT</name>
+                            <type>CALCULATED</type>
+                            <key>storage.percent.disk[{#STORAGE}]</key>
+                            <delay>3m</delay>
+                            <units>%</units>
+                            <params>100*last(&quot;storage.disk[{#STORAGE}]&quot;)/last(&quot;storage.maxdisk[{#STORAGE}]&quot;)</params>
+                            <applications>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                                <application>
+                                    <name>storage</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                    </item_prototypes>
+                    <master_item>
+                        <key>getProxmoxDataStorage</key>
+                    </master_item>
+                    <lld_macro_paths>
+                        <lld_macro_path>
+                            <lld_macro>{#STORAGE}</lld_macro>
+                            <path>$.storage</path>
+                        </lld_macro_path>
+                    </lld_macro_paths>
+                </discovery_rule>
+                <discovery_rule>
                     <name>Proxmox Discovery - VM</name>
                     <type>DEPENDENT</type>
                     <key>discovery.vms</key>
@@ -750,88 +832,6 @@
                         <lld_macro_path>
                             <lld_macro>{#VMID}</lld_macro>
                             <path>$.vmid</path>
-                        </lld_macro_path>
-                    </lld_macro_paths>
-                </discovery_rule>
-                <discovery_rule>
-                    <name>Proxmox Discovery - STORAGE</name>
-                    <type>DEPENDENT</type>
-                    <key>ProxmoxDiscoveryStorage</key>
-                    <delay>0</delay>
-                    <lifetime>0d</lifetime>
-                    <item_prototypes>
-                        <item_prototype>
-                            <name>{#STORAGE} DISK</name>
-                            <type>DEPENDENT</type>
-                            <key>storage.disk[{#STORAGE}]</key>
-                            <delay>0</delay>
-                            <units>b</units>
-                            <applications>
-                                <application>
-                                    <name>proxmox</name>
-                                </application>
-                                <application>
-                                    <name>storage</name>
-                                </application>
-                            </applications>
-                            <preprocessing>
-                                <step>
-                                    <type>JSONPATH</type>
-                                    <params>$.[?(@.storage == '{#STORAGE}')].disk.first()</params>
-                                </step>
-                            </preprocessing>
-                            <master_item>
-                                <key>getProxmoxDataStorage</key>
-                            </master_item>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>{#STORAGE} MAXDISK</name>
-                            <type>DEPENDENT</type>
-                            <key>storage.maxdisk[{#STORAGE}]</key>
-                            <delay>0</delay>
-                            <units>b</units>
-                            <applications>
-                                <application>
-                                    <name>proxmox</name>
-                                </application>
-                                <application>
-                                    <name>storage</name>
-                                </application>
-                            </applications>
-                            <preprocessing>
-                                <step>
-                                    <type>JSONPATH</type>
-                                    <params>$.[?(@.storage == '{#STORAGE}')].maxdisk.first()</params>
-                                </step>
-                            </preprocessing>
-                            <master_item>
-                                <key>getProxmoxDataStorage</key>
-                            </master_item>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>{#STORAGE} DISK PERCENT</name>
-                            <type>CALCULATED</type>
-                            <key>storage.percent.disk[{#STORAGE}]</key>
-                            <delay>3m</delay>
-                            <units>%</units>
-                            <params>100*last(&quot;storage.disk[{#STORAGE}]&quot;)/last(&quot;storage.maxdisk[{#STORAGE}]&quot;)</params>
-                            <applications>
-                                <application>
-                                    <name>proxmox</name>
-                                </application>
-                                <application>
-                                    <name>storage</name>
-                                </application>
-                            </applications>
-                        </item_prototype>
-                    </item_prototypes>
-                    <master_item>
-                        <key>getProxmoxDataStorage</key>
-                    </master_item>
-                    <lld_macro_paths>
-                        <lld_macro_path>
-                            <lld_macro>{#STORAGE}</lld_macro>
-                            <path>$.storage</path>
                         </lld_macro_path>
                     </lld_macro_paths>
                 </discovery_rule>
