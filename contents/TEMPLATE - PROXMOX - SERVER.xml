@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2021-07-13T13:57:08Z</date>
+    <date>2021-07-13T18:46:08Z</date>
     <groups>
         <group>
             <name>PROXMOX</name>
@@ -18,16 +18,43 @@
             </groups>
             <applications>
                 <application>
+                    <name>cpu</name>
+                </application>
+                <application>
+                    <name>maxcpu</name>
+                </application>
+                <application>
+                    <name>maxmem</name>
+                </application>
+                <application>
+                    <name>mem</name>
+                </application>
+                <application>
+                    <name>memoria percent</name>
+                </application>
+                <application>
+                    <name>netin</name>
+                </application>
+                <application>
+                    <name>netout</name>
+                </application>
+                <application>
                     <name>node</name>
                 </application>
                 <application>
                     <name>proxmox</name>
                 </application>
                 <application>
+                    <name>status</name>
+                </application>
+                <application>
                     <name>storage</name>
                 </application>
                 <application>
                     <name>total</name>
+                </application>
+                <application>
+                    <name>uptime</name>
                 </application>
                 <application>
                     <name>vm</name>
@@ -110,7 +137,7 @@
                     </master_item>
                 </item>
                 <item>
-                    <name>Node Total</name>
+                    <name>Total de Nodes</name>
                     <type>DEPENDENT</type>
                     <key>node.total</key>
                     <delay>0</delay>
@@ -136,7 +163,7 @@
                     </master_item>
                 </item>
                 <item>
-                    <name>Storage Total</name>
+                    <name>Total de Storages</name>
                     <type>DEPENDENT</type>
                     <key>storage.total</key>
                     <delay>0</delay>
@@ -164,7 +191,7 @@
                 <item>
                     <name>get Proxmox Data</name>
                     <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
-                    <delay>3m</delay>
+                    <delay>15s</delay>
                     <trends>0</trends>
                     <value_type>CHAR</value_type>
                     <description>get Proxmox Data (VM, STORAGE, NODE, SDN)</description>
@@ -253,38 +280,6 @@
                     <lifetime>0d</lifetime>
                     <item_prototypes>
                         <item_prototype>
-                            <name>{#NODE} DISK PERCENT</name>
-                            <type>CALCULATED</type>
-                            <key>disk.percent[{#NODE}]</key>
-                            <delay>3m</delay>
-                            <units>%</units>
-                            <params>100*last(&quot;node.disk[{#NODE}]&quot;)/last(&quot;node.maxdisk[{#NODE}]&quot;)</params>
-                            <applications>
-                                <application>
-                                    <name>node</name>
-                                </application>
-                                <application>
-                                    <name>proxmox</name>
-                                </application>
-                            </applications>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>{#NODE} MEMORIA PERCENT</name>
-                            <type>CALCULATED</type>
-                            <key>memoria.percent[{#NODE}]</key>
-                            <delay>3m</delay>
-                            <units>%</units>
-                            <params>100*last(&quot;node.mem[{#NODE}]&quot;)/last(&quot;node.maxmem[{#NODE}]&quot;)</params>
-                            <applications>
-                                <application>
-                                    <name>node</name>
-                                </application>
-                                <application>
-                                    <name>proxmox</name>
-                                </application>
-                            </applications>
-                        </item_prototype>
-                        <item_prototype>
                             <name>{#NODE} CPU PERCENT</name>
                             <type>DEPENDENT</type>
                             <key>node.cpu[{#NODE}]</key>
@@ -312,6 +307,22 @@
                             <master_item>
                                 <key>getProxmoxDataNode</key>
                             </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NODE} DISK PERCENT</name>
+                            <type>CALCULATED</type>
+                            <key>node.diskpercent[{#NODE}]</key>
+                            <delay>3m</delay>
+                            <units>%</units>
+                            <params>100*last(&quot;node.disk[{#NODE}]&quot;)/last(&quot;node.maxdisk[{#NODE}]&quot;)</params>
+                            <applications>
+                                <application>
+                                    <name>node</name>
+                                </application>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                            </applications>
                         </item_prototype>
                         <item_prototype>
                             <name>{#NODE} DISK</name>
@@ -384,6 +395,22 @@
                             <master_item>
                                 <key>getProxmoxDataNode</key>
                             </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NODE} MEMORIA PERCENT</name>
+                            <type>CALCULATED</type>
+                            <key>node.mempercent[{#NODE}]</key>
+                            <delay>3m</delay>
+                            <units>%</units>
+                            <params>100*last(&quot;node.mem[{#NODE}]&quot;)/last(&quot;node.maxmem[{#NODE}]&quot;)</params>
+                            <applications>
+                                <application>
+                                    <name>node</name>
+                                </application>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                            </applications>
                         </item_prototype>
                         <item_prototype>
                             <name>{#NODE} MEM</name>
@@ -544,29 +571,16 @@
                     <description>proxmox.cluster.resources</description>
                     <item_prototypes>
                         <item_prototype>
-                            <name>{#NAME} MEMORIA PERCENT</name>
-                            <type>CALCULATED</type>
-                            <key>memoria.percent[{#NAME}]</key>
-                            <delay>3m</delay>
-                            <units>%</units>
-                            <params>100*last(&quot;vm.mem[{#NAME}]&quot;)/last(&quot;vm.maxmem[{#NAME}]&quot;)</params>
-                            <applications>
-                                <application>
-                                    <name>proxmox</name>
-                                </application>
-                                <application>
-                                    <name>vm</name>
-                                </application>
-                            </applications>
-                        </item_prototype>
-                        <item_prototype>
-                            <name>{#NAME} CPU</name>
+                            <name>{#VMID} - {#NAME}</name>
                             <type>DEPENDENT</type>
                             <key>vm.cpu[{#NAME}]</key>
                             <delay>0</delay>
                             <value_type>FLOAT</value_type>
                             <units>%</units>
                             <applications>
+                                <application>
+                                    <name>cpu</name>
+                                </application>
                                 <application>
                                     <name>proxmox</name>
                                 </application>
@@ -585,15 +599,18 @@
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
+                                <key>getProxmoxDataVms</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#NAME} MAXCPU</name>
+                            <name>{#VMID} - {#NAME}</name>
                             <type>DEPENDENT</type>
                             <key>vm.maxcpu[{#NAME}]</key>
                             <delay>0</delay>
                             <applications>
+                                <application>
+                                    <name>maxcpu</name>
+                                </application>
                                 <application>
                                     <name>proxmox</name>
                                 </application>
@@ -608,16 +625,19 @@
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
+                                <key>getProxmoxDataVms</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#NAME} MAXMEM</name>
+                            <name>{#VMID} - {#NAME}</name>
                             <type>DEPENDENT</type>
                             <key>vm.maxmem[{#NAME}]</key>
                             <delay>0</delay>
                             <units>b</units>
                             <applications>
+                                <application>
+                                    <name>maxmem</name>
+                                </application>
                                 <application>
                                     <name>proxmox</name>
                                 </application>
@@ -632,16 +652,38 @@
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
+                                <key>getProxmoxDataVms</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#NAME} MEMORIA</name>
+                            <name>{#VMID} - {#NAME}</name>
+                            <type>CALCULATED</type>
+                            <key>vm.mempercent[{#NAME}]</key>
+                            <delay>3m</delay>
+                            <units>%</units>
+                            <params>100*last(&quot;vm.mem[{#NAME}]&quot;)/last(&quot;vm.maxmem[{#NAME}]&quot;)</params>
+                            <applications>
+                                <application>
+                                    <name>memoria percent</name>
+                                </application>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                                <application>
+                                    <name>vm</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#VMID} - {#NAME}</name>
                             <type>DEPENDENT</type>
                             <key>vm.mem[{#NAME}]</key>
                             <delay>0</delay>
                             <units>b</units>
                             <applications>
+                                <application>
+                                    <name>mem</name>
+                                </application>
                                 <application>
                                     <name>proxmox</name>
                                 </application>
@@ -656,17 +698,20 @@
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
+                                <key>getProxmoxDataVms</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#NAME} NETIN TOTAL</name>
+                            <name>{#VMID} - {#NAME}</name>
                             <type>DEPENDENT</type>
                             <key>vm.netin[{#NAME}]</key>
                             <delay>0</delay>
                             <units>B</units>
                             <description>Tráfego total de entrada da VM {#NAME}</description>
                             <applications>
+                                <application>
+                                    <name>netin</name>
+                                </application>
                                 <application>
                                     <name>proxmox</name>
                                 </application>
@@ -681,17 +726,20 @@
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
+                                <key>getProxmoxDataVms</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#NAME} NETOUT TOTAL</name>
+                            <name>{#VMID} - {#NAME}</name>
                             <type>DEPENDENT</type>
                             <key>vm.netout[{#NAME}]</key>
                             <delay>0</delay>
                             <units>B</units>
                             <description>Tráfego total de saida da VM {#NAME}</description>
                             <applications>
+                                <application>
+                                    <name>netout</name>
+                                </application>
                                 <application>
                                     <name>proxmox</name>
                                 </application>
@@ -706,17 +754,20 @@
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
+                                <key>getProxmoxDataVms</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#NAME} STATUS</name>
+                            <name>{#VMID} - {#NAME}</name>
                             <type>DEPENDENT</type>
                             <key>vm.status[{#NAME}]</key>
                             <delay>0</delay>
                             <applications>
                                 <application>
                                     <name>proxmox</name>
+                                </application>
+                                <application>
+                                    <name>status</name>
                                 </application>
                                 <application>
                                     <name>vm</name>
@@ -737,11 +788,11 @@
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
+                                <key>getProxmoxDataVms</key>
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#NAME} UPTIME</name>
+                            <name>{#VMID} - {#NAME}</name>
                             <type>DEPENDENT</type>
                             <key>vm.uptime[{#NAME}]</key>
                             <delay>0</delay>
@@ -750,6 +801,9 @@
                             <applications>
                                 <application>
                                     <name>proxmox</name>
+                                </application>
+                                <application>
+                                    <name>uptime</name>
                                 </application>
                                 <application>
                                     <name>vm</name>
@@ -762,7 +816,7 @@
                                 </step>
                             </preprocessing>
                             <master_item>
-                                <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
+                                <key>getProxmoxDataVms</key>
                             </master_item>
                         </item_prototype>
                     </item_prototypes>
