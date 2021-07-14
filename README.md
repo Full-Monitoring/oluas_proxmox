@@ -128,7 +128,7 @@ $.[?(@.status == 'running')].length()
 
 > contador de vms (deligadas)
 
-```sh
+```js
 $.[?(@.status == 'stopped')].length()
 ```
 
