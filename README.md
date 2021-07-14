@@ -134,7 +134,7 @@ $.[?(@.status == 'stopped')].length()
 
 > filtros de contagem dos protótipos de itens tipo vm
 
-```sh
+```js
 $.[?(@.name == '{#NAME}')].status.first()
 $.[?(@.name == '{#NAME}')].uptime.first()
 $.[?(@.name == '{#NAME}')].cpu.first()
@@ -176,7 +176,7 @@ $.[?(@.storage == '{#STORAGE}')].maxdisk.first()
 
 > filtros de contagem dos protótipos de itens tipo strage
 
-```sh
+```js
 $.[?(@.id == '{#id}')].disk.first()
 ```
 
