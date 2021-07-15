@@ -4,6 +4,8 @@
 
 ![print](./contents/img/print.png "Print")
 
+![print](./contents/img/print2.png "Print")
+
 - [Dashborad Grafana](/contents/dash_grafana.json "Dashborad Grafana")
 
 ## Comandos Remotos
