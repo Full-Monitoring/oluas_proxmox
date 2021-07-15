@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2021-07-15T13:41:10Z</date>
+    <date>2021-07-15T14:50:55Z</date>
     <groups>
         <group>
             <name>PROXMOX</name>
@@ -598,7 +598,7 @@
                     <lifetime>0d</lifetime>
                     <item_prototypes>
                         <item_prototype>
-                            <name>{#STORAGE} DISK</name>
+                            <name>{#NODE} - {#STORAGE} DISK</name>
                             <type>DEPENDENT</type>
                             <key>storage.disk[{#STORAGE}]</key>
                             <delay>0</delay>
@@ -622,7 +622,7 @@
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#STORAGE} MAXDISK</name>
+                            <name>{#NODE} - {#STORAGE} MAXDISK</name>
                             <type>DEPENDENT</type>
                             <key>storage.maxdisk[{#STORAGE}]</key>
                             <delay>0</delay>
@@ -646,7 +646,7 @@
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#STORAGE} DISK PERCENT</name>
+                            <name>{#NODE} - {#STORAGE} DISK PERCENT</name>
                             <type>CALCULATED</type>
                             <key>storage.percent.disk[{#STORAGE}]</key>
                             <delay>3m</delay>
@@ -662,7 +662,7 @@
                             </applications>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#STORAGE} STATUS</name>
+                            <name>{#NODE} - {#STORAGE} STATUS</name>
                             <type>DEPENDENT</type>
                             <key>storage.status[{#STORAGE}]</key>
                             <delay>0</delay>
@@ -701,6 +701,10 @@
                     </master_item>
                     <lld_macro_paths>
                         <lld_macro_path>
+                            <lld_macro>{#NODE}</lld_macro>
+                            <path>$.node</path>
+                        </lld_macro_path>
+                        <lld_macro_path>
                             <lld_macro>{#STORAGE}</lld_macro>
                             <path>$.storage</path>
                         </lld_macro_path>
@@ -724,7 +728,7 @@
                     <description>proxmox.cluster.resources</description>
                     <item_prototypes>
                         <item_prototype>
-                            <name>{#VMID} - {#NAME} CPU</name>
+                            <name>{#NODE} - {#VMID} - {#NAME} CPU</name>
                             <type>DEPENDENT</type>
                             <key>vm.cpu[{#NAME}]</key>
                             <delay>0</delay>
@@ -756,7 +760,7 @@
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#VMID} - {#NAME} MAXCPU</name>
+                            <name>{#NODE} - {#VMID} - {#NAME} MAXCPU</name>
                             <type>DEPENDENT</type>
                             <key>vm.maxcpu[{#NAME}]</key>
                             <delay>0</delay>
@@ -782,7 +786,7 @@
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#VMID} - {#NAME} MAXMEM</name>
+                            <name>{#NODE} - {#VMID} - {#NAME} MAXMEM</name>
                             <type>DEPENDENT</type>
                             <key>vm.maxmem[{#NAME}]</key>
                             <delay>0</delay>
@@ -809,7 +813,7 @@
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#VMID} - {#NAME} MEMPERCENT</name>
+                            <name>{#NODE} - {#VMID} - {#NAME} MEMPERCENT</name>
                             <type>CALCULATED</type>
                             <key>vm.mempercent[{#NAME}]</key>
                             <delay>15s</delay>
@@ -828,7 +832,7 @@
                             </applications>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#VMID} - {#NAME} MEMORIA</name>
+                            <name>{#NODE} - {#VMID} - {#NAME} MEMORIA</name>
                             <type>DEPENDENT</type>
                             <key>vm.mem[{#NAME}]</key>
                             <delay>0</delay>
@@ -855,7 +859,7 @@
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#VMID} - {#NAME} NETIN</name>
+                            <name>{#NODE} - {#VMID} - {#NAME} NETIN</name>
                             <type>DEPENDENT</type>
                             <key>vm.netin[{#NAME}]</key>
                             <delay>0</delay>
@@ -883,7 +887,7 @@
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#VMID} - {#NAME} NETOUT</name>
+                            <name>{#NODE} - {#VMID} - {#NAME} NETOUT</name>
                             <type>DEPENDENT</type>
                             <key>vm.netout[{#NAME}]</key>
                             <delay>0</delay>
@@ -911,7 +915,7 @@
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#VMID} - {#NAME} STATUS</name>
+                            <name>{#NODE} - {#VMID} - {#NAME} STATUS</name>
                             <type>DEPENDENT</type>
                             <key>vm.status[{#NAME}]</key>
                             <delay>0</delay>
@@ -945,7 +949,7 @@
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#VMID} - {#NAME} UPTIME</name>
+                            <name>{#NODE} - {#VMID} - {#NAME} UPTIME</name>
                             <type>DEPENDENT</type>
                             <key>vm.uptime[{#NAME}]</key>
                             <delay>0</delay>
@@ -1031,6 +1035,10 @@
                         <lld_macro_path>
                             <lld_macro>{#NAME}</lld_macro>
                             <path>$.name</path>
+                        </lld_macro_path>
+                        <lld_macro_path>
+                            <lld_macro>{#NODE}</lld_macro>
+                            <path>$.node</path>
                         </lld_macro_path>
                         <lld_macro_path>
                             <lld_macro>{#TYPE}</lld_macro>

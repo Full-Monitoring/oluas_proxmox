@@ -14,7 +14,7 @@
     "gnetId": null,
     "graphTooltip": 0,
     "id": 43,
-    "iteration": 1626356008764,
+    "iteration": 1626360396457,
     "links": [],
     "panels": [{
             "cacheTimeout": null,
@@ -99,7 +99,7 @@
                     "minSeverity": 3
                 }
             }],
-            "title": "VM's",
+            "title": "VM's - NODE - $node",
             "type": "text"
         },
         {
@@ -254,7 +254,7 @@
                     "filter": "vm"
                 },
                 "functions": [{
-                    "$$hashKey": "object:86",
+                    "$$hashKey": "object:32",
                     "def": {
                         "category": "Alias",
                         "defaultParams": [
@@ -273,10 +273,10 @@
                         ]
                     },
                     "params": [
-                        "/(.*) STATUS/",
+                        "/$node - (.*) STATUS/",
                         "$1"
                     ],
-                    "text": "replaceAlias(/(.*) STATUS/, $1)"
+                    "text": "replaceAlias(/$node - (.*) STATUS/, $1)"
                 }],
                 "group": {
                     "filter": "$grupo"
@@ -392,33 +392,9 @@
             "pluginVersion": "8.0.5",
             "targets": [{
                 "application": {
-                    "filter": "uptime"
+                    "filter": "vm"
                 },
-                "functions": [{
-                    "$$hashKey": "object:217",
-                    "def": {
-                        "category": "Alias",
-                        "defaultParams": [
-                            "/(.*)/",
-                            "$1"
-                        ],
-                        "name": "replaceAlias",
-                        "params": [{
-                                "name": "regexp",
-                                "type": "string"
-                            },
-                            {
-                                "name": "newAlias",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "params": [
-                        "/UPTIME (.*)/",
-                        "$1"
-                    ],
-                    "text": "replaceAlias(/UPTIME (.*)/, $1)"
-                }],
+                "functions": [],
                 "group": {
                     "filter": "$grupo"
                 },
@@ -426,7 +402,7 @@
                     "filter": "$host"
                 },
                 "item": {
-                    "filter": "/ - /"
+                    "filter": "/$node (.*) UPTIME/"
                 },
                 "options": {
                     "disableDataAlignment": false,
@@ -506,8 +482,7 @@
                     "filter": "vm"
                 },
                 "functions": [{
-                    "$$hashKey": "object:112",
-                    "added": false,
+                    "$$hashKey": "object:142",
                     "def": {
                         "category": "Alias",
                         "defaultParams": [
@@ -526,10 +501,10 @@
                         ]
                     },
                     "params": [
-                        "/(.*) CPU/",
+                        "/$node - (.*) CPU/",
                         "$1"
                     ],
-                    "text": "replaceAlias(/(.*) CPU/, $1)"
+                    "text": "replaceAlias(/$node - (.*) CPU/, $1)"
                 }],
                 "group": {
                     "filter": "$grupo"
@@ -538,7 +513,7 @@
                     "filter": "$host"
                 },
                 "item": {
-                    "filter": "/ CPU/"
+                    "filter": "/$node (.*) CPU/"
                 },
                 "options": {
                     "disableDataAlignment": false,
@@ -617,7 +592,7 @@
                     "filter": "vm"
                 },
                 "functions": [{
-                    "$$hashKey": "object:138",
+                    "$$hashKey": "object:169",
                     "def": {
                         "category": "Alias",
                         "defaultParams": [
@@ -636,10 +611,10 @@
                         ]
                     },
                     "params": [
-                        "/(.*) MEMORIA/",
+                        "/$node - (.*) MEMORIA/",
                         "$1"
                     ],
-                    "text": "replaceAlias(/(.*) MEMORIA/, $1)"
+                    "text": "replaceAlias(/$node - (.*) MEMORIA/, $1)"
                 }],
                 "group": {
                     "filter": "$grupo"
@@ -648,7 +623,7 @@
                     "filter": "$host"
                 },
                 "item": {
-                    "filter": "/MEMORIA/"
+                    "filter": "/$node (.*) MEMORIA/"
                 },
                 "options": {
                     "disableDataAlignment": false,
@@ -727,7 +702,8 @@
                     "filter": "vm"
                 },
                 "functions": [{
-                    "$$hashKey": "object:165",
+                    "$$hashKey": "object:62",
+                    "added": false,
                     "def": {
                         "category": "Alias",
                         "defaultParams": [
@@ -746,10 +722,10 @@
                         ]
                     },
                     "params": [
-                        "/(.*) MEMPERCENT/",
+                        "/$node - (.*) MEMPERCENT/",
                         "$1"
                     ],
-                    "text": "replaceAlias(/(.*) MEMPERCENT/, $1)"
+                    "text": "replaceAlias(/$node - (.*) MEMPERCENT/, $1)"
                 }],
                 "group": {
                     "filter": "$grupo"
@@ -758,7 +734,7 @@
                     "filter": "$host"
                 },
                 "item": {
-                    "filter": "/MEMPERCENT/"
+                    "filter": "/$node (.*) MEMPERCENT/"
                 },
                 "options": {
                     "disableDataAlignment": false,
@@ -1075,7 +1051,7 @@
                     "minSeverity": 3
                 }
             }],
-            "title": "NODES",
+            "title": "NODES - $node",
             "type": "text"
         },
         {
@@ -1259,7 +1235,6 @@
                     "filter": "node"
                 },
                 "functions": [{
-                    "$$hashKey": "object:192",
                     "def": {
                         "category": "Alias",
                         "defaultParams": [
@@ -1281,7 +1256,8 @@
                         "/(.*) STATUS/",
                         "$1"
                     ],
-                    "text": "replaceAlias(/(.*) STATUS/, $1)"
+                    "text": "replaceAlias(/(.*) STATUS/, $1)",
+                    "$$hashKey": "object:138"
                 }],
                 "group": {
                     "filter": "$grupo"
@@ -1290,7 +1266,7 @@
                     "filter": "$host"
                 },
                 "item": {
-                    "filter": "/STATUS/"
+                    "filter": "/$node STATUS/"
                 },
                 "options": {
                     "disableDataAlignment": false,
@@ -1407,7 +1383,7 @@
                     "filter": "$host"
                 },
                 "item": {
-                    "filter": "/UPTIME/"
+                    "filter": "/$node UPTIME/"
                 },
                 "options": {
                     "disableDataAlignment": false,
@@ -1485,7 +1461,31 @@
                 "application": {
                     "filter": "node"
                 },
-                "functions": [],
+                "functions": [{
+                    "def": {
+                        "category": "Alias",
+                        "defaultParams": [
+                            "/(.*)/",
+                            "$1"
+                        ],
+                        "name": "replaceAlias",
+                        "params": [{
+                                "name": "regexp",
+                                "type": "string"
+                            },
+                            {
+                                "name": "newAlias",
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    "params": [
+                        "/(.*) CPU PERCENT/",
+                        "$1"
+                    ],
+                    "text": "replaceAlias(/(.*) CPU PERCENT/, $1)",
+                    "$$hashKey": "object:246"
+                }],
                 "group": {
                     "filter": "$grupo"
                 },
@@ -1493,7 +1493,7 @@
                     "filter": "$host"
                 },
                 "item": {
-                    "filter": "/CPU PERCENT/"
+                    "filter": "/$node CPU PERCENT/"
                 },
                 "options": {
                     "disableDataAlignment": false,
@@ -1571,7 +1571,31 @@
                 "application": {
                     "filter": "node"
                 },
-                "functions": [],
+                "functions": [{
+                    "def": {
+                        "category": "Alias",
+                        "defaultParams": [
+                            "/(.*)/",
+                            "$1"
+                        ],
+                        "name": "replaceAlias",
+                        "params": [{
+                                "name": "regexp",
+                                "type": "string"
+                            },
+                            {
+                                "name": "newAlias",
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    "params": [
+                        "/$node - (.*) MAXMEM/",
+                        "$1"
+                    ],
+                    "text": "replaceAlias(/$node - (.*) MAXMEM/, $1)",
+                    "$$hashKey": "object:273"
+                }],
                 "group": {
                     "filter": "$grupo"
                 },
@@ -1579,7 +1603,7 @@
                     "filter": "$host"
                 },
                 "item": {
-                    "filter": "/MAXMEM/"
+                    "filter": "/$node MAXMEM/"
                 },
                 "options": {
                     "disableDataAlignment": false,
@@ -1657,7 +1681,31 @@
                 "application": {
                     "filter": "node"
                 },
-                "functions": [],
+                "functions": [{
+                    "def": {
+                        "category": "Alias",
+                        "defaultParams": [
+                            "/(.*)/",
+                            "$1"
+                        ],
+                        "name": "replaceAlias",
+                        "params": [{
+                                "name": "regexp",
+                                "type": "string"
+                            },
+                            {
+                                "name": "newAlias",
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    "params": [
+                        "/$node - (.*) MEMPERCENT/",
+                        "$1"
+                    ],
+                    "text": "replaceAlias(/$node - (.*) MEMPERCENT/, $1)",
+                    "$$hashKey": "object:300"
+                }],
                 "group": {
                     "filter": "$grupo"
                 },
@@ -1665,7 +1713,7 @@
                     "filter": "$host"
                 },
                 "item": {
-                    "filter": "/MEMPERCENT/"
+                    "filter": "/$node MEMPERCENT/"
                 },
                 "options": {
                     "disableDataAlignment": false,
@@ -1780,7 +1828,7 @@
                     "minSeverity": 3
                 }
             }],
-            "title": "STORAGES",
+            "title": "STORAGES - NODE - $node",
             "type": "text"
         },
         {
@@ -1836,6 +1884,7 @@
                     "filter": "total"
                 },
                 "functions": [{
+                    "$$hashKey": "object:59",
                     "def": {
                         "category": "Alias",
                         "defaultParams": [
@@ -1857,8 +1906,7 @@
                         "/Total de Storages (.*)/",
                         "$1"
                     ],
-                    "text": "replaceAlias(/Total de Storages (.*)/, $1)",
-                    "$$hashKey": "object:59"
+                    "text": "replaceAlias(/Total de Storages (.*)/, $1)"
                 }],
                 "group": {
                     "filter": "$grupo"
@@ -1945,7 +1993,6 @@
                     "filter": "storage"
                 },
                 "functions": [{
-                    "$$hashKey": "object:404",
                     "def": {
                         "category": "Alias",
                         "defaultParams": [
@@ -1964,10 +2011,11 @@
                         ]
                     },
                     "params": [
-                        "/(.*) DISK PERCENT/",
+                        "/$node - (.*) DISK PERCENT/",
                         "$1"
                     ],
-                    "text": "replaceAlias(/(.*) DISK PERCENT/, $1)"
+                    "text": "replaceAlias(/$node - (.*) DISK PERCENT/, $1)",
+                    "$$hashKey": "object:219"
                 }],
                 "group": {
                     "filter": "$grupo"
@@ -1976,7 +2024,7 @@
                     "filter": "$host"
                 },
                 "item": {
-                    "filter": "/PERCENT/"
+                    "filter": "/$node (.*) DISK PERCENT/"
                 },
                 "options": {
                     "disableDataAlignment": false,
@@ -2323,6 +2371,40 @@
                 "query": "Zabbix server",
                 "skipUrlSync": false,
                 "type": "constant"
+            },
+            {
+                "allValue": "",
+                "current": {
+                    "selected": false,
+                    "text": [
+                        "pve"
+                    ],
+                    "value": [
+                        "pve"
+                    ]
+                },
+                "datasource": null,
+                "definition": "Zabbix - item",
+                "description": null,
+                "error": null,
+                "hide": 0,
+                "includeAll": true,
+                "label": null,
+                "multi": true,
+                "name": "node",
+                "options": [],
+                "query": {
+                    "application": "node",
+                    "group": "$grupo",
+                    "host": "$host",
+                    "item": "/STATUS/",
+                    "queryType": "item"
+                },
+                "refresh": 1,
+                "regex": "/(.*) STATUS/",
+                "skipUrlSync": false,
+                "sort": 0,
+                "type": "query"
             }
         ]
     },
@@ -2336,5 +2418,5 @@
     "timezone": "browser",
     "title": "PROXMOX",
     "uid": "bj-487inz",
-    "version": 346
+    "version": 370
 }
