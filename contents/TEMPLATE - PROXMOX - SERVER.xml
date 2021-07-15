@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2021-07-13T18:46:08Z</date>
+    <date>2021-07-15T12:21:43Z</date>
     <groups>
         <group>
             <name>PROXMOX</name>
@@ -21,16 +21,25 @@
                     <name>cpu</name>
                 </application>
                 <application>
+                    <name>disk</name>
+                </application>
+                <application>
+                    <name>diskpercent</name>
+                </application>
+                <application>
                     <name>maxcpu</name>
+                </application>
+                <application>
+                    <name>maxdisk</name>
                 </application>
                 <application>
                     <name>maxmem</name>
                 </application>
                 <application>
-                    <name>mem</name>
+                    <name>memoria</name>
                 </application>
                 <application>
-                    <name>memoria percent</name>
+                    <name>memoriapercent</name>
                 </application>
                 <application>
                     <name>netin</name>
@@ -288,6 +297,9 @@
                             <units>%</units>
                             <applications>
                                 <application>
+                                    <name>cpu</name>
+                                </application>
+                                <application>
                                     <name>node</name>
                                 </application>
                                 <application>
@@ -317,6 +329,9 @@
                             <params>100*last(&quot;node.disk[{#NODE}]&quot;)/last(&quot;node.maxdisk[{#NODE}]&quot;)</params>
                             <applications>
                                 <application>
+                                    <name>diskpercent</name>
+                                </application>
+                                <application>
                                     <name>node</name>
                                 </application>
                                 <application>
@@ -331,6 +346,9 @@
                             <delay>0</delay>
                             <units>b</units>
                             <applications>
+                                <application>
+                                    <name>disk</name>
+                                </application>
                                 <application>
                                     <name>node</name>
                                 </application>
@@ -356,6 +374,9 @@
                             <units>b</units>
                             <applications>
                                 <application>
+                                    <name>maxdisk</name>
+                                </application>
+                                <application>
                                     <name>node</name>
                                 </application>
                                 <application>
@@ -380,6 +401,9 @@
                             <units>b</units>
                             <applications>
                                 <application>
+                                    <name>maxmem</name>
+                                </application>
+                                <application>
                                     <name>node</name>
                                 </application>
                                 <application>
@@ -397,13 +421,16 @@
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#NODE} MEMORIA PERCENT</name>
+                            <name>{#NODE} MEMPERCENT</name>
                             <type>CALCULATED</type>
                             <key>node.mempercent[{#NODE}]</key>
                             <delay>3m</delay>
                             <units>%</units>
                             <params>100*last(&quot;node.mem[{#NODE}]&quot;)/last(&quot;node.maxmem[{#NODE}]&quot;)</params>
                             <applications>
+                                <application>
+                                    <name>memoriapercent</name>
+                                </application>
                                 <application>
                                     <name>node</name>
                                 </application>
@@ -413,12 +440,15 @@
                             </applications>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#NODE} MEM</name>
+                            <name>{#NODE} MEMORIA</name>
                             <type>DEPENDENT</type>
                             <key>node.mem[{#NODE}]</key>
                             <delay>0</delay>
                             <units>b</units>
                             <applications>
+                                <application>
+                                    <name>memoria</name>
+                                </application>
                                 <application>
                                     <name>node</name>
                                 </application>
@@ -437,6 +467,40 @@
                             </master_item>
                         </item_prototype>
                         <item_prototype>
+                            <name>{#NODE} STATUS</name>
+                            <type>DEPENDENT</type>
+                            <key>node.status[{#NODE}]</key>
+                            <delay>0</delay>
+                            <applications>
+                                <application>
+                                    <name>node</name>
+                                </application>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                                <application>
+                                    <name>status</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.node == '{#NODE}')].status.first()</params>
+                                </step>
+                                <step>
+                                    <type>JAVASCRIPT</type>
+                                    <params>if (value == 'online'){
+    return 1;
+} else {
+    return 0;
+}</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>getProxmoxDataNode</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
                             <name>{#NODE} UPTIME</name>
                             <type>DEPENDENT</type>
                             <key>node.uptime[{#NODE}]</key>
@@ -448,6 +512,9 @@
                                 </application>
                                 <application>
                                     <name>proxmox</name>
+                                </application>
+                                <application>
+                                    <name>uptime</name>
                                 </application>
                             </applications>
                             <preprocessing>
@@ -542,6 +609,40 @@
                                 </application>
                             </applications>
                         </item_prototype>
+                        <item_prototype>
+                            <name>{#STORAGE} STATUS</name>
+                            <type>DEPENDENT</type>
+                            <key>storage.status[{#STORAGE}]</key>
+                            <delay>0</delay>
+                            <applications>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                                <application>
+                                    <name>status</name>
+                                </application>
+                                <application>
+                                    <name>storage</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.storage == '{#STORAGE}')].status.first()</params>
+                                </step>
+                                <step>
+                                    <type>JAVASCRIPT</type>
+                                    <params>if (value == 'available'){
+    return 1;
+} else {
+    return 0;
+}</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>getProxmoxDataStorage</key>
+                            </master_item>
+                        </item_prototype>
                     </item_prototypes>
                     <master_item>
                         <key>getProxmoxDataStorage</key>
@@ -571,7 +672,7 @@
                     <description>proxmox.cluster.resources</description>
                     <item_prototypes>
                         <item_prototype>
-                            <name>{#VMID} - {#NAME}</name>
+                            <name>{#VMID} - {#NAME} CPU</name>
                             <type>DEPENDENT</type>
                             <key>vm.cpu[{#NAME}]</key>
                             <delay>0</delay>
@@ -603,7 +704,7 @@
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#VMID} - {#NAME}</name>
+                            <name>{#VMID} - {#NAME} MAXCPU</name>
                             <type>DEPENDENT</type>
                             <key>vm.maxcpu[{#NAME}]</key>
                             <delay>0</delay>
@@ -629,7 +730,7 @@
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#VMID} - {#NAME}</name>
+                            <name>{#VMID} - {#NAME} MAXMEM</name>
                             <type>DEPENDENT</type>
                             <key>vm.maxmem[{#NAME}]</key>
                             <delay>0</delay>
@@ -656,15 +757,15 @@
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#VMID} - {#NAME}</name>
+                            <name>{#VMID} - {#NAME} MEMPERCENT</name>
                             <type>CALCULATED</type>
                             <key>vm.mempercent[{#NAME}]</key>
-                            <delay>3m</delay>
+                            <delay>15s</delay>
                             <units>%</units>
                             <params>100*last(&quot;vm.mem[{#NAME}]&quot;)/last(&quot;vm.maxmem[{#NAME}]&quot;)</params>
                             <applications>
                                 <application>
-                                    <name>memoria percent</name>
+                                    <name>memoriapercent</name>
                                 </application>
                                 <application>
                                     <name>proxmox</name>
@@ -675,14 +776,14 @@
                             </applications>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#VMID} - {#NAME}</name>
+                            <name>{#VMID} - {#NAME} MEMORIA</name>
                             <type>DEPENDENT</type>
                             <key>vm.mem[{#NAME}]</key>
                             <delay>0</delay>
                             <units>b</units>
                             <applications>
                                 <application>
-                                    <name>mem</name>
+                                    <name>memoria</name>
                                 </application>
                                 <application>
                                     <name>proxmox</name>
@@ -702,7 +803,7 @@
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#VMID} - {#NAME}</name>
+                            <name>{#VMID} - {#NAME} NETIN</name>
                             <type>DEPENDENT</type>
                             <key>vm.netin[{#NAME}]</key>
                             <delay>0</delay>
@@ -730,7 +831,7 @@
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#VMID} - {#NAME}</name>
+                            <name>{#VMID} - {#NAME} NETOUT</name>
                             <type>DEPENDENT</type>
                             <key>vm.netout[{#NAME}]</key>
                             <delay>0</delay>
@@ -758,7 +859,7 @@
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#VMID} - {#NAME}</name>
+                            <name>{#VMID} - {#NAME} STATUS</name>
                             <type>DEPENDENT</type>
                             <key>vm.status[{#NAME}]</key>
                             <delay>0</delay>
@@ -792,7 +893,7 @@
                             </master_item>
                         </item_prototype>
                         <item_prototype>
-                            <name>{#VMID} - {#NAME}</name>
+                            <name>{#VMID} - {#NAME} UPTIME</name>
                             <type>DEPENDENT</type>
                             <key>vm.uptime[{#NAME}]</key>
                             <delay>0</delay>

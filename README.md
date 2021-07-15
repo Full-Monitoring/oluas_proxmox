@@ -166,6 +166,7 @@ if (value == 'running'){
 ```js
 $.[?(@.storage == '{#STORAGE}')].disk.first()
 $.[?(@.storage == '{#STORAGE}')].maxdisk.first()
+$.[?(@.storage == '{#STORAGE}')].status.first()
 ```
 
 > Item de calculo de porcentagem de armazenamento do storage
@@ -179,6 +180,17 @@ $.[?(@.storage == '{#STORAGE}')].maxdisk.first()
 ```js
 $.[?(@.id == '{#id}')].disk.first()
 ```
+
+> Alterando valores de retorno de status do node de available para 1
+
+```js
+if (value == 'available'){
+    return 1;
+} else {
+    return 0;
+}
+```
+
 
 > filtros de contagem dos protótipos de itens tipo node
 
@@ -198,4 +210,14 @@ $.[?(@.node == '{#NODE}')].cpu.first()
 ```js
 100*last("node.mem[{#NODE}]")/last("node.maxmem[{#NODE}]")
 100*last("node.disk[{#NODE}]")/last("node.maxdisk[{#NODE}]")
+```
+
+> Alterando valores de retorno de status do node de online e offiline para 1 ou 0
+
+```js
+if (value == 'online'){
+    return 1;
+} else {
+    return 0;
+}
 ```
