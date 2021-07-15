@@ -177,10 +177,10 @@ $.[?(@.storage == '{#STORAGE}')].status.first()
 100*last("storage.disk[{#STORAGE}]")/last("storage.maxdisk[{#STORAGE}]")
 ```
 
-> filtros de contagem dos protótipos de itens tipo strage
+> filtros de contagem dos protótipos de itens tipo storage
 
 ```js
-$.[?(@.id == '{#id}')].disk.first()
+$.[?(@.id == '{#ID}')].disk.first()
 ```
 
 > Alterando valores de retorno de status do node de available para 1
