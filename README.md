@@ -195,6 +195,13 @@ if (value == 'available'){
 100*last("storage.disk[{#STORAGE}]")/last("storage.maxdisk[{#STORAGE}]")
 ```
 
+> Contador de storages disponíveis ou inidiponíveis
+
+```js
+$.[?(@.status == 'available')].length()
+$.[?(@.status == 'unavailable')].length()
+```
+
 > filtros de contagem dos protótipos de itens tipo node
 
 ```js

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2021-07-15T13:22:40Z</date>
+    <date>2021-07-15T13:30:16Z</date>
     <groups>
         <group>
             <name>PROXMOX</name>
@@ -191,6 +191,58 @@
                         <step>
                             <type>JSONPATH</type>
                             <params>$.length()</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>getProxmoxDataStorage</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>Total de Storages Disponiveis</name>
+                    <type>DEPENDENT</type>
+                    <key>storage.total.disponivel</key>
+                    <delay>0</delay>
+                    <applications>
+                        <application>
+                            <name>proxmox</name>
+                        </application>
+                        <application>
+                            <name>storage</name>
+                        </application>
+                        <application>
+                            <name>total</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$.[?(@.status == 'available')].length()</params>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>getProxmoxDataStorage</key>
+                    </master_item>
+                </item>
+                <item>
+                    <name>Total de Storages Indisponiveis</name>
+                    <type>DEPENDENT</type>
+                    <key>storage.total.indisponivel</key>
+                    <delay>0</delay>
+                    <applications>
+                        <application>
+                            <name>proxmox</name>
+                        </application>
+                        <application>
+                            <name>storage</name>
+                        </application>
+                        <application>
+                            <name>total</name>
+                        </application>
+                    </applications>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <params>$.[?(@.status == 'unavailable')].length()</params>
                         </step>
                     </preprocessing>
                     <master_item>
