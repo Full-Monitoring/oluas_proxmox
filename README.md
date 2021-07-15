@@ -171,12 +171,6 @@ $.[?(@.storage == '{#STORAGE}')].maxdisk.first()
 $.[?(@.storage == '{#STORAGE}')].status.first()
 ```
 
-> Item de calculo de porcentagem de armazenamento do storage
-
-```js
-100*last("storage.disk[{#STORAGE}]")/last("storage.maxdisk[{#STORAGE}]")
-```
-
 > filtros de contagem dos protótipos de itens tipo storage
 
 ```js
@@ -193,6 +187,12 @@ if (value == 'available'){
 } else {
     return 0;
 }
+```
+
+> Item de calculo de porcentagem de armazenamento do storage
+
+```js
+100*last("storage.disk[{#STORAGE}]")/last("storage.maxdisk[{#STORAGE}]")
 ```
 
 > filtros de contagem dos protótipos de itens tipo node
