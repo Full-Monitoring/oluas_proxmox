@@ -14,7 +14,7 @@
     "gnetId": null,
     "graphTooltip": 0,
     "id": 43,
-    "iteration": 1626361372525,
+    "iteration": 1626362088522,
     "links": [],
     "panels": [{
             "cacheTimeout": null,
@@ -254,7 +254,7 @@
                     "filter": "vm"
                 },
                 "functions": [{
-                    "$$hashKey": "object:32",
+                    "$$hashKey": "object:86",
                     "def": {
                         "category": "Alias",
                         "defaultParams": [
@@ -592,7 +592,7 @@
                     "filter": "vm"
                 },
                 "functions": [{
-                    "$$hashKey": "object:169",
+                    "$$hashKey": "object:32",
                     "def": {
                         "category": "Alias",
                         "defaultParams": [
@@ -611,10 +611,10 @@
                         ]
                     },
                     "params": [
-                        "/$node - (.*) MEMORIA/",
+                        "/$node - (.*) MAXMEM/",
                         "$1"
                     ],
-                    "text": "replaceAlias(/$node - (.*) MEMORIA/, $1)"
+                    "text": "replaceAlias(/$node - (.*) MAXMEM/, $1)"
                 }],
                 "group": {
                     "filter": "$grupo"
@@ -623,7 +623,7 @@
                     "filter": "$host"
                 },
                 "item": {
-                    "filter": "/$node (.*) MEMORIA/"
+                    "filter": "/$node (.*) MAXMEM/"
                 },
                 "options": {
                     "disableDataAlignment": false,
@@ -2343,7 +2343,7 @@
             "type": "timeseries"
         }
     ],
-    "refresh": "30s",
+    "refresh": "",
     "schemaVersion": 30,
     "style": "dark",
     "tags": [
@@ -2358,29 +2358,49 @@
                 "hide": 2,
                 "label": null,
                 "name": "grupo",
-                "query": "Zabbix servers",
+                "query": "PROXMOX SERVERS",
                 "skipUrlSync": false,
                 "type": "constant"
             },
             {
+                "allValue": null,
+                "current": {
+                    "selected": false,
+                    "text": "Zabbix server",
+                    "value": "Zabbix server"
+                },
+                "datasource": null,
+                "definition": "Zabbix - host",
                 "description": null,
                 "error": null,
-                "hide": 2,
+                "hide": 0,
+                "includeAll": false,
                 "label": null,
+                "multi": false,
                 "name": "host",
-                "query": "Zabbix server",
+                "options": [],
+                "query": {
+                    "application": "",
+                    "group": "/PROXMOX SERVERS/",
+                    "host": "/.*/",
+                    "item": "",
+                    "queryType": "host"
+                },
+                "refresh": 1,
+                "regex": "",
                 "skipUrlSync": false,
-                "type": "constant"
+                "sort": 0,
+                "type": "query"
             },
             {
                 "allValue": "",
                 "current": {
-                    "selected": true,
+                    "selected": false,
                     "text": [
-                        "All"
+                        "pve"
                     ],
                     "value": [
-                        "$__all"
+                        "pve"
                     ]
                 },
                 "datasource": null,
@@ -2418,5 +2438,5 @@
     "timezone": "browser",
     "title": "PROXMOX",
     "uid": "bj-487inz",
-    "version": 373
+    "version": 379
 }
