@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2021-07-15T15:16:12Z</date>
+    <date>2021-07-15T17:08:35Z</date>
     <groups>
         <group>
             <name>PROXMOX SERVERS</name>
@@ -338,7 +338,6 @@
                     <type>DEPENDENT</type>
                     <key>discovery.node</key>
                     <delay>0</delay>
-                    <lifetime>0d</lifetime>
                     <item_prototypes>
                         <item_prototype>
                             <name>{#NODE} CPU PERCENT</name>
@@ -595,7 +594,6 @@
                     <type>DEPENDENT</type>
                     <key>discovery.storage</key>
                     <delay>0</delay>
-                    <lifetime>0d</lifetime>
                     <item_prototypes>
                         <item_prototype>
                             <name>{#NODE} - {#STORAGE} DISK</name>
@@ -724,7 +722,6 @@
                             </condition>
                         </conditions>
                     </filter>
-                    <lifetime>0d</lifetime>
                     <description>proxmox.cluster.resources</description>
                     <item_prototypes>
                         <item_prototype>
