@@ -1207,12 +1207,12 @@
                             "0": {
                                 "color": "yellow",
                                 "index": 0,
-                                "text": "INDISPONÍVEL"
+                                "text": "OFFLINE"
                             },
                             "1": {
                                 "color": "green",
                                 "index": 1,
-                                "text": "DISPONÍVEL"
+                                "text": "ONLINE"
                             }
                         },
                         "type": "value"
@@ -1259,7 +1259,6 @@
                     "filter": "node"
                 },
                 "functions": [{
-                    "$$hashKey": "object:140",
                     "def": {
                         "category": "Alias",
                         "defaultParams": [
@@ -1281,7 +1280,8 @@
                         "/(.*) STATUS/",
                         "$1"
                     ],
-                    "text": "replaceAlias(/(.*) STATUS/, $1)"
+                    "text": "replaceAlias(/(.*) STATUS/, $1)",
+                    "$$hashKey": "object:192"
                 }],
                 "group": {
                     "filter": "$grupo"
@@ -2336,5 +2336,5 @@
     "timezone": "browser",
     "title": "PROXMOX",
     "uid": "bj-487inz",
-    "version": 342
+    "version": 343
 }

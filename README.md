@@ -193,7 +193,6 @@ if (value == 'available'){
 }
 ```
 
-
 > filtros de contagem dos protótipos de itens tipo node
 
 ```js
