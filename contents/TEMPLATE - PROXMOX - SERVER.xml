@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2021-07-15T13:30:16Z</date>
+    <date>2021-07-15T13:41:10Z</date>
     <groups>
         <group>
             <name>PROXMOX</name>
@@ -252,7 +252,7 @@
                 <item>
                     <name>get Proxmox Data</name>
                     <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
-                    <delay>15s</delay>
+                    <delay>3m</delay>
                     <trends>0</trends>
                     <value_type>CHAR</value_type>
                     <description>get Proxmox Data (VM, STORAGE, NODE, SDN)</description>
