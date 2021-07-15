@@ -2,9 +2,11 @@
 
 ## [Saulo Costa - Telegram](https://t.me/saulos2costa/ "telegram")
 
-![print](./contents/img/print.png "Print")
+![print](./contents/img/print-vm.png "Print")
 
-![print](./contents/img/print2.png "Print")
+![print](./contents/img/print-node.png "Print")
+
+![print](./contents/img/print-storage.png "Print")
 
 - [Dashborad Grafana](/contents/dash_grafana.json "Dashborad Grafana")
 
