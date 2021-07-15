@@ -14,7 +14,7 @@
     "gnetId": null,
     "graphTooltip": 0,
     "id": 43,
-    "iteration": 1626360396457,
+    "iteration": 1626361372525,
     "links": [],
     "panels": [{
             "cacheTimeout": null,
@@ -888,7 +888,7 @@
                 "colorMode": "background",
                 "graphMode": "none",
                 "justifyMode": "center",
-                "orientation": "auto",
+                "orientation": "horizontal",
                 "reduceOptions": {
                     "calcs": [
                         "lastNotNull"
@@ -905,7 +905,7 @@
                     "filter": "total"
                 },
                 "functions": [{
-                    "$$hashKey": "object:165",
+                    "$$hashKey": "object:381",
                     "def": {
                         "category": "Alias",
                         "defaultParams": [
@@ -1090,7 +1090,7 @@
                 "colorMode": "background",
                 "graphMode": "none",
                 "justifyMode": "center",
-                "orientation": "vertical",
+                "orientation": "horizontal",
                 "reduceOptions": {
                     "calcs": [
                         "lastNotNull"
@@ -1107,7 +1107,7 @@
                     "filter": "total"
                 },
                 "functions": [{
-                    "$$hashKey": "object:294",
+                    "$$hashKey": "object:408",
                     "def": {
                         "category": "Alias",
                         "defaultParams": [
@@ -1235,6 +1235,7 @@
                     "filter": "node"
                 },
                 "functions": [{
+                    "$$hashKey": "object:138",
                     "def": {
                         "category": "Alias",
                         "defaultParams": [
@@ -1256,8 +1257,7 @@
                         "/(.*) STATUS/",
                         "$1"
                     ],
-                    "text": "replaceAlias(/(.*) STATUS/, $1)",
-                    "$$hashKey": "object:138"
+                    "text": "replaceAlias(/(.*) STATUS/, $1)"
                 }],
                 "group": {
                     "filter": "$grupo"
@@ -1462,6 +1462,7 @@
                     "filter": "node"
                 },
                 "functions": [{
+                    "$$hashKey": "object:246",
                     "def": {
                         "category": "Alias",
                         "defaultParams": [
@@ -1483,8 +1484,7 @@
                         "/(.*) CPU PERCENT/",
                         "$1"
                     ],
-                    "text": "replaceAlias(/(.*) CPU PERCENT/, $1)",
-                    "$$hashKey": "object:246"
+                    "text": "replaceAlias(/(.*) CPU PERCENT/, $1)"
                 }],
                 "group": {
                     "filter": "$grupo"
@@ -1572,6 +1572,7 @@
                     "filter": "node"
                 },
                 "functions": [{
+                    "$$hashKey": "object:273",
                     "def": {
                         "category": "Alias",
                         "defaultParams": [
@@ -1593,8 +1594,7 @@
                         "/$node - (.*) MAXMEM/",
                         "$1"
                     ],
-                    "text": "replaceAlias(/$node - (.*) MAXMEM/, $1)",
-                    "$$hashKey": "object:273"
+                    "text": "replaceAlias(/$node - (.*) MAXMEM/, $1)"
                 }],
                 "group": {
                     "filter": "$grupo"
@@ -1682,6 +1682,7 @@
                     "filter": "node"
                 },
                 "functions": [{
+                    "$$hashKey": "object:300",
                     "def": {
                         "category": "Alias",
                         "defaultParams": [
@@ -1703,8 +1704,7 @@
                         "/$node - (.*) MEMPERCENT/",
                         "$1"
                     ],
-                    "text": "replaceAlias(/$node - (.*) MEMPERCENT/, $1)",
-                    "$$hashKey": "object:300"
+                    "text": "replaceAlias(/$node - (.*) MEMPERCENT/, $1)"
                 }],
                 "group": {
                     "filter": "$grupo"
@@ -1993,6 +1993,7 @@
                     "filter": "storage"
                 },
                 "functions": [{
+                    "$$hashKey": "object:219",
                     "def": {
                         "category": "Alias",
                         "defaultParams": [
@@ -2014,8 +2015,7 @@
                         "/$node - (.*) DISK PERCENT/",
                         "$1"
                     ],
-                    "text": "replaceAlias(/$node - (.*) DISK PERCENT/, $1)",
-                    "$$hashKey": "object:219"
+                    "text": "replaceAlias(/$node - (.*) DISK PERCENT/, $1)"
                 }],
                 "group": {
                     "filter": "$grupo"
@@ -2375,12 +2375,12 @@
             {
                 "allValue": "",
                 "current": {
-                    "selected": false,
+                    "selected": true,
                     "text": [
-                        "pve"
+                        "All"
                     ],
                     "value": [
-                        "pve"
+                        "$__all"
                     ]
                 },
                 "datasource": null,
@@ -2418,5 +2418,5 @@
     "timezone": "browser",
     "title": "PROXMOX",
     "uid": "bj-487inz",
-    "version": 370
+    "version": 373
 }
