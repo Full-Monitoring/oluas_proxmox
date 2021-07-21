@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2021-07-15T17:08:35Z</date>
+    <date>2021-07-21T23:39:53Z</date>
     <groups>
         <group>
             <name>PROXMOX SERVERS</name>
@@ -729,6 +729,7 @@
                             <type>DEPENDENT</type>
                             <key>vm.cpu[{#NAME}]</key>
                             <delay>0</delay>
+                            <trends>90d</trends>
                             <value_type>FLOAT</value_type>
                             <units>%</units>
                             <applications>
@@ -761,6 +762,7 @@
                             <type>DEPENDENT</type>
                             <key>vm.maxcpu[{#NAME}]</key>
                             <delay>0</delay>
+                            <trends>90d</trends>
                             <applications>
                                 <application>
                                     <name>maxcpu</name>
@@ -787,6 +789,7 @@
                             <type>DEPENDENT</type>
                             <key>vm.maxmem[{#NAME}]</key>
                             <delay>0</delay>
+                            <trends>90d</trends>
                             <units>b</units>
                             <applications>
                                 <application>
@@ -813,7 +816,8 @@
                             <name>{#NODE} - {#VMID} - {#NAME} MEMPERCENT</name>
                             <type>CALCULATED</type>
                             <key>vm.mempercent[{#NAME}]</key>
-                            <delay>15s</delay>
+                            <delay>3m</delay>
+                            <trends>90d</trends>
                             <units>%</units>
                             <params>100*last(&quot;vm.mem[{#NAME}]&quot;)/last(&quot;vm.maxmem[{#NAME}]&quot;)</params>
                             <applications>
@@ -833,6 +837,7 @@
                             <type>DEPENDENT</type>
                             <key>vm.mem[{#NAME}]</key>
                             <delay>0</delay>
+                            <trends>90d</trends>
                             <units>b</units>
                             <applications>
                                 <application>
@@ -860,6 +865,7 @@
                             <type>DEPENDENT</type>
                             <key>vm.netin[{#NAME}]</key>
                             <delay>0</delay>
+                            <trends>90d</trends>
                             <units>B</units>
                             <description>Tráfego total de entrada da VM {#NAME}</description>
                             <applications>
@@ -888,6 +894,7 @@
                             <type>DEPENDENT</type>
                             <key>vm.netout[{#NAME}]</key>
                             <delay>0</delay>
+                            <trends>90d</trends>
                             <units>B</units>
                             <description>Tráfego total de saida da VM {#NAME}</description>
                             <applications>
@@ -916,6 +923,7 @@
                             <type>DEPENDENT</type>
                             <key>vm.status[{#NAME}]</key>
                             <delay>0</delay>
+                            <trends>90d</trends>
                             <applications>
                                 <application>
                                     <name>proxmox</name>
@@ -950,6 +958,7 @@
                             <type>DEPENDENT</type>
                             <key>vm.uptime[{#NAME}]</key>
                             <delay>0</delay>
+                            <trends>90d</trends>
                             <value_type>FLOAT</value_type>
                             <units>uptime</units>
                             <applications>
@@ -972,6 +981,16 @@
                             <master_item>
                                 <key>getProxmoxDataVms</key>
                             </master_item>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{last()}&lt;300</expression>
+                                    <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                                    <recovery_expression>{last()}&gt;300</recovery_expression>
+                                    <name>{#NODE} - {#VMID} - {#NAME}</name>
+                                    <opdata>DESLIGOU</opdata>
+                                    <priority>HIGH</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
                         </item_prototype>
                     </item_prototypes>
                     <graph_prototypes>
