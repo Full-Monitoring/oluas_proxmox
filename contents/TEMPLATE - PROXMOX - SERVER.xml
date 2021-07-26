@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2021-07-26T17:59:14Z</date>
+    <date>2021-07-26T18:14:47Z</date>
     <groups>
         <group>
             <name>PROXMOX SERVERS</name>
@@ -75,6 +75,7 @@
                     <type>DEPENDENT</type>
                     <key>getProxmoxDataNode</key>
                     <delay>0</delay>
+                    <history>20d</history>
                     <trends>0</trends>
                     <value_type>CHAR</value_type>
                     <applications>
@@ -100,6 +101,7 @@
                     <type>DEPENDENT</type>
                     <key>getProxmoxDataStorage</key>
                     <delay>0</delay>
+                    <history>20d</history>
                     <trends>0</trends>
                     <value_type>CHAR</value_type>
                     <applications>
@@ -125,6 +127,7 @@
                     <type>DEPENDENT</type>
                     <key>getProxmoxDataVms</key>
                     <delay>0</delay>
+                    <history>20d</history>
                     <trends>0</trends>
                     <value_type>CHAR</value_type>
                     <applications>
@@ -253,6 +256,7 @@
                     <name>get Proxmox Data</name>
                     <key>system.run[{$SCRIPT_PY} {$SERVER_IP} {$LOGIN_USER} {$LOGIN_PASS}]</key>
                     <delay>3m</delay>
+                    <history>20d</history>
                     <trends>0</trends>
                     <value_type>CHAR</value_type>
                     <description>get Proxmox Data (VM, STORAGE, NODE, SDN)</description>
@@ -344,6 +348,7 @@
                             <type>DEPENDENT</type>
                             <key>node.cpu[{#NODE}]</key>
                             <delay>0</delay>
+                            <trends>90d</trends>
                             <value_type>FLOAT</value_type>
                             <units>%</units>
                             <applications>
@@ -376,6 +381,7 @@
                             <type>CALCULATED</type>
                             <key>node.diskpercent[{#NODE}]</key>
                             <delay>3m</delay>
+                            <trends>90d</trends>
                             <units>%</units>
                             <params>100*last(&quot;node.disk[{#NODE}]&quot;)/last(&quot;node.maxdisk[{#NODE}]&quot;)</params>
                             <applications>
@@ -395,6 +401,7 @@
                             <type>DEPENDENT</type>
                             <key>node.disk[{#NODE}]</key>
                             <delay>0</delay>
+                            <trends>90d</trends>
                             <units>b</units>
                             <applications>
                                 <application>
@@ -422,9 +429,16 @@
                             <type>DEPENDENT</type>
                             <key>node.maxcpu[{#NODE}]</key>
                             <delay>0</delay>
+                            <trends>90d</trends>
                             <applications>
                                 <application>
                                     <name>maxcpu</name>
+                                </application>
+                                <application>
+                                    <name>node</name>
+                                </application>
+                                <application>
+                                    <name>proxmox</name>
                                 </application>
                             </applications>
                             <preprocessing>
@@ -442,6 +456,7 @@
                             <type>DEPENDENT</type>
                             <key>node.maxdisk[{#NODE}]</key>
                             <delay>0</delay>
+                            <trends>90d</trends>
                             <units>b</units>
                             <applications>
                                 <application>
@@ -469,6 +484,7 @@
                             <type>DEPENDENT</type>
                             <key>node.maxmem[{#NODE}]</key>
                             <delay>0</delay>
+                            <trends>90d</trends>
                             <units>b</units>
                             <applications>
                                 <application>
@@ -496,6 +512,7 @@
                             <type>CALCULATED</type>
                             <key>node.mempercent[{#NODE}]</key>
                             <delay>3m</delay>
+                            <trends>90d</trends>
                             <units>%</units>
                             <params>100*last(&quot;node.mem[{#NODE}]&quot;)/last(&quot;node.maxmem[{#NODE}]&quot;)</params>
                             <applications>
@@ -515,6 +532,7 @@
                             <type>DEPENDENT</type>
                             <key>node.mem[{#NODE}]</key>
                             <delay>0</delay>
+                            <trends>90d</trends>
                             <units>b</units>
                             <applications>
                                 <application>
@@ -542,6 +560,7 @@
                             <type>DEPENDENT</type>
                             <key>node.status[{#NODE}]</key>
                             <delay>0</delay>
+                            <trends>90d</trends>
                             <applications>
                                 <application>
                                     <name>node</name>
@@ -576,6 +595,7 @@
                             <type>DEPENDENT</type>
                             <key>node.uptime[{#NODE}]</key>
                             <delay>0</delay>
+                            <trends>90d</trends>
                             <units>uptime</units>
                             <applications>
                                 <application>
@@ -620,6 +640,7 @@
                             <type>DEPENDENT</type>
                             <key>storage.disk[{#STORAGE}]</key>
                             <delay>0</delay>
+                            <trends>90d</trends>
                             <units>b</units>
                             <applications>
                                 <application>
@@ -644,6 +665,7 @@
                             <type>DEPENDENT</type>
                             <key>storage.maxdisk[{#STORAGE}]</key>
                             <delay>0</delay>
+                            <trends>90d</trends>
                             <units>b</units>
                             <applications>
                                 <application>
@@ -668,6 +690,7 @@
                             <type>CALCULATED</type>
                             <key>storage.percent.disk[{#STORAGE}]</key>
                             <delay>3m</delay>
+                            <trends>90d</trends>
                             <units>%</units>
                             <params>100*last(&quot;storage.disk[{#STORAGE}]&quot;)/last(&quot;storage.maxdisk[{#STORAGE}]&quot;)</params>
                             <applications>
@@ -684,6 +707,7 @@
                             <type>DEPENDENT</type>
                             <key>storage.status[{#STORAGE}]</key>
                             <delay>0</delay>
+                            <trends>90d</trends>
                             <applications>
                                 <application>
                                     <name>proxmox</name>
