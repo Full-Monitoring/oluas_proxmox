@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2021-07-21T23:39:53Z</date>
+    <date>2021-07-26T17:59:14Z</date>
     <groups>
         <group>
             <name>PROXMOX SERVERS</name>
@@ -411,6 +411,26 @@
                                 <step>
                                     <type>JSONPATH</type>
                                     <params>$.[?(@.node == '{#NODE}')].disk.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>getProxmoxDataNode</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NODE} MAXCPU</name>
+                            <type>DEPENDENT</type>
+                            <key>node.maxcpu[{#NODE}]</key>
+                            <delay>0</delay>
+                            <applications>
+                                <application>
+                                    <name>maxcpu</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.node == '{#NODE}')].maxcpu.first()</params>
                                 </step>
                             </preprocessing>
                             <master_item>
