@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2021-07-26T18:14:47Z</date>
+    <date>2021-07-27T18:10:51Z</date>
     <groups>
         <group>
             <name>PROXMOX SERVERS</name>
@@ -9,8 +9,9 @@
     </groups>
     <templates>
         <template>
-            <template>PROXMOX - SERVER</template>
-            <name>PROXMOX - SERVER</name>
+            <template>PROXMOX SERVER - PYTHON</template>
+            <name>PROXMOX SERVER - PYTHON</name>
+            <description>USANSO A BIBLIOTECA PROXMOXER</description>
             <groups>
                 <group>
                     <name>PROXMOX SERVERS</name>
@@ -25,6 +26,9 @@
                 </application>
                 <application>
                     <name>diskpercent</name>
+                </application>
+                <application>
+                    <name>diskused</name>
                 </application>
                 <application>
                     <name>maxcpu</name>
@@ -802,6 +806,34 @@
                             </master_item>
                         </item_prototype>
                         <item_prototype>
+                            <name>{#NODE} - {#VMID} - {#NAME} DISKUSED</name>
+                            <type>DEPENDENT</type>
+                            <key>vm.diskused[{#NAME}]</key>
+                            <delay>0</delay>
+                            <trends>90d</trends>
+                            <units>b</units>
+                            <applications>
+                                <application>
+                                    <name>diskused</name>
+                                </application>
+                                <application>
+                                    <name>proxmox</name>
+                                </application>
+                                <application>
+                                    <name>vm</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@.name == '{#NAME}')].uptime.first()</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>getProxmoxDataVms</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
                             <name>{#NODE} - {#VMID} - {#NAME} MAXCPU</name>
                             <type>DEPENDENT</type>
                             <key>vm.maxcpu[{#NAME}]</key>
@@ -1045,7 +1077,7 @@
                                     <sortorder>1</sortorder>
                                     <color>F63100</color>
                                     <item>
-                                        <host>PROXMOX - SERVER</host>
+                                        <host>PROXMOX SERVER - PYTHON</host>
                                         <key>vm.cpu[{#NAME}]</key>
                                     </item>
                                 </graph_item>
@@ -1058,7 +1090,7 @@
                                     <sortorder>1</sortorder>
                                     <color>1A7C11</color>
                                     <item>
-                                        <host>PROXMOX - SERVER</host>
+                                        <host>PROXMOX SERVER - PYTHON</host>
                                         <key>vm.mem[{#NAME}]</key>
                                     </item>
                                 </graph_item>
@@ -1073,7 +1105,7 @@
                                     <sortorder>1</sortorder>
                                     <color>1A7C11</color>
                                     <item>
-                                        <host>PROXMOX - SERVER</host>
+                                        <host>PROXMOX SERVER - PYTHON</host>
                                         <key>vm.netin[{#NAME}]</key>
                                     </item>
                                 </graph_item>
@@ -1081,7 +1113,7 @@
                                     <sortorder>2</sortorder>
                                     <color>F63100</color>
                                     <item>
-                                        <host>PROXMOX - SERVER</host>
+                                        <host>PROXMOX SERVER - PYTHON</host>
                                         <key>vm.netout[{#NAME}]</key>
                                     </item>
                                 </graph_item>
