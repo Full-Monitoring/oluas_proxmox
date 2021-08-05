@@ -2,6 +2,8 @@
 
 ## [Saulo Costa - Telegram](https://t.me/saulos2costa/ "telegram")
 
+![image](https://user-images.githubusercontent.com/23584038/128372750-3a1f1948-8318-4ec7-87cb-4b4f8424be64.png)
+
 ![print](./contents/img/print-vm.png "Print")
 
 ![print](./contents/img/print-node.png "Print")
