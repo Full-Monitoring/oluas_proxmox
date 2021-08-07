@@ -50,7 +50,7 @@ nano /etc/zabbix/zabbix_agentd.conf
 
 ![-](./contents/img/server_zabbix_agent2.png "-")
 
-> Para testar a conexão entre o zabbix server e o agent...
+> Para testar a conexão entre o zabbix server e o agent dê esse comando no server Zabbix.
 
 - zabbix_get -s IP_DO_PROXMOX -k "system.uptime"
 
