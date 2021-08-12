@@ -6,7 +6,7 @@
 
 ![image](https://user-images.githubusercontent.com/23584038/128372750-3a1f1948-8318-4ec7-87cb-4b4f8424be64.png)
 
-![print](./contents/img/print-vm.png "Print")
+![image](https://user-images.githubusercontent.com/23584038/129265614-204aac06-2173-4ddc-bd40-3aed12d517cb.png)
 
 ![print](./contents/img/print-node.png "Print")
 
