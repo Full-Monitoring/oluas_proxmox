@@ -20,7 +20,7 @@
     "gnetId": null,
     "graphTooltip": 0,
     "id": 43,
-    "iteration": 1628796889076,
+    "iteration": 1628801806043,
     "links": [],
     "panels": [{
             "cacheTimeout": null,
@@ -870,24 +870,45 @@
             "fieldConfig": {
                 "defaults": {
                     "color": {
-                        "mode": "thresholds"
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        }
                     },
                     "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [{
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    },
                     "unit": "none"
                 },
-                "overrides": []
+                "overrides": [{
+                        "matcher": {
+                            "id": "byName",
+                            "options": "Offline"
+                        },
+                        "properties": [{
+                            "id": "color",
+                            "value": {
+                                "fixedColor": "red",
+                                "mode": "fixed"
+                            }
+                        }]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "Online"
+                        },
+                        "properties": [{
+                            "id": "color",
+                            "value": {
+                                "fixedColor": "green",
+                                "mode": "fixed"
+                            }
+                        }]
+                    }
+                ]
             },
             "gridPos": {
                 "h": 8,
@@ -897,10 +918,16 @@
             },
             "id": 8,
             "options": {
-                "colorMode": "background",
-                "graphMode": "none",
-                "justifyMode": "center",
-                "orientation": "horizontal",
+                "displayLabels": [
+                    "name",
+                    "value"
+                ],
+                "legend": {
+                    "displayMode": "table",
+                    "placement": "bottom",
+                    "values": []
+                },
+                "pieType": "pie",
                 "reduceOptions": {
                     "calcs": [
                         "lastNotNull"
@@ -908,8 +935,9 @@
                     "fields": "",
                     "values": false
                 },
-                "text": {},
-                "textMode": "auto"
+                "tooltip": {
+                    "mode": "single"
+                }
             },
             "pluginVersion": "8.1.1",
             "targets": [{
@@ -917,6 +945,7 @@
                     "filter": "total"
                 },
                 "functions": [{
+                    "$$hashKey": "object:329",
                     "def": {
                         "category": "Alias",
                         "defaultParams": [
@@ -938,8 +967,7 @@
                         "/Total de VM's (.*)/",
                         "$1"
                     ],
-                    "text": "replaceAlias(/Total de VM's (.*)/, $1)",
-                    "$$hashKey": "object:32"
+                    "text": "replaceAlias(/Total de VM's (.*)/, $1)"
                 }],
                 "group": {
                     "filter": "$grupo"
@@ -948,7 +976,7 @@
                     "filter": "$host"
                 },
                 "item": {
-                    "filter": "/VM/"
+                    "filter": "/Total de VM's Online|Total de VM's Offline/"
                 },
                 "itemTag": {
                     "filter": "Application: total"
@@ -980,8 +1008,7 @@
                     "minSeverity": 3
                 }
             }],
-            "title": "TOTAIS",
-            "type": "stat"
+            "type": "piechart"
         },
         {
             "cacheTimeout": null,
@@ -1868,24 +1895,31 @@
             "fieldConfig": {
                 "defaults": {
                     "color": {
-                        "mode": "thresholds"
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        }
                     },
                     "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [{
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    },
                     "unit": "none"
                 },
-                "overrides": []
+                "overrides": [{
+                    "matcher": {
+                        "id": "byName",
+                        "options": "Indisponiveis"
+                    },
+                    "properties": [{
+                        "id": "color",
+                        "value": {
+                            "fixedColor": "red",
+                            "mode": "fixed"
+                        }
+                    }]
+                }]
             },
             "gridPos": {
                 "h": 8,
@@ -1895,10 +1929,16 @@
             },
             "id": 16,
             "options": {
-                "colorMode": "background",
-                "graphMode": "none",
-                "justifyMode": "center",
-                "orientation": "horizontal",
+                "displayLabels": [
+                    "name",
+                    "value"
+                ],
+                "legend": {
+                    "displayMode": "table",
+                    "placement": "bottom",
+                    "values": []
+                },
+                "pieType": "pie",
                 "reduceOptions": {
                     "calcs": [
                         "lastNotNull"
@@ -1906,8 +1946,9 @@
                     "fields": "",
                     "values": false
                 },
-                "text": {},
-                "textMode": "auto"
+                "tooltip": {
+                    "mode": "single"
+                }
             },
             "pluginVersion": "8.1.1",
             "targets": [{
@@ -1915,7 +1956,7 @@
                     "filter": "total"
                 },
                 "functions": [{
-                    "$$hashKey": "object:59",
+                    "$$hashKey": "object:302",
                     "def": {
                         "category": "Alias",
                         "defaultParams": [
@@ -1946,7 +1987,10 @@
                     "filter": "$host"
                 },
                 "item": {
-                    "filter": "/Storage/"
+                    "filter": "/Total de Storages Indisponiveis|Total de Storages Disponiveis/"
+                },
+                "itemTag": {
+                    "filter": "Application: total"
                 },
                 "options": {
                     "disableDataAlignment": false,
@@ -1957,7 +2001,7 @@
                 "proxy": {
                     "filter": ""
                 },
-                "queryType": 0,
+                "queryType": "0",
                 "refId": "A",
                 "resultFormat": "time_series",
                 "table": {
@@ -1976,7 +2020,7 @@
                 }
             }],
             "title": "TOTAIS",
-            "type": "stat"
+            "type": "piechart"
         },
         {
             "datasource": null,
@@ -2431,20 +2475,16 @@
             {
                 "allValue": "",
                 "current": {
-                    "selected": true,
-                    "text": [
-                        "All"
-                    ],
-                    "value": [
-                        "$__all"
-                    ]
+                    "selected": false,
+                    "text": "pve",
+                    "value": "pve"
                 },
                 "datasource": null,
                 "definition": "Zabbix - item",
                 "description": null,
                 "error": null,
                 "hide": 0,
-                "includeAll": true,
+                "includeAll": false,
                 "label": null,
                 "multi": true,
                 "name": "node",
@@ -2474,5 +2514,5 @@
     "timezone": "browser",
     "title": "PROXMOX",
     "uid": "bj-487inz",
-    "version": 398
+    "version": 407
 }
