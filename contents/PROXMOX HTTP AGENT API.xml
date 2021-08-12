@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2021-08-12T12:23:56Z</date>
+    <date>2021-08-12T20:57:52Z</date>
     <groups>
         <group>
             <name>PROXMOX SERVERS</name>
@@ -79,7 +79,7 @@
                     <type>HTTP_AGENT</type>
                     <key>get.data.resources</key>
                     <delay>3m</delay>
-                    <history>10d</history>
+                    <history>2d</history>
                     <trends>0</trends>
                     <value_type>CHAR</value_type>
                     <description>get Proxmox Data (VM, STORAGE, NODE, SDN)</description>
@@ -88,7 +88,7 @@
                             <name>proxmox</name>
                         </application>
                     </applications>
-                    <timeout>5s</timeout>
+                    <timeout>15s</timeout>
                     <url>https://{$PVESERVER}:8006/api2/json/cluster/resources</url>
                     <headers>
                         <header>
@@ -296,7 +296,7 @@
                     <preprocessing>
                         <step>
                             <type>JSONPATH</type>
-                            <params>$.[?(@.type == 'qemu')].length()</params>
+                            <params>$.body.data[?(@.type == 'qemu')].length()</params>
                         </step>
                     </preprocessing>
                     <master_item>
@@ -319,7 +319,7 @@
                     <preprocessing>
                         <step>
                             <type>JSONPATH</type>
-                            <params>$.[?(@.status == 'stopped')].length()</params>
+                            <params>$.body.data[?(@.status == 'stopped')].length()</params>
                         </step>
                     </preprocessing>
                     <master_item>
@@ -342,7 +342,7 @@
                     <preprocessing>
                         <step>
                             <type>JSONPATH</type>
-                            <params>$.[?(@.status == 'running')].length()</params>
+                            <params>$.body.data[?(@.status == 'running')].length()</params>
                         </step>
                     </preprocessing>
                     <master_item>
