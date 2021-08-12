@@ -71,7 +71,7 @@ zabbix_get -s 172.31.255.2 -k "system.uptime"
 
 ![image](https://user-images.githubusercontent.com/23584038/129195354-fd709f30-2016-4398-9565-5a430326de62.png)
 
-> macros LLD
+> Macros LLD
 
 ```js
 {#NAME} -> $.name
@@ -81,7 +81,7 @@ zabbix_get -s 172.31.255.2 -k "system.uptime"
 {#NODE} -> $.node
 ```
 
-> contador de vms, storages e nodes (total)
+> Contador de vms, storages e nodes (total)
 
 ```js
 $.length()
@@ -90,19 +90,19 @@ $.[?(@.type == 'storage')].length()
 $.[?(@.type == 'node')].length()
 ```
 
-> contador de vms (ligadas)
+> Contador de vms (ligadas)
 
 ```js
 $.[?(@.status == 'running')].length()
 ```
 
-> contador de vms (deligadas)
+> Contador de vms (deligadas)
 
 ```js
 $.[?(@.status == 'stopped')].length()
 ```
 
-> filtros de contagem dos protótipos de itens tipo vm
+> Filtros de contagem dos protótipos de itens tipo vm
 
 ```js
 $.[?(@.name == '{#NAME}')].status.first()
