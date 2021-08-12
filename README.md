@@ -67,9 +67,9 @@ zabbix_get -s 172.31.255.2 -k "system.uptime"
 
 ## Sobre o Template Zabbix
 
-> Add suas macros no host
+> Adicione suas macros no host
 
-![macros](./contents/img/macros.png "macros")
+![image](https://user-images.githubusercontent.com/23584038/129195354-fd709f30-2016-4398-9565-5a430326de62.png)
 
 > macros LLD
 
