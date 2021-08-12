@@ -7,6 +7,12 @@
             "hide": true,
             "iconColor": "rgba(0, 211, 255, 1)",
             "name": "Annotations & Alerts",
+            "target": {
+                "limit": 100,
+                "matchAny": false,
+                "tags": [],
+                "type": "dashboard"
+            },
             "type": "dashboard"
         }]
     },
@@ -14,7 +20,7 @@
     "gnetId": null,
     "graphTooltip": 0,
     "id": 43,
-    "iteration": 1626362088522,
+    "iteration": 1628769894932,
     "links": [],
     "panels": [{
             "cacheTimeout": null,
@@ -33,7 +39,7 @@
                 "content": "",
                 "mode": "html"
             },
-            "pluginVersion": "8.0.5",
+            "pluginVersion": "8.1.1",
             "targets": [{
                 "application": {
                     "filter": "proxmox total"
@@ -119,7 +125,7 @@
                 "content": "<br>\n<br>\n<center>\n    <img src=\"https://conectsantarem.com.br/mac/img/logo.png\"\n    width=\"\"\n    height=\"\">\n</center>",
                 "mode": "html"
             },
-            "pluginVersion": "8.0.5",
+            "pluginVersion": "8.1.1",
             "repeat": null,
             "targets": [{
                 "application": {
@@ -248,7 +254,7 @@
                 },
                 "textMode": "name"
             },
-            "pluginVersion": "8.0.5",
+            "pluginVersion": "8.1.1",
             "targets": [{
                 "application": {
                     "filter": "vm"
@@ -389,7 +395,7 @@
                 },
                 "textMode": "value"
             },
-            "pluginVersion": "8.0.5",
+            "pluginVersion": "8.1.1",
             "targets": [{
                 "application": {
                     "filter": "vm"
@@ -476,7 +482,7 @@
                 "showUnfilled": true,
                 "text": {}
             },
-            "pluginVersion": "8.0.5",
+            "pluginVersion": "8.1.1",
             "targets": [{
                 "application": {
                     "filter": "vm"
@@ -586,7 +592,7 @@
                 "showUnfilled": true,
                 "text": {}
             },
-            "pluginVersion": "8.0.5",
+            "pluginVersion": "8.1.1",
             "targets": [{
                 "application": {
                     "filter": "vm"
@@ -696,7 +702,7 @@
                 "showUnfilled": true,
                 "text": {}
             },
-            "pluginVersion": "8.0.5",
+            "pluginVersion": "8.1.1",
             "targets": [{
                 "application": {
                     "filter": "vm"
@@ -783,7 +789,7 @@
                 "content": "<br>\n<br>\n<center>\n    <img src=\"https://www.proxmox.com/images/proxmox/Proxmox-logo-white-orange-800.png\"\n    width=\"\"\n    height=\"\">\n</center>",
                 "mode": "html"
             },
-            "pluginVersion": "8.0.5",
+            "pluginVersion": "8.1.1",
             "targets": [{
                 "application": {
                     "filter": "proxmox total"
@@ -899,7 +905,7 @@
                 "text": {},
                 "textMode": "auto"
             },
-            "pluginVersion": "8.0.5",
+            "pluginVersion": "8.1.1",
             "targets": [{
                 "application": {
                     "filter": "total"
@@ -985,7 +991,7 @@
                 "content": "",
                 "mode": "html"
             },
-            "pluginVersion": "8.0.5",
+            "pluginVersion": "8.1.1",
             "targets": [{
                 "application": {
                     "filter": "proxmox total"
@@ -1101,7 +1107,7 @@
                 "text": {},
                 "textMode": "auto"
             },
-            "pluginVersion": "8.0.5",
+            "pluginVersion": "8.1.1",
             "targets": [{
                 "application": {
                     "filter": "total"
@@ -1229,7 +1235,7 @@
                 },
                 "textMode": "name"
             },
-            "pluginVersion": "8.0.5",
+            "pluginVersion": "8.1.1",
             "targets": [{
                 "application": {
                     "filter": "node"
@@ -1370,7 +1376,7 @@
                 },
                 "textMode": "value"
             },
-            "pluginVersion": "8.0.5",
+            "pluginVersion": "8.1.1",
             "targets": [{
                 "application": {
                     "filter": "node"
@@ -1456,7 +1462,7 @@
                 "showUnfilled": true,
                 "text": {}
             },
-            "pluginVersion": "8.0.5",
+            "pluginVersion": "8.1.1",
             "targets": [{
                 "application": {
                     "filter": "node"
@@ -1566,7 +1572,7 @@
                 "showUnfilled": true,
                 "text": {}
             },
-            "pluginVersion": "8.0.5",
+            "pluginVersion": "8.1.1",
             "targets": [{
                 "application": {
                     "filter": "node"
@@ -1676,7 +1682,7 @@
                 "showUnfilled": true,
                 "text": {}
             },
-            "pluginVersion": "8.0.5",
+            "pluginVersion": "8.1.1",
             "targets": [{
                 "application": {
                     "filter": "node"
@@ -1762,7 +1768,7 @@
                 "content": "",
                 "mode": "html"
             },
-            "pluginVersion": "8.0.5",
+            "pluginVersion": "8.1.1",
             "targets": [{
                 "application": {
                     "filter": "proxmox total"
@@ -1878,7 +1884,7 @@
                 "text": {},
                 "textMode": "auto"
             },
-            "pluginVersion": "8.0.5",
+            "pluginVersion": "8.1.1",
             "targets": [{
                 "application": {
                     "filter": "total"
@@ -1987,7 +1993,7 @@
                 "showUnfilled": true,
                 "text": {}
             },
-            "pluginVersion": "8.0.5",
+            "pluginVersion": "8.1.1",
             "targets": [{
                 "application": {
                     "filter": "storage"
@@ -2343,7 +2349,7 @@
             "type": "timeseries"
         }
     ],
-    "refresh": "",
+    "refresh": "30s",
     "schemaVersion": 30,
     "style": "dark",
     "tags": [
@@ -2366,8 +2372,8 @@
                 "allValue": null,
                 "current": {
                     "selected": false,
-                    "text": "Zabbix server",
-                    "value": "Zabbix server"
+                    "text": "PROXMOX 01",
+                    "value": "PROXMOX 01"
                 },
                 "datasource": null,
                 "definition": "Zabbix - host",
@@ -2438,5 +2444,5 @@
     "timezone": "browser",
     "title": "PROXMOX",
     "uid": "bj-487inz",
-    "version": 379
+    "version": 389
 }

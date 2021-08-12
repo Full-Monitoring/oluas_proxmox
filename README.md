@@ -1,4 +1,6 @@
-# PROXMOX + PYTHON + ZABBIX + GRAFANA
+# PROXMOX + ZABBIX + GRAFANA
+
+## Usando item HTTP AGENT
 
 ## [Saulo Costa - Telegram](https://t.me/saulos2costa/ "telegram")
 
@@ -14,7 +16,7 @@
 
 - [Dashborad Grafana](/contents/dash_grafana.json "Dashborad Grafana")
 
-## Comandos Remotos
+<!-- ## Comandos Remotos
 
 > Instale e habilite os comando remotos no zabbix agent
 
@@ -61,47 +63,7 @@ zabbix_get -s 172.31.255.2 -k "system.uptime"
 
 > Se tudo estiver ok no zabbix o host ficará assim...
 
-![-](./contents/img/zabbix_ok.png "-")
-
-## Python - by [Ananias Filho](https://github.com/ananiasfilho "github.com")
-
-> Instalando o PIP
-
-```sh
-apt install python3-pip
-```
-
-> Bibliotecas ultilizadas
-
-- proxmoxer ([https://pypi.org/project/proxmoxer/](https://blog.zabbix.com/zabbix-remote-commands/7500/ "libs"))
-  - pip3 install proxmoxer
-- json
-- sys
-
-> Como execultar o script ?
-
-- python3 + local do script + ip do servidor + usurario do proxmox + senha do proxmox
-
-```sh
-# Exemplo:
-python3 /home/script/py/proxmox.py 127.0.0.1 root@pam superSenha123
-```
-
-> Script
-
-```py
-from proxmoxer import ProxmoxAPI
-import json, sys
-params = sys.argv
-proxmox = ProxmoxAPI(params[1], user=params[2], password=params[3], verify_ssl=False)
-result = proxmox.cluster.resources.get()
-s1 = json.dumps(result)
-print(s1)
-```
-
-> O script deve retornar o JSON com todos os dados
-
-![print json](./contents/img/print_json.png "Print Json")
+![-](./contents/img/zabbix_ok.png "-") -->
 
 ## Sobre o Template Zabbix
 
