@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2021-08-12T12:07:51Z</date>
+    <date>2021-08-12T12:23:56Z</date>
     <groups>
         <group>
             <name>PROXMOX SERVERS</name>
@@ -11,7 +11,7 @@
         <template>
             <template>PROXMOX HTTP AGENT API</template>
             <name>PROXMOX HTTP AGENT API</name>
-            <description>PROXMOX HTTP AGENT API</description>
+            <description>https://github.com/saulotarsobc/oluas_proxmox</description>
             <groups>
                 <group>
                     <name>PROXMOX SERVERS</name>
@@ -78,7 +78,7 @@
                     <name>get Proxmox Data</name>
                     <type>HTTP_AGENT</type>
                     <key>get.data.resources</key>
-                    <delay>20s</delay>
+                    <delay>3m</delay>
                     <history>10d</history>
                     <trends>0</trends>
                     <value_type>CHAR</value_type>
