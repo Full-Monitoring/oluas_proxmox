@@ -20,7 +20,7 @@
     "gnetId": null,
     "graphTooltip": 0,
     "id": 43,
-    "iteration": 1628769894932,
+    "iteration": 1628796889076,
     "links": [],
     "panels": [{
             "cacheTimeout": null,
@@ -367,7 +367,7 @@
                             }
                         ]
                     },
-                    "unit": "none"
+                    "unit": "dtdhms"
                 },
                 "overrides": []
             },
@@ -410,6 +410,9 @@
                 "item": {
                     "filter": "/$node (.*) UPTIME/"
                 },
+                "itemTag": {
+                    "filter": "Application: vm"
+                },
                 "options": {
                     "disableDataAlignment": false,
                     "showDisabledItems": false,
@@ -419,7 +422,7 @@
                 "proxy": {
                     "filter": ""
                 },
-                "queryType": 0,
+                "queryType": "0",
                 "refId": "A",
                 "resultFormat": "time_series",
                 "table": {
@@ -568,7 +571,7 @@
                             "value": null
                         }]
                     },
-                    "unit": "none"
+                    "unit": "decbytes"
                 },
                 "overrides": []
             },
@@ -598,7 +601,7 @@
                     "filter": "vm"
                 },
                 "functions": [{
-                    "$$hashKey": "object:32",
+                    "$$hashKey": "object:138",
                     "def": {
                         "category": "Alias",
                         "defaultParams": [
@@ -631,6 +634,9 @@
                 "item": {
                     "filter": "/$node (.*) MAXMEM/"
                 },
+                "itemTag": {
+                    "filter": "Application: vm"
+                },
                 "options": {
                     "disableDataAlignment": false,
                     "showDisabledItems": false,
@@ -640,7 +646,7 @@
                 "proxy": {
                     "filter": ""
                 },
-                "queryType": 0,
+                "queryType": "0",
                 "refId": "A",
                 "resultFormat": "time_series",
                 "table": {
@@ -911,7 +917,6 @@
                     "filter": "total"
                 },
                 "functions": [{
-                    "$$hashKey": "object:381",
                     "def": {
                         "category": "Alias",
                         "defaultParams": [
@@ -933,7 +938,8 @@
                         "/Total de VM's (.*)/",
                         "$1"
                     ],
-                    "text": "replaceAlias(/Total de VM's (.*)/, $1)"
+                    "text": "replaceAlias(/Total de VM's (.*)/, $1)",
+                    "$$hashKey": "object:32"
                 }],
                 "group": {
                     "filter": "$grupo"
@@ -944,6 +950,9 @@
                 "item": {
                     "filter": "/VM/"
                 },
+                "itemTag": {
+                    "filter": "Application: total"
+                },
                 "options": {
                     "disableDataAlignment": false,
                     "showDisabledItems": false,
@@ -953,7 +962,7 @@
                 "proxy": {
                     "filter": ""
                 },
-                "queryType": 0,
+                "queryType": "0",
                 "refId": "A",
                 "resultFormat": "time_series",
                 "table": {
@@ -1348,7 +1357,7 @@
                             }
                         ]
                     },
-                    "unit": "none"
+                    "unit": "dtdhms"
                 },
                 "overrides": []
             },
@@ -1391,6 +1400,9 @@
                 "item": {
                     "filter": "/$node UPTIME/"
                 },
+                "itemTag": {
+                    "filter": "Application: node"
+                },
                 "options": {
                     "disableDataAlignment": false,
                     "showDisabledItems": false,
@@ -1400,7 +1412,7 @@
                 "proxy": {
                     "filter": ""
                 },
-                "queryType": 0,
+                "queryType": "0",
                 "refId": "A",
                 "resultFormat": "time_series",
                 "table": {
@@ -1431,6 +1443,8 @@
                     },
                     "decimals": 0,
                     "mappings": [],
+                    "max": 100,
+                    "min": 0,
                     "thresholds": {
                         "mode": "percentage",
                         "steps": [{
@@ -1438,7 +1452,7 @@
                             "value": null
                         }]
                     },
-                    "unit": "none"
+                    "unit": "percent"
                 },
                 "overrides": []
             },
@@ -1449,6 +1463,234 @@
                 "y": 16
             },
             "id": 21,
+            "options": {
+                "displayMode": "lcd",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "showUnfilled": true,
+                "text": {}
+            },
+            "pluginVersion": "8.1.1",
+            "targets": [{
+                "application": {
+                    "filter": "node"
+                },
+                "functions": [{
+                    "$$hashKey": "object:219",
+                    "def": {
+                        "category": "Alias",
+                        "defaultParams": [
+                            "/(.*)/",
+                            "$1"
+                        ],
+                        "name": "replaceAlias",
+                        "params": [{
+                                "name": "regexp",
+                                "type": "string"
+                            },
+                            {
+                                "name": "newAlias",
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    "params": [
+                        "/(.*) CPU PERCENT/",
+                        "$1"
+                    ],
+                    "text": "replaceAlias(/(.*) CPU PERCENT/, $1)"
+                }],
+                "group": {
+                    "filter": "$grupo"
+                },
+                "host": {
+                    "filter": "$host"
+                },
+                "item": {
+                    "filter": "/$node CPU PERCENT/"
+                },
+                "itemTag": {
+                    "filter": "Application: node"
+                },
+                "options": {
+                    "disableDataAlignment": false,
+                    "showDisabledItems": false,
+                    "skipEmptyValues": false,
+                    "useZabbixValueMapping": false
+                },
+                "proxy": {
+                    "filter": ""
+                },
+                "queryType": "0",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "table": {
+                    "skipEmptyValues": false
+                },
+                "tags": {
+                    "filter": ""
+                },
+                "trigger": {
+                    "filter": ""
+                },
+                "triggers": {
+                    "acknowledged": 2,
+                    "count": true,
+                    "minSeverity": 3
+                }
+            }],
+            "title": "CPU",
+            "type": "bargauge"
+        },
+        {
+            "datasource": null,
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "continuous-GrYlRd"
+                    },
+                    "mappings": [],
+                    "min": 0,
+                    "thresholds": {
+                        "mode": "percentage",
+                        "steps": [{
+                            "color": "green",
+                            "value": null
+                        }]
+                    },
+                    "unit": "bytes"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 3,
+                "w": 5,
+                "x": 14,
+                "y": 16
+            },
+            "id": 28,
+            "options": {
+                "displayMode": "lcd",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "showUnfilled": true,
+                "text": {}
+            },
+            "pluginVersion": "8.1.1",
+            "targets": [{
+                "application": {
+                    "filter": "node"
+                },
+                "functions": [{
+                    "$$hashKey": "object:59",
+                    "def": {
+                        "category": "Alias",
+                        "defaultParams": [
+                            "/(.*)/",
+                            "$1"
+                        ],
+                        "name": "replaceAlias",
+                        "params": [{
+                                "name": "regexp",
+                                "type": "string"
+                            },
+                            {
+                                "name": "newAlias",
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    "params": [
+                        "/$node - (.*) MAXMEM/",
+                        "$1"
+                    ],
+                    "text": "replaceAlias(/$node - (.*) MAXMEM/, $1)"
+                }],
+                "group": {
+                    "filter": "$grupo"
+                },
+                "host": {
+                    "filter": "$host"
+                },
+                "item": {
+                    "filter": "/$node MAXMEM/"
+                },
+                "itemTag": {
+                    "filter": "Application: node"
+                },
+                "options": {
+                    "disableDataAlignment": false,
+                    "showDisabledItems": false,
+                    "skipEmptyValues": false,
+                    "useZabbixValueMapping": false
+                },
+                "proxy": {
+                    "filter": ""
+                },
+                "queryType": "0",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "table": {
+                    "skipEmptyValues": false
+                },
+                "tags": {
+                    "filter": ""
+                },
+                "trigger": {
+                    "filter": ""
+                },
+                "triggers": {
+                    "acknowledged": 2,
+                    "count": true,
+                    "minSeverity": 3
+                }
+            }],
+            "title": "MEMÓRIA",
+            "type": "bargauge"
+        },
+        {
+            "datasource": null,
+            "description": "Consumo de Memoria RAM do NODE",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "continuous-GrYlRd"
+                    },
+                    "decimals": 0,
+                    "mappings": [],
+                    "max": 100,
+                    "min": 0,
+                    "thresholds": {
+                        "mode": "percentage",
+                        "steps": [{
+                            "color": "green",
+                            "value": null
+                        }]
+                    },
+                    "unit": "percent"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 3,
+                "w": 5,
+                "x": 19,
+                "y": 16
+            },
+            "id": 27,
             "options": {
                 "displayMode": "lcd",
                 "orientation": "horizontal",
@@ -1487,226 +1729,6 @@
                         ]
                     },
                     "params": [
-                        "/(.*) CPU PERCENT/",
-                        "$1"
-                    ],
-                    "text": "replaceAlias(/(.*) CPU PERCENT/, $1)"
-                }],
-                "group": {
-                    "filter": "$grupo"
-                },
-                "host": {
-                    "filter": "$host"
-                },
-                "item": {
-                    "filter": "/$node CPU PERCENT/"
-                },
-                "options": {
-                    "disableDataAlignment": false,
-                    "showDisabledItems": false,
-                    "skipEmptyValues": false,
-                    "useZabbixValueMapping": false
-                },
-                "proxy": {
-                    "filter": ""
-                },
-                "queryType": 0,
-                "refId": "A",
-                "resultFormat": "time_series",
-                "table": {
-                    "skipEmptyValues": false
-                },
-                "tags": {
-                    "filter": ""
-                },
-                "trigger": {
-                    "filter": ""
-                },
-                "triggers": {
-                    "acknowledged": 2,
-                    "count": true,
-                    "minSeverity": 3
-                }
-            }],
-            "title": "CPU",
-            "type": "bargauge"
-        },
-        {
-            "datasource": null,
-            "description": "",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "continuous-GrYlRd"
-                    },
-                    "mappings": [],
-                    "min": 0,
-                    "thresholds": {
-                        "mode": "percentage",
-                        "steps": [{
-                            "color": "green",
-                            "value": null
-                        }]
-                    },
-                    "unit": "none"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 3,
-                "w": 5,
-                "x": 14,
-                "y": 16
-            },
-            "id": 28,
-            "options": {
-                "displayMode": "lcd",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "showUnfilled": true,
-                "text": {}
-            },
-            "pluginVersion": "8.1.1",
-            "targets": [{
-                "application": {
-                    "filter": "node"
-                },
-                "functions": [{
-                    "$$hashKey": "object:273",
-                    "def": {
-                        "category": "Alias",
-                        "defaultParams": [
-                            "/(.*)/",
-                            "$1"
-                        ],
-                        "name": "replaceAlias",
-                        "params": [{
-                                "name": "regexp",
-                                "type": "string"
-                            },
-                            {
-                                "name": "newAlias",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "params": [
-                        "/$node - (.*) MAXMEM/",
-                        "$1"
-                    ],
-                    "text": "replaceAlias(/$node - (.*) MAXMEM/, $1)"
-                }],
-                "group": {
-                    "filter": "$grupo"
-                },
-                "host": {
-                    "filter": "$host"
-                },
-                "item": {
-                    "filter": "/$node MAXMEM/"
-                },
-                "options": {
-                    "disableDataAlignment": false,
-                    "showDisabledItems": false,
-                    "skipEmptyValues": false,
-                    "useZabbixValueMapping": false
-                },
-                "proxy": {
-                    "filter": ""
-                },
-                "queryType": 0,
-                "refId": "A",
-                "resultFormat": "time_series",
-                "table": {
-                    "skipEmptyValues": false
-                },
-                "tags": {
-                    "filter": ""
-                },
-                "trigger": {
-                    "filter": ""
-                },
-                "triggers": {
-                    "acknowledged": 2,
-                    "count": true,
-                    "minSeverity": 3
-                }
-            }],
-            "title": "MEMÓRIA",
-            "type": "bargauge"
-        },
-        {
-            "datasource": null,
-            "description": "Consumo de Memoria RAM do NODE",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "continuous-GrYlRd"
-                    },
-                    "decimals": 0,
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "percentage",
-                        "steps": [{
-                            "color": "green",
-                            "value": null
-                        }]
-                    },
-                    "unit": "none"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 3,
-                "w": 5,
-                "x": 19,
-                "y": 16
-            },
-            "id": 27,
-            "options": {
-                "displayMode": "lcd",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "showUnfilled": true,
-                "text": {}
-            },
-            "pluginVersion": "8.1.1",
-            "targets": [{
-                "application": {
-                    "filter": "node"
-                },
-                "functions": [{
-                    "$$hashKey": "object:300",
-                    "def": {
-                        "category": "Alias",
-                        "defaultParams": [
-                            "/(.*)/",
-                            "$1"
-                        ],
-                        "name": "replaceAlias",
-                        "params": [{
-                                "name": "regexp",
-                                "type": "string"
-                            },
-                            {
-                                "name": "newAlias",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "params": [
                         "/$node - (.*) MEMPERCENT/",
                         "$1"
                     ],
@@ -1721,6 +1743,9 @@
                 "item": {
                     "filter": "/$node MEMPERCENT/"
                 },
+                "itemTag": {
+                    "filter": "Application: node"
+                },
                 "options": {
                     "disableDataAlignment": false,
                     "showDisabledItems": false,
@@ -1730,7 +1755,7 @@
                 "proxy": {
                     "filter": ""
                 },
-                "queryType": 0,
+                "queryType": "0",
                 "refId": "A",
                 "resultFormat": "time_series",
                 "table": {
@@ -1962,6 +1987,8 @@
                         "mode": "continuous-GrYlRd"
                     },
                     "mappings": [],
+                    "max": 100,
+                    "min": 0,
                     "thresholds": {
                         "mode": "percentage",
                         "steps": [{
@@ -1969,7 +1996,7 @@
                             "value": null
                         }]
                     },
-                    "unit": "none"
+                    "unit": "percent"
                 },
                 "overrides": []
             },
@@ -1999,7 +2026,7 @@
                     "filter": "storage"
                 },
                 "functions": [{
-                    "$$hashKey": "object:219",
+                    "$$hashKey": "object:192",
                     "def": {
                         "category": "Alias",
                         "defaultParams": [
@@ -2032,6 +2059,9 @@
                 "item": {
                     "filter": "/$node (.*) DISK PERCENT/"
                 },
+                "itemTag": {
+                    "filter": "Application: storage"
+                },
                 "options": {
                     "disableDataAlignment": false,
                     "showDisabledItems": false,
@@ -2041,7 +2071,7 @@
                 "proxy": {
                     "filter": ""
                 },
-                "queryType": 0,
+                "queryType": "0",
                 "refId": "A",
                 "resultFormat": "time_series",
                 "table": {
@@ -2401,12 +2431,12 @@
             {
                 "allValue": "",
                 "current": {
-                    "selected": false,
+                    "selected": true,
                     "text": [
-                        "pve"
+                        "All"
                     ],
                     "value": [
-                        "pve"
+                        "$__all"
                     ]
                 },
                 "datasource": null,
@@ -2444,5 +2474,5 @@
     "timezone": "browser",
     "title": "PROXMOX",
     "uid": "bj-487inz",
-    "version": 389
+    "version": 398
 }
