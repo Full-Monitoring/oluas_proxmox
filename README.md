@@ -84,10 +84,9 @@ zabbix_get -s 172.31.255.2 -k "system.uptime"
 > Contador de vms, storages e nodes (total)
 
 ```js
-$.length()
-$.[?(@.type == 'qemu')].length()
-$.[?(@.type == 'storage')].length()
-$.[?(@.type == 'node')].length()
+$.body.data[?(@.type == 'qemu')].length()
+$.body.data[?(@.type == 'storage')].length()
+$.body.data[?(@.type == 'node')].length()
 ```
 
 > Contador de vms (ligadas)
