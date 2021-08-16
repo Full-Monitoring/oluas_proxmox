@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2021-08-12T20:57:52Z</date>
+    <date>2021-08-16T17:57:23Z</date>
     <groups>
         <group>
             <name>PROXMOX SERVERS</name>
@@ -75,7 +75,7 @@
             </applications>
             <items>
                 <item>
-                    <name>get Proxmox Data</name>
+                    <name>getData Proxmox Resources</name>
                     <type>HTTP_AGENT</type>
                     <key>get.data.resources</key>
                     <delay>3m</delay>
@@ -90,6 +90,31 @@
                     </applications>
                     <timeout>15s</timeout>
                     <url>https://{$PVESERVER}:8006/api2/json/cluster/resources</url>
+                    <headers>
+                        <header>
+                            <name>Authorization</name>
+                            <value>PVEAPIToken={$PVETOKENID}={$PVESECRET}</value>
+                        </header>
+                    </headers>
+                    <output_format>JSON</output_format>
+                </item>
+                <item>
+                    <name>getData Proxmox Tasks</name>
+                    <type>HTTP_AGENT</type>
+                    <key>get.data.tasks</key>
+                    <delay>20s</delay>
+                    <history>2d</history>
+                    <trends>0</trends>
+                    <status>DISABLED</status>
+                    <value_type>CHAR</value_type>
+                    <description>get Proxmox Data (VM, STORAGE, NODE, SDN)</description>
+                    <applications>
+                        <application>
+                            <name>proxmox</name>
+                        </application>
+                    </applications>
+                    <timeout>15s</timeout>
+                    <url>https://{$PVESERVER}:8006/api2/json/cluster/tasks</url>
                     <headers>
                         <header>
                             <name>Authorization</name>
@@ -357,6 +382,25 @@
                     <key>discovery.node</key>
                     <delay>0</delay>
                     <item_prototypes>
+                        <item_prototype>
+                            <name>getStatus {#NODE}</name>
+                            <type>HTTP_AGENT</type>
+                            <key>get.pve.status[{#NODE}]</key>
+                            <delay>20s</delay>
+                            <history>7d</history>
+                            <trends>0</trends>
+                            <status>DISABLED</status>
+                            <value_type>CHAR</value_type>
+                            <timeout>15s</timeout>
+                            <url>https://{$PVESERVER}:8006/api2/json/nodes/{#NODE}/status</url>
+                            <headers>
+                                <header>
+                                    <name>Authorization</name>
+                                    <value>PVEAPIToken={$PVETOKENID}={$PVESECRET}</value>
+                                </header>
+                            </headers>
+                            <output_format>JSON</output_format>
+                        </item_prototype>
                         <item_prototype>
                             <name>{#NODE} CPU PERCENT</name>
                             <type>DEPENDENT</type>
@@ -782,6 +826,25 @@
                     </filter>
                     <description>proxmox.cluster.resources</description>
                     <item_prototypes>
+                        <item_prototype>
+                            <name>getCurrent {#VMID} {#NAME}</name>
+                            <type>HTTP_AGENT</type>
+                            <key>get.vm.current[{#NAME}]</key>
+                            <delay>20s</delay>
+                            <history>7d</history>
+                            <trends>0</trends>
+                            <status>DISABLED</status>
+                            <value_type>CHAR</value_type>
+                            <timeout>15s</timeout>
+                            <url>https://{$PVESERVER}:8006/api2/json/nodes/{#NODE}/qemu/{#VMID}/status/current</url>
+                            <headers>
+                                <header>
+                                    <name>Authorization</name>
+                                    <value>PVEAPIToken={$PVETOKENID}={$PVESECRET}</value>
+                                </header>
+                            </headers>
+                            <output_format>JSON</output_format>
+                        </item_prototype>
                         <item_prototype>
                             <name>{#NODE} - {#VMID} - {#NAME} CPU</name>
                             <type>DEPENDENT</type>
