@@ -1,2518 +1,2659 @@
 {
-    "annotations": {
-        "list": [{
-            "builtIn": 1,
-            "datasource": "-- Grafana --",
-            "enable": true,
-            "hide": true,
-            "iconColor": "rgba(0, 211, 255, 1)",
-            "name": "Annotations & Alerts",
-            "target": {
-                "limit": 100,
-                "matchAny": false,
-                "tags": [],
-                "type": "dashboard"
-            },
-            "type": "dashboard"
-        }]
-    },
-    "editable": true,
-    "gnetId": null,
-    "graphTooltip": 0,
-    "id": 43,
-    "iteration": 1628801806043,
-    "links": [],
-    "panels": [{
-            "cacheTimeout": null,
-            "datasource": null,
-            "description": "",
-            "gridPos": {
-                "h": 1,
-                "w": 24,
-                "x": 0,
-                "y": 0
-            },
-            "id": 19,
-            "interval": null,
-            "links": [],
-            "options": {
-                "content": "",
-                "mode": "html"
-            },
-            "pluginVersion": "8.1.1",
-            "targets": [{
-                "application": {
-                    "filter": "proxmox total"
-                },
-                "functions": [{
-                    "$$hashKey": "object:113",
-                    "def": {
-                        "category": "Alias",
-                        "defaultParams": [
-                            "/(.*)/",
-                            "$1"
-                        ],
-                        "name": "replaceAlias",
-                        "params": [{
-                                "name": "regexp",
-                                "type": "string"
-                            },
-                            {
-                                "name": "newAlias",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "params": [
-                        "/Total de VM's (.*)/",
-                        "$1"
-                    ],
-                    "text": "replaceAlias(/Total de VM's (.*)/, $1)"
-                }],
-                "group": {
-                    "filter": "Zabbix servers"
-                },
-                "host": {
-                    "filter": "Zabbix server"
-                },
-                "item": {
-                    "filter": "/.*/"
-                },
-                "options": {
-                    "disableDataAlignment": false,
-                    "showDisabledItems": false,
-                    "skipEmptyValues": false,
-                    "useZabbixValueMapping": false
-                },
-                "proxy": {
-                    "filter": ""
-                },
-                "queryType": 0,
-                "refId": "A",
-                "resultFormat": "time_series",
-                "table": {
-                    "skipEmptyValues": false
-                },
-                "tags": {
-                    "filter": ""
-                },
-                "trigger": {
-                    "filter": ""
-                },
-                "triggers": {
-                    "acknowledged": 2,
-                    "count": true,
-                    "minSeverity": 3
-                }
-            }],
-            "title": "VM's - NODE - $node",
-            "type": "text"
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
         },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 55,
+  "iteration": 1630071380991,
+  "links": [],
+  "panels": [
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 19,
+      "interval": null,
+      "links": [],
+      "options": {
+        "content": "",
+        "mode": "html"
+      },
+      "pluginVersion": "8.1.2",
+      "targets": [
         {
-            "cacheTimeout": null,
-            "datasource": null,
-            "description": "",
-            "gridPos": {
-                "h": 3,
-                "w": 3,
-                "x": 0,
-                "y": 1
-            },
-            "id": 9,
-            "interval": null,
-            "links": [],
-            "options": {
-                "content": "<br>\n<br>\n<center>\n    <img src=\"https://conectsantarem.com.br/mac/img/logo.png\"\n    width=\"\"\n    height=\"\">\n</center>",
-                "mode": "html"
-            },
-            "pluginVersion": "8.1.1",
-            "repeat": null,
-            "targets": [{
-                "application": {
-                    "filter": "proxmox total"
-                },
-                "functions": [{
-                    "$$hashKey": "object:113",
-                    "def": {
-                        "category": "Alias",
-                        "defaultParams": [
-                            "/(.*)/",
-                            "$1"
-                        ],
-                        "name": "replaceAlias",
-                        "params": [{
-                                "name": "regexp",
-                                "type": "string"
-                            },
-                            {
-                                "name": "newAlias",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "params": [
-                        "/Total de VM's (.*)/",
-                        "$1"
-                    ],
-                    "text": "replaceAlias(/Total de VM's (.*)/, $1)"
-                }],
-                "group": {
-                    "filter": "Zabbix servers"
-                },
-                "host": {
-                    "filter": "Zabbix server"
-                },
-                "item": {
-                    "filter": "/.*/"
-                },
-                "options": {
-                    "disableDataAlignment": false,
-                    "showDisabledItems": false,
-                    "skipEmptyValues": false,
-                    "useZabbixValueMapping": false
-                },
-                "proxy": {
-                    "filter": ""
-                },
-                "queryType": 0,
-                "refId": "A",
-                "resultFormat": "time_series",
-                "table": {
-                    "skipEmptyValues": false
-                },
-                "tags": {
-                    "filter": ""
-                },
-                "trigger": {
-                    "filter": ""
-                },
-                "triggers": {
-                    "acknowledged": 2,
-                    "count": true,
-                    "minSeverity": 3
-                }
-            }],
-            "transparent": true,
-            "type": "text"
-        },
-        {
-            "datasource": null,
-            "description": "Status ta VM (on ou off)",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "thresholds"
-                    },
-                    "mappings": [{
-                        "options": {
-                            "0": {
-                                "color": "orange",
-                                "index": 0,
-                                "text": "OFF"
-                            },
-                            "1": {
-                                "color": "green",
-                                "index": 1,
-                                "text": "ON"
-                            }
-                        },
-                        "type": "value"
-                    }],
-                    "noValue": "0",
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [{
-                            "color": "yellow",
-                            "value": null
-                        }]
-                    },
-                    "unit": "none"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 14,
-                "w": 3,
-                "x": 3,
-                "y": 1
-            },
-            "id": 24,
-            "options": {
-                "colorMode": "background",
-                "graphMode": "none",
-                "justifyMode": "auto",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "text": {
-                    "valueSize": 13
-                },
-                "textMode": "name"
-            },
-            "pluginVersion": "8.1.1",
-            "targets": [{
-                "application": {
-                    "filter": "vm"
-                },
-                "functions": [{
-                    "$$hashKey": "object:86",
-                    "def": {
-                        "category": "Alias",
-                        "defaultParams": [
-                            "/(.*)/",
-                            "$1"
-                        ],
-                        "name": "replaceAlias",
-                        "params": [{
-                                "name": "regexp",
-                                "type": "string"
-                            },
-                            {
-                                "name": "newAlias",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "params": [
-                        "/$node - (.*) STATUS/",
-                        "$1"
-                    ],
-                    "text": "replaceAlias(/$node - (.*) STATUS/, $1)"
-                }],
-                "group": {
-                    "filter": "$grupo"
-                },
-                "host": {
-                    "filter": "$host"
-                },
-                "item": {
-                    "filter": "/STATUS/"
-                },
-                "options": {
-                    "disableDataAlignment": false,
-                    "showDisabledItems": false,
-                    "skipEmptyValues": false,
-                    "useZabbixValueMapping": false
-                },
-                "proxy": {
-                    "filter": ""
-                },
-                "queryType": 0,
-                "refId": "A",
-                "resultFormat": "time_series",
-                "table": {
-                    "skipEmptyValues": false
-                },
-                "tags": {
-                    "filter": ""
-                },
-                "trigger": {
-                    "filter": ""
-                },
-                "triggers": {
-                    "acknowledged": 2,
-                    "count": true,
-                    "minSeverity": 3
-                }
-            }],
-            "title": "VM",
-            "type": "stat"
-        },
-        {
-            "datasource": null,
-            "description": "Tempo que a VM está online",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "thresholds"
-                    },
-                    "mappings": [{
-                            "options": {
-                                "0": {
-                                    "color": "orange",
-                                    "index": 0,
-                                    "text": "OFF"
-                                }
-                            },
-                            "type": "value"
-                        },
-                        {
-                            "options": {
-                                "from": 1,
-                                "result": {
-                                    "color": "blue",
-                                    "index": 1,
-                                    "text": "Starting..."
-                                },
-                                "to": 120
-                            },
-                            "type": "range"
-                        }
-                    ],
-                    "noValue": "0",
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [{
-                                "color": "yellow",
-                                "value": null
-                            },
-                            {
-                                "color": "green",
-                                "value": 1800
-                            }
-                        ]
-                    },
-                    "unit": "dtdhms"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 14,
-                "w": 3,
-                "x": 6,
-                "y": 1
-            },
-            "id": 3,
-            "options": {
-                "colorMode": "background",
-                "graphMode": "none",
-                "justifyMode": "auto",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "text": {
-                    "valueSize": 13
-                },
-                "textMode": "value"
-            },
-            "pluginVersion": "8.1.1",
-            "targets": [{
-                "application": {
-                    "filter": "vm"
-                },
-                "functions": [],
-                "group": {
-                    "filter": "$grupo"
-                },
-                "host": {
-                    "filter": "$host"
-                },
-                "item": {
-                    "filter": "/$node (.*) UPTIME/"
-                },
-                "itemTag": {
-                    "filter": "Application: vm"
-                },
-                "options": {
-                    "disableDataAlignment": false,
-                    "showDisabledItems": false,
-                    "skipEmptyValues": false,
-                    "useZabbixValueMapping": false
-                },
-                "proxy": {
-                    "filter": ""
-                },
-                "queryType": "0",
-                "refId": "A",
-                "resultFormat": "time_series",
-                "table": {
-                    "skipEmptyValues": false
-                },
-                "tags": {
-                    "filter": ""
-                },
-                "trigger": {
-                    "filter": ""
-                },
-                "triggers": {
-                    "acknowledged": 2,
-                    "count": true,
-                    "minSeverity": 3
-                }
-            }],
-            "title": "UPTIME",
-            "type": "stat"
-        },
-        {
-            "datasource": null,
-            "description": "Consumo de CPU da VM",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "continuous-GrYlRd"
-                    },
-                    "decimals": 0,
-                    "mappings": [],
-                    "noValue": "0",
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [{
-                            "color": "green",
-                            "value": null
-                        }]
-                    },
-                    "unit": "%"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 14,
-                "w": 5,
-                "x": 9,
-                "y": 1
-            },
-            "id": 2,
-            "options": {
-                "displayMode": "lcd",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "showUnfilled": true,
-                "text": {}
-            },
-            "pluginVersion": "8.1.1",
-            "targets": [{
-                "application": {
-                    "filter": "vm"
-                },
-                "functions": [{
-                    "$$hashKey": "object:142",
-                    "def": {
-                        "category": "Alias",
-                        "defaultParams": [
-                            "/(.*)/",
-                            "$1"
-                        ],
-                        "name": "replaceAlias",
-                        "params": [{
-                                "name": "regexp",
-                                "type": "string"
-                            },
-                            {
-                                "name": "newAlias",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "params": [
-                        "/$node - (.*) CPU/",
-                        "$1"
-                    ],
-                    "text": "replaceAlias(/$node - (.*) CPU/, $1)"
-                }],
-                "group": {
-                    "filter": "$grupo"
-                },
-                "host": {
-                    "filter": "$host"
-                },
-                "item": {
-                    "filter": "/$node (.*) CPU/"
-                },
-                "options": {
-                    "disableDataAlignment": false,
-                    "showDisabledItems": false,
-                    "skipEmptyValues": false,
-                    "useZabbixValueMapping": false
-                },
-                "proxy": {
-                    "filter": ""
-                },
-                "queryType": 0,
-                "refId": "A",
-                "resultFormat": "time_series",
-                "table": {
-                    "skipEmptyValues": false
-                },
-                "tags": {
-                    "filter": ""
-                },
-                "trigger": {
-                    "filter": ""
-                },
-                "triggers": {
-                    "acknowledged": 2,
-                    "count": true,
-                    "minSeverity": 3
-                }
-            }],
-            "title": "CPU",
-            "type": "bargauge"
-        },
-        {
-            "datasource": null,
-            "description": "-",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "continuous-GrYlRd"
-                    },
-                    "mappings": [],
-                    "noValue": "0",
-                    "thresholds": {
-                        "mode": "percentage",
-                        "steps": [{
-                            "color": "green",
-                            "value": null
-                        }]
-                    },
-                    "unit": "decbytes"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 14,
-                "w": 5,
-                "x": 14,
-                "y": 1
-            },
-            "id": 22,
-            "options": {
-                "displayMode": "lcd",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "showUnfilled": true,
-                "text": {}
-            },
-            "pluginVersion": "8.1.1",
-            "targets": [{
-                "application": {
-                    "filter": "vm"
-                },
-                "functions": [{
-                    "$$hashKey": "object:138",
-                    "def": {
-                        "category": "Alias",
-                        "defaultParams": [
-                            "/(.*)/",
-                            "$1"
-                        ],
-                        "name": "replaceAlias",
-                        "params": [{
-                                "name": "regexp",
-                                "type": "string"
-                            },
-                            {
-                                "name": "newAlias",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "params": [
-                        "/$node - (.*) MAXMEM/",
-                        "$1"
-                    ],
-                    "text": "replaceAlias(/$node - (.*) MAXMEM/, $1)"
-                }],
-                "group": {
-                    "filter": "$grupo"
-                },
-                "host": {
-                    "filter": "$host"
-                },
-                "item": {
-                    "filter": "/$node (.*) MAXMEM/"
-                },
-                "itemTag": {
-                    "filter": "Application: vm"
-                },
-                "options": {
-                    "disableDataAlignment": false,
-                    "showDisabledItems": false,
-                    "skipEmptyValues": false,
-                    "useZabbixValueMapping": false
-                },
-                "proxy": {
-                    "filter": ""
-                },
-                "queryType": "0",
-                "refId": "A",
-                "resultFormat": "time_series",
-                "table": {
-                    "skipEmptyValues": false
-                },
-                "tags": {
-                    "filter": ""
-                },
-                "trigger": {
-                    "filter": ""
-                },
-                "triggers": {
-                    "acknowledged": 2,
-                    "count": true,
-                    "minSeverity": 3
-                }
-            }],
-            "title": "MEMÓRIA",
-            "type": "bargauge"
-        },
-        {
-            "datasource": null,
-            "description": "Consumo de Memoria RAM da VM",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "continuous-GrYlRd"
-                    },
-                    "mappings": [],
-                    "noValue": "0",
-                    "thresholds": {
-                        "mode": "percentage",
-                        "steps": [{
-                            "color": "green",
-                            "value": null
-                        }]
-                    },
-                    "unit": "%"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 14,
-                "w": 5,
-                "x": 19,
-                "y": 1
-            },
-            "id": 26,
-            "options": {
-                "displayMode": "lcd",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "showUnfilled": true,
-                "text": {}
-            },
-            "pluginVersion": "8.1.1",
-            "targets": [{
-                "application": {
-                    "filter": "vm"
-                },
-                "functions": [{
-                    "$$hashKey": "object:62",
-                    "added": false,
-                    "def": {
-                        "category": "Alias",
-                        "defaultParams": [
-                            "/(.*)/",
-                            "$1"
-                        ],
-                        "name": "replaceAlias",
-                        "params": [{
-                                "name": "regexp",
-                                "type": "string"
-                            },
-                            {
-                                "name": "newAlias",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "params": [
-                        "/$node - (.*) MEMPERCENT/",
-                        "$1"
-                    ],
-                    "text": "replaceAlias(/$node - (.*) MEMPERCENT/, $1)"
-                }],
-                "group": {
-                    "filter": "$grupo"
-                },
-                "host": {
-                    "filter": "$host"
-                },
-                "item": {
-                    "filter": "/$node (.*) MEMPERCENT/"
-                },
-                "options": {
-                    "disableDataAlignment": false,
-                    "showDisabledItems": false,
-                    "skipEmptyValues": false,
-                    "useZabbixValueMapping": false
-                },
-                "proxy": {
-                    "filter": ""
-                },
-                "queryType": 0,
-                "refId": "A",
-                "resultFormat": "time_series",
-                "table": {
-                    "skipEmptyValues": false
-                },
-                "tags": {
-                    "filter": ""
-                },
-                "trigger": {
-                    "filter": ""
-                },
-                "triggers": {
-                    "acknowledged": 2,
-                    "count": true,
-                    "minSeverity": 3
-                }
-            }],
-            "title": "MEMÓRIA RAM EM %",
-            "type": "bargauge"
-        },
-        {
-            "cacheTimeout": null,
-            "datasource": null,
-            "description": "",
-            "gridPos": {
-                "h": 3,
-                "w": 3,
-                "x": 0,
-                "y": 4
-            },
-            "id": 7,
-            "interval": null,
-            "links": [],
-            "options": {
-                "content": "<br>\n<br>\n<center>\n    <img src=\"https://www.proxmox.com/images/proxmox/Proxmox-logo-white-orange-800.png\"\n    width=\"\"\n    height=\"\">\n</center>",
-                "mode": "html"
-            },
-            "pluginVersion": "8.1.1",
-            "targets": [{
-                "application": {
-                    "filter": "proxmox total"
-                },
-                "functions": [{
-                    "$$hashKey": "object:113",
-                    "def": {
-                        "category": "Alias",
-                        "defaultParams": [
-                            "/(.*)/",
-                            "$1"
-                        ],
-                        "name": "replaceAlias",
-                        "params": [{
-                                "name": "regexp",
-                                "type": "string"
-                            },
-                            {
-                                "name": "newAlias",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "params": [
-                        "/Total de VM's (.*)/",
-                        "$1"
-                    ],
-                    "text": "replaceAlias(/Total de VM's (.*)/, $1)"
-                }],
-                "group": {
-                    "filter": "Zabbix servers"
-                },
-                "host": {
-                    "filter": "Zabbix server"
-                },
-                "item": {
-                    "filter": "/.*/"
-                },
-                "options": {
-                    "disableDataAlignment": false,
-                    "showDisabledItems": false,
-                    "skipEmptyValues": false,
-                    "useZabbixValueMapping": false
-                },
-                "proxy": {
-                    "filter": ""
-                },
-                "queryType": 0,
-                "refId": "A",
-                "resultFormat": "time_series",
-                "table": {
-                    "skipEmptyValues": false
-                },
-                "tags": {
-                    "filter": ""
-                },
-                "trigger": {
-                    "filter": ""
-                },
-                "triggers": {
-                    "acknowledged": 2,
-                    "count": true,
-                    "minSeverity": 3
-                }
-            }],
-            "transparent": true,
-            "type": "text"
-        },
-        {
-            "datasource": null,
-            "description": "",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "hideFrom": {
-                            "legend": false,
-                            "tooltip": false,
-                            "viz": false
-                        }
-                    },
-                    "mappings": [],
-                    "unit": "none"
-                },
-                "overrides": [{
-                        "matcher": {
-                            "id": "byName",
-                            "options": "Offline"
-                        },
-                        "properties": [{
-                            "id": "color",
-                            "value": {
-                                "fixedColor": "red",
-                                "mode": "fixed"
-                            }
-                        }]
-                    },
-                    {
-                        "matcher": {
-                            "id": "byName",
-                            "options": "Online"
-                        },
-                        "properties": [{
-                            "id": "color",
-                            "value": {
-                                "fixedColor": "green",
-                                "mode": "fixed"
-                            }
-                        }]
-                    }
+          "application": {
+            "filter": "proxmox total"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:113",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
                 ]
-            },
-            "gridPos": {
-                "h": 8,
-                "w": 3,
-                "x": 0,
-                "y": 7
-            },
-            "id": 8,
-            "options": {
-                "displayLabels": [
-                    "name",
-                    "value"
-                ],
-                "legend": {
-                    "displayMode": "table",
-                    "placement": "bottom",
-                    "values": []
-                },
-                "pieType": "pie",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "tooltip": {
-                    "mode": "single"
-                }
-            },
-            "pluginVersion": "8.1.1",
-            "targets": [{
-                "application": {
-                    "filter": "total"
-                },
-                "functions": [{
-                    "$$hashKey": "object:329",
-                    "def": {
-                        "category": "Alias",
-                        "defaultParams": [
-                            "/(.*)/",
-                            "$1"
-                        ],
-                        "name": "replaceAlias",
-                        "params": [{
-                                "name": "regexp",
-                                "type": "string"
-                            },
-                            {
-                                "name": "newAlias",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "params": [
-                        "/Total de VM's (.*)/",
-                        "$1"
-                    ],
-                    "text": "replaceAlias(/Total de VM's (.*)/, $1)"
-                }],
-                "group": {
-                    "filter": "$grupo"
-                },
-                "host": {
-                    "filter": "$host"
-                },
-                "item": {
-                    "filter": "/Total de VM's Online|Total de VM's Offline/"
-                },
-                "itemTag": {
-                    "filter": "Application: total"
-                },
-                "options": {
-                    "disableDataAlignment": false,
-                    "showDisabledItems": false,
-                    "skipEmptyValues": false,
-                    "useZabbixValueMapping": false
-                },
-                "proxy": {
-                    "filter": ""
-                },
-                "queryType": "0",
-                "refId": "A",
-                "resultFormat": "time_series",
-                "table": {
-                    "skipEmptyValues": false
-                },
-                "tags": {
-                    "filter": ""
-                },
-                "trigger": {
-                    "filter": ""
-                },
-                "triggers": {
-                    "acknowledged": 2,
-                    "count": true,
-                    "minSeverity": 3
-                }
-            }],
-            "type": "piechart"
-        },
-        {
-            "cacheTimeout": null,
-            "datasource": null,
-            "description": "",
-            "gridPos": {
-                "h": 1,
-                "w": 24,
-                "x": 0,
-                "y": 15
-            },
-            "id": 20,
-            "interval": null,
-            "links": [],
-            "options": {
-                "content": "",
-                "mode": "html"
-            },
-            "pluginVersion": "8.1.1",
-            "targets": [{
-                "application": {
-                    "filter": "proxmox total"
-                },
-                "functions": [{
-                    "$$hashKey": "object:113",
-                    "def": {
-                        "category": "Alias",
-                        "defaultParams": [
-                            "/(.*)/",
-                            "$1"
-                        ],
-                        "name": "replaceAlias",
-                        "params": [{
-                                "name": "regexp",
-                                "type": "string"
-                            },
-                            {
-                                "name": "newAlias",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "params": [
-                        "/Total de VM's (.*)/",
-                        "$1"
-                    ],
-                    "text": "replaceAlias(/Total de VM's (.*)/, $1)"
-                }],
-                "group": {
-                    "filter": "Zabbix servers"
-                },
-                "host": {
-                    "filter": "Zabbix server"
-                },
-                "item": {
-                    "filter": "/.*/"
-                },
-                "options": {
-                    "disableDataAlignment": false,
-                    "showDisabledItems": false,
-                    "skipEmptyValues": false,
-                    "useZabbixValueMapping": false
-                },
-                "proxy": {
-                    "filter": ""
-                },
-                "queryType": 0,
-                "refId": "A",
-                "resultFormat": "time_series",
-                "table": {
-                    "skipEmptyValues": false
-                },
-                "tags": {
-                    "filter": ""
-                },
-                "trigger": {
-                    "filter": ""
-                },
-                "triggers": {
-                    "acknowledged": 2,
-                    "count": true,
-                    "minSeverity": 3
-                }
-            }],
-            "title": "NODES - $node",
-            "type": "text"
-        },
-        {
-            "datasource": null,
-            "description": "",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "thresholds"
-                    },
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [{
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    },
-                    "unit": "none"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 3,
-                "w": 3,
-                "x": 0,
-                "y": 16
-            },
-            "id": 25,
-            "options": {
-                "colorMode": "background",
-                "graphMode": "none",
-                "justifyMode": "center",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "text": {},
-                "textMode": "auto"
-            },
-            "pluginVersion": "8.1.1",
-            "targets": [{
-                "application": {
-                    "filter": "total"
-                },
-                "functions": [{
-                    "$$hashKey": "object:408",
-                    "def": {
-                        "category": "Alias",
-                        "defaultParams": [
-                            "/(.*)/",
-                            "$1"
-                        ],
-                        "name": "replaceAlias",
-                        "params": [{
-                                "name": "regexp",
-                                "type": "string"
-                            },
-                            {
-                                "name": "newAlias",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "params": [
-                        "/Total de VM's (.*)/",
-                        "$1"
-                    ],
-                    "text": "replaceAlias(/Total de VM's (.*)/, $1)"
-                }],
-                "group": {
-                    "filter": "$grupo"
-                },
-                "host": {
-                    "filter": "$host"
-                },
-                "item": {
-                    "filter": "Total de Nodes"
-                },
-                "options": {
-                    "disableDataAlignment": false,
-                    "showDisabledItems": false,
-                    "skipEmptyValues": false,
-                    "useZabbixValueMapping": false
-                },
-                "proxy": {
-                    "filter": ""
-                },
-                "queryType": 0,
-                "refId": "A",
-                "resultFormat": "time_series",
-                "table": {
-                    "skipEmptyValues": false
-                },
-                "tags": {
-                    "filter": ""
-                },
-                "trigger": {
-                    "filter": ""
-                },
-                "triggers": {
-                    "acknowledged": 2,
-                    "count": true,
-                    "minSeverity": 3
-                }
-            }],
-            "title": "TOTAIS",
-            "type": "stat"
-        },
-        {
-            "datasource": null,
-            "description": "Status do node",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "thresholds"
-                    },
-                    "mappings": [{
-                        "options": {
-                            "0": {
-                                "color": "yellow",
-                                "index": 0,
-                                "text": "OFFLINE"
-                            },
-                            "1": {
-                                "color": "green",
-                                "index": 1,
-                                "text": "ONLINE"
-                            }
-                        },
-                        "type": "value"
-                    }],
-                    "noValue": "0",
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [{
-                            "color": "green",
-                            "value": null
-                        }]
-                    },
-                    "unit": "none"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 3,
-                "w": 3,
-                "x": 3,
-                "y": 16
-            },
-            "id": 30,
-            "options": {
-                "colorMode": "background",
-                "graphMode": "none",
-                "justifyMode": "auto",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "text": {
-                    "valueSize": 13
-                },
-                "textMode": "name"
-            },
-            "pluginVersion": "8.1.1",
-            "targets": [{
-                "application": {
-                    "filter": "node"
-                },
-                "functions": [{
-                    "$$hashKey": "object:138",
-                    "def": {
-                        "category": "Alias",
-                        "defaultParams": [
-                            "/(.*)/",
-                            "$1"
-                        ],
-                        "name": "replaceAlias",
-                        "params": [{
-                                "name": "regexp",
-                                "type": "string"
-                            },
-                            {
-                                "name": "newAlias",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "params": [
-                        "/(.*) STATUS/",
-                        "$1"
-                    ],
-                    "text": "replaceAlias(/(.*) STATUS/, $1)"
-                }],
-                "group": {
-                    "filter": "$grupo"
-                },
-                "host": {
-                    "filter": "$host"
-                },
-                "item": {
-                    "filter": "/$node STATUS/"
-                },
-                "options": {
-                    "disableDataAlignment": false,
-                    "showDisabledItems": false,
-                    "skipEmptyValues": false,
-                    "useZabbixValueMapping": false
-                },
-                "proxy": {
-                    "filter": ""
-                },
-                "queryType": 0,
-                "refId": "A",
-                "resultFormat": "time_series",
-                "table": {
-                    "skipEmptyValues": false
-                },
-                "tags": {
-                    "filter": ""
-                },
-                "trigger": {
-                    "filter": ""
-                },
-                "triggers": {
-                    "acknowledged": 2,
-                    "count": true,
-                    "minSeverity": 3
-                }
-            }],
-            "title": "NODE",
-            "type": "stat"
-        },
-        {
-            "datasource": null,
-            "description": "Tempo que o NODE está online",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "thresholds"
-                    },
-                    "mappings": [{
-                            "options": {
-                                "0": {
-                                    "color": "orange",
-                                    "index": 0,
-                                    "text": "OFF"
-                                }
-                            },
-                            "type": "value"
-                        },
-                        {
-                            "options": {
-                                "from": 1,
-                                "result": {
-                                    "color": "blue",
-                                    "index": 1,
-                                    "text": "Starting..."
-                                },
-                                "to": 120
-                            },
-                            "type": "range"
-                        }
-                    ],
-                    "noValue": "0",
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [{
-                                "color": "yellow",
-                                "value": null
-                            },
-                            {
-                                "color": "green",
-                                "value": 1800
-                            }
-                        ]
-                    },
-                    "unit": "dtdhms"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 3,
-                "w": 3,
-                "x": 6,
-                "y": 16
-            },
-            "id": 29,
-            "options": {
-                "colorMode": "background",
-                "graphMode": "none",
-                "justifyMode": "auto",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "text": {
-                    "valueSize": 13
-                },
-                "textMode": "value"
-            },
-            "pluginVersion": "8.1.1",
-            "targets": [{
-                "application": {
-                    "filter": "node"
-                },
-                "functions": [],
-                "group": {
-                    "filter": "$grupo"
-                },
-                "host": {
-                    "filter": "$host"
-                },
-                "item": {
-                    "filter": "/$node UPTIME/"
-                },
-                "itemTag": {
-                    "filter": "Application: node"
-                },
-                "options": {
-                    "disableDataAlignment": false,
-                    "showDisabledItems": false,
-                    "skipEmptyValues": false,
-                    "useZabbixValueMapping": false
-                },
-                "proxy": {
-                    "filter": ""
-                },
-                "queryType": "0",
-                "refId": "A",
-                "resultFormat": "time_series",
-                "table": {
-                    "skipEmptyValues": false
-                },
-                "tags": {
-                    "filter": ""
-                },
-                "trigger": {
-                    "filter": ""
-                },
-                "triggers": {
-                    "acknowledged": 2,
-                    "count": true,
-                    "minSeverity": 3
-                }
-            }],
-            "title": "UPTIME",
-            "type": "stat"
-        },
-        {
-            "datasource": null,
-            "description": "",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "continuous-GrYlRd"
-                    },
-                    "decimals": 0,
-                    "mappings": [],
-                    "max": 100,
-                    "min": 0,
-                    "thresholds": {
-                        "mode": "percentage",
-                        "steps": [{
-                            "color": "green",
-                            "value": null
-                        }]
-                    },
-                    "unit": "percent"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 3,
-                "w": 5,
-                "x": 9,
-                "y": 16
-            },
-            "id": 21,
-            "options": {
-                "displayMode": "lcd",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "showUnfilled": true,
-                "text": {}
-            },
-            "pluginVersion": "8.1.1",
-            "targets": [{
-                "application": {
-                    "filter": "node"
-                },
-                "functions": [{
-                    "$$hashKey": "object:219",
-                    "def": {
-                        "category": "Alias",
-                        "defaultParams": [
-                            "/(.*)/",
-                            "$1"
-                        ],
-                        "name": "replaceAlias",
-                        "params": [{
-                                "name": "regexp",
-                                "type": "string"
-                            },
-                            {
-                                "name": "newAlias",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "params": [
-                        "/(.*) CPU PERCENT/",
-                        "$1"
-                    ],
-                    "text": "replaceAlias(/(.*) CPU PERCENT/, $1)"
-                }],
-                "group": {
-                    "filter": "$grupo"
-                },
-                "host": {
-                    "filter": "$host"
-                },
-                "item": {
-                    "filter": "/$node CPU PERCENT/"
-                },
-                "itemTag": {
-                    "filter": "Application: node"
-                },
-                "options": {
-                    "disableDataAlignment": false,
-                    "showDisabledItems": false,
-                    "skipEmptyValues": false,
-                    "useZabbixValueMapping": false
-                },
-                "proxy": {
-                    "filter": ""
-                },
-                "queryType": "0",
-                "refId": "A",
-                "resultFormat": "time_series",
-                "table": {
-                    "skipEmptyValues": false
-                },
-                "tags": {
-                    "filter": ""
-                },
-                "trigger": {
-                    "filter": ""
-                },
-                "triggers": {
-                    "acknowledged": 2,
-                    "count": true,
-                    "minSeverity": 3
-                }
-            }],
-            "title": "CPU",
-            "type": "bargauge"
-        },
-        {
-            "datasource": null,
-            "description": "",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "continuous-GrYlRd"
-                    },
-                    "mappings": [],
-                    "min": 0,
-                    "thresholds": {
-                        "mode": "percentage",
-                        "steps": [{
-                            "color": "green",
-                            "value": null
-                        }]
-                    },
-                    "unit": "bytes"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 3,
-                "w": 5,
-                "x": 14,
-                "y": 16
-            },
-            "id": 28,
-            "options": {
-                "displayMode": "lcd",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "showUnfilled": true,
-                "text": {}
-            },
-            "pluginVersion": "8.1.1",
-            "targets": [{
-                "application": {
-                    "filter": "node"
-                },
-                "functions": [{
-                    "$$hashKey": "object:59",
-                    "def": {
-                        "category": "Alias",
-                        "defaultParams": [
-                            "/(.*)/",
-                            "$1"
-                        ],
-                        "name": "replaceAlias",
-                        "params": [{
-                                "name": "regexp",
-                                "type": "string"
-                            },
-                            {
-                                "name": "newAlias",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "params": [
-                        "/$node - (.*) MAXMEM/",
-                        "$1"
-                    ],
-                    "text": "replaceAlias(/$node - (.*) MAXMEM/, $1)"
-                }],
-                "group": {
-                    "filter": "$grupo"
-                },
-                "host": {
-                    "filter": "$host"
-                },
-                "item": {
-                    "filter": "/$node MAXMEM/"
-                },
-                "itemTag": {
-                    "filter": "Application: node"
-                },
-                "options": {
-                    "disableDataAlignment": false,
-                    "showDisabledItems": false,
-                    "skipEmptyValues": false,
-                    "useZabbixValueMapping": false
-                },
-                "proxy": {
-                    "filter": ""
-                },
-                "queryType": "0",
-                "refId": "A",
-                "resultFormat": "time_series",
-                "table": {
-                    "skipEmptyValues": false
-                },
-                "tags": {
-                    "filter": ""
-                },
-                "trigger": {
-                    "filter": ""
-                },
-                "triggers": {
-                    "acknowledged": 2,
-                    "count": true,
-                    "minSeverity": 3
-                }
-            }],
-            "title": "MEMÓRIA",
-            "type": "bargauge"
-        },
-        {
-            "datasource": null,
-            "description": "Consumo de Memoria RAM do NODE",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "continuous-GrYlRd"
-                    },
-                    "decimals": 0,
-                    "mappings": [],
-                    "max": 100,
-                    "min": 0,
-                    "thresholds": {
-                        "mode": "percentage",
-                        "steps": [{
-                            "color": "green",
-                            "value": null
-                        }]
-                    },
-                    "unit": "percent"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 3,
-                "w": 5,
-                "x": 19,
-                "y": 16
-            },
-            "id": 27,
-            "options": {
-                "displayMode": "lcd",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "showUnfilled": true,
-                "text": {}
-            },
-            "pluginVersion": "8.1.1",
-            "targets": [{
-                "application": {
-                    "filter": "node"
-                },
-                "functions": [{
-                    "$$hashKey": "object:246",
-                    "def": {
-                        "category": "Alias",
-                        "defaultParams": [
-                            "/(.*)/",
-                            "$1"
-                        ],
-                        "name": "replaceAlias",
-                        "params": [{
-                                "name": "regexp",
-                                "type": "string"
-                            },
-                            {
-                                "name": "newAlias",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "params": [
-                        "/$node - (.*) MEMPERCENT/",
-                        "$1"
-                    ],
-                    "text": "replaceAlias(/$node - (.*) MEMPERCENT/, $1)"
-                }],
-                "group": {
-                    "filter": "$grupo"
-                },
-                "host": {
-                    "filter": "$host"
-                },
-                "item": {
-                    "filter": "/$node MEMPERCENT/"
-                },
-                "itemTag": {
-                    "filter": "Application: node"
-                },
-                "options": {
-                    "disableDataAlignment": false,
-                    "showDisabledItems": false,
-                    "skipEmptyValues": false,
-                    "useZabbixValueMapping": false
-                },
-                "proxy": {
-                    "filter": ""
-                },
-                "queryType": "0",
-                "refId": "A",
-                "resultFormat": "time_series",
-                "table": {
-                    "skipEmptyValues": false
-                },
-                "tags": {
-                    "filter": ""
-                },
-                "trigger": {
-                    "filter": ""
-                },
-                "triggers": {
-                    "acknowledged": 2,
-                    "count": true,
-                    "minSeverity": 3
-                }
-            }],
-            "title": "MEMÓRIA RAM EM %",
-            "type": "bargauge"
-        },
-        {
-            "cacheTimeout": null,
-            "datasource": null,
-            "description": "",
-            "gridPos": {
-                "h": 1,
-                "w": 24,
-                "x": 0,
-                "y": 19
-            },
-            "id": 18,
-            "interval": null,
-            "links": [],
-            "options": {
-                "content": "",
-                "mode": "html"
-            },
-            "pluginVersion": "8.1.1",
-            "targets": [{
-                "application": {
-                    "filter": "proxmox total"
-                },
-                "functions": [{
-                    "$$hashKey": "object:113",
-                    "def": {
-                        "category": "Alias",
-                        "defaultParams": [
-                            "/(.*)/",
-                            "$1"
-                        ],
-                        "name": "replaceAlias",
-                        "params": [{
-                                "name": "regexp",
-                                "type": "string"
-                            },
-                            {
-                                "name": "newAlias",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "params": [
-                        "/Total de VM's (.*)/",
-                        "$1"
-                    ],
-                    "text": "replaceAlias(/Total de VM's (.*)/, $1)"
-                }],
-                "group": {
-                    "filter": "Zabbix servers"
-                },
-                "host": {
-                    "filter": "Zabbix server"
-                },
-                "item": {
-                    "filter": "/.*/"
-                },
-                "options": {
-                    "disableDataAlignment": false,
-                    "showDisabledItems": false,
-                    "skipEmptyValues": false,
-                    "useZabbixValueMapping": false
-                },
-                "proxy": {
-                    "filter": ""
-                },
-                "queryType": 0,
-                "refId": "A",
-                "resultFormat": "time_series",
-                "table": {
-                    "skipEmptyValues": false
-                },
-                "tags": {
-                    "filter": ""
-                },
-                "trigger": {
-                    "filter": ""
-                },
-                "triggers": {
-                    "acknowledged": 2,
-                    "count": true,
-                    "minSeverity": 3
-                }
-            }],
-            "title": "STORAGES - NODE - $node",
-            "type": "text"
-        },
-        {
-            "datasource": null,
-            "description": "",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "hideFrom": {
-                            "legend": false,
-                            "tooltip": false,
-                            "viz": false
-                        }
-                    },
-                    "mappings": [],
-                    "unit": "none"
-                },
-                "overrides": [{
-                    "matcher": {
-                        "id": "byName",
-                        "options": "Indisponiveis"
-                    },
-                    "properties": [{
-                        "id": "color",
-                        "value": {
-                            "fixedColor": "red",
-                            "mode": "fixed"
-                        }
-                    }]
-                }]
-            },
-            "gridPos": {
-                "h": 8,
-                "w": 3,
-                "x": 0,
-                "y": 20
-            },
-            "id": 16,
-            "options": {
-                "displayLabels": [
-                    "name",
-                    "value"
-                ],
-                "legend": {
-                    "displayMode": "table",
-                    "placement": "bottom",
-                    "values": []
-                },
-                "pieType": "pie",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "tooltip": {
-                    "mode": "single"
-                }
-            },
-            "pluginVersion": "8.1.1",
-            "targets": [{
-                "application": {
-                    "filter": "total"
-                },
-                "functions": [{
-                    "$$hashKey": "object:302",
-                    "def": {
-                        "category": "Alias",
-                        "defaultParams": [
-                            "/(.*)/",
-                            "$1"
-                        ],
-                        "name": "replaceAlias",
-                        "params": [{
-                                "name": "regexp",
-                                "type": "string"
-                            },
-                            {
-                                "name": "newAlias",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "params": [
-                        "/Total de Storages (.*)/",
-                        "$1"
-                    ],
-                    "text": "replaceAlias(/Total de Storages (.*)/, $1)"
-                }],
-                "group": {
-                    "filter": "$grupo"
-                },
-                "host": {
-                    "filter": "$host"
-                },
-                "item": {
-                    "filter": "/Total de Storages Indisponiveis|Total de Storages Disponiveis/"
-                },
-                "itemTag": {
-                    "filter": "Application: total"
-                },
-                "options": {
-                    "disableDataAlignment": false,
-                    "showDisabledItems": false,
-                    "skipEmptyValues": false,
-                    "useZabbixValueMapping": false
-                },
-                "proxy": {
-                    "filter": ""
-                },
-                "queryType": "0",
-                "refId": "A",
-                "resultFormat": "time_series",
-                "table": {
-                    "skipEmptyValues": false
-                },
-                "tags": {
-                    "filter": ""
-                },
-                "trigger": {
-                    "filter": ""
-                },
-                "triggers": {
-                    "acknowledged": 2,
-                    "count": true,
-                    "minSeverity": 3
-                }
-            }],
-            "title": "TOTAIS",
-            "type": "piechart"
-        },
-        {
-            "datasource": null,
-            "description": "",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "continuous-GrYlRd"
-                    },
-                    "mappings": [],
-                    "max": 100,
-                    "min": 0,
-                    "thresholds": {
-                        "mode": "percentage",
-                        "steps": [{
-                            "color": "green",
-                            "value": null
-                        }]
-                    },
-                    "unit": "percent"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 8,
-                "w": 5,
-                "x": 3,
-                "y": 20
-            },
-            "id": 17,
-            "options": {
-                "displayMode": "lcd",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "showUnfilled": true,
-                "text": {}
-            },
-            "pluginVersion": "8.1.1",
-            "targets": [{
-                "application": {
-                    "filter": "storage"
-                },
-                "functions": [{
-                    "$$hashKey": "object:192",
-                    "def": {
-                        "category": "Alias",
-                        "defaultParams": [
-                            "/(.*)/",
-                            "$1"
-                        ],
-                        "name": "replaceAlias",
-                        "params": [{
-                                "name": "regexp",
-                                "type": "string"
-                            },
-                            {
-                                "name": "newAlias",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "params": [
-                        "/$node - (.*) DISK PERCENT/",
-                        "$1"
-                    ],
-                    "text": "replaceAlias(/$node - (.*) DISK PERCENT/, $1)"
-                }],
-                "group": {
-                    "filter": "$grupo"
-                },
-                "host": {
-                    "filter": "$host"
-                },
-                "item": {
-                    "filter": "/$node (.*) DISK PERCENT/"
-                },
-                "itemTag": {
-                    "filter": "Application: storage"
-                },
-                "options": {
-                    "disableDataAlignment": false,
-                    "showDisabledItems": false,
-                    "skipEmptyValues": false,
-                    "useZabbixValueMapping": false
-                },
-                "proxy": {
-                    "filter": ""
-                },
-                "queryType": "0",
-                "refId": "A",
-                "resultFormat": "time_series",
-                "table": {
-                    "skipEmptyValues": false
-                },
-                "tags": {
-                    "filter": ""
-                },
-                "trigger": {
-                    "filter": ""
-                },
-                "triggers": {
-                    "acknowledged": 2,
-                    "count": true,
-                    "minSeverity": 3
-                }
-            }],
-            "type": "bargauge"
-        },
-        {
-            "datasource": null,
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "axisLabel": "NETIN TOTAL",
-                        "axisPlacement": "auto",
-                        "axisSoftMin": -1,
-                        "barAlignment": 0,
-                        "drawStyle": "line",
-                        "fillOpacity": 5,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                            "legend": false,
-                            "tooltip": false,
-                            "viz": false
-                        },
-                        "lineInterpolation": "stepBefore",
-                        "lineStyle": {
-                            "fill": "solid"
-                        },
-                        "lineWidth": 2,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                            "type": "linear"
-                        },
-                        "showPoints": "never",
-                        "spanNulls": true,
-                        "stacking": {
-                            "group": "A",
-                            "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                            "mode": "off"
-                        }
-                    },
-                    "mappings": [],
-                    "noValue": "0",
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [{
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    },
-                    "unit": "bytes"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 8,
-                "w": 8,
-                "x": 8,
-                "y": 20
-            },
-            "id": 14,
-            "options": {
-                "legend": {
-                    "calcs": [],
-                    "displayMode": "table",
-                    "placement": "bottom"
-                },
-                "tooltip": {
-                    "mode": "multi"
-                }
-            },
-            "pluginVersion": "8.0.5",
-            "targets": [{
-                "application": {
-                    "filter": "netin"
-                },
-                "functions": [{
-                    "$$hashKey": "object:32",
-                    "def": {
-                        "category": "Alias",
-                        "defaultParams": [
-                            "/(.*)/",
-                            "$1"
-                        ],
-                        "name": "replaceAlias",
-                        "params": [{
-                                "name": "regexp",
-                                "type": "string"
-                            },
-                            {
-                                "name": "newAlias",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "params": [
-                        "/(.*) NETIN TOTAL/",
-                        "$1"
-                    ],
-                    "text": "replaceAlias(/(.*) NETIN TOTAL/, $1)"
-                }],
-                "group": {
-                    "filter": "$grupo"
-                },
-                "host": {
-                    "filter": "$host"
-                },
-                "item": {
-                    "filter": "/.*/"
-                },
-                "options": {
-                    "disableDataAlignment": false,
-                    "showDisabledItems": false,
-                    "skipEmptyValues": false,
-                    "useZabbixValueMapping": false
-                },
-                "proxy": {
-                    "filter": ""
-                },
-                "queryType": 0,
-                "refId": "A",
-                "resultFormat": "time_series",
-                "table": {
-                    "skipEmptyValues": false
-                },
-                "tags": {
-                    "filter": ""
-                },
-                "trigger": {
-                    "filter": ""
-                },
-                "triggers": {
-                    "acknowledged": 2,
-                    "count": true,
-                    "minSeverity": 3
-                }
-            }],
-            "timeFrom": null,
-            "timeShift": null,
-            "type": "timeseries"
-        },
-        {
-            "datasource": null,
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "axisLabel": "NETOUT TOTAL",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "drawStyle": "line",
-                        "fillOpacity": 5,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                            "legend": false,
-                            "tooltip": false,
-                            "viz": false
-                        },
-                        "lineInterpolation": "stepBefore",
-                        "lineStyle": {
-                            "fill": "solid"
-                        },
-                        "lineWidth": 2,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                            "type": "linear"
-                        },
-                        "showPoints": "never",
-                        "spanNulls": true,
-                        "stacking": {
-                            "group": "A",
-                            "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                            "mode": "off"
-                        }
-                    },
-                    "mappings": [],
-                    "noValue": "0",
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [{
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    },
-                    "unit": "bytes"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 8,
-                "w": 8,
-                "x": 16,
-                "y": 20
-            },
-            "id": 15,
-            "options": {
-                "legend": {
-                    "calcs": [],
-                    "displayMode": "table",
-                    "placement": "bottom"
-                },
-                "tooltip": {
-                    "mode": "multi"
-                }
-            },
-            "pluginVersion": "8.0.5",
-            "targets": [{
-                "application": {
-                    "filter": "netout"
-                },
-                "functions": [{
-                    "$$hashKey": "object:59",
-                    "def": {
-                        "category": "Alias",
-                        "defaultParams": [
-                            "/(.*)/",
-                            "$1"
-                        ],
-                        "name": "replaceAlias",
-                        "params": [{
-                                "name": "regexp",
-                                "type": "string"
-                            },
-                            {
-                                "name": "newAlias",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "params": [
-                        "/(.*) NETOUT TOTAL/",
-                        "$1"
-                    ],
-                    "text": "replaceAlias(/(.*) NETOUT TOTAL/, $1)"
-                }],
-                "group": {
-                    "filter": "$grupo"
-                },
-                "host": {
-                    "filter": "$host"
-                },
-                "item": {
-                    "filter": "/.*/"
-                },
-                "options": {
-                    "disableDataAlignment": false,
-                    "showDisabledItems": false,
-                    "skipEmptyValues": false,
-                    "useZabbixValueMapping": false
-                },
-                "proxy": {
-                    "filter": ""
-                },
-                "queryType": 0,
-                "refId": "A",
-                "resultFormat": "time_series",
-                "table": {
-                    "skipEmptyValues": false
-                },
-                "tags": {
-                    "filter": ""
-                },
-                "trigger": {
-                    "filter": ""
-                },
-                "triggers": {
-                    "acknowledged": 2,
-                    "count": true,
-                    "minSeverity": 3
-                }
-            }],
-            "timeFrom": null,
-            "timeShift": null,
-            "type": "timeseries"
-        }
-    ],
-    "refresh": "30s",
-    "schemaVersion": 30,
-    "style": "dark",
-    "tags": [
-        "proxmox",
-        "servers",
-        "vm"
-    ],
-    "templating": {
-        "list": [{
-                "description": null,
-                "error": null,
-                "hide": 2,
-                "label": null,
-                "name": "grupo",
-                "query": "PROXMOX SERVERS",
-                "skipUrlSync": false,
-                "type": "constant"
-            },
-            {
-                "allValue": null,
-                "current": {
-                    "selected": false,
-                    "text": "PROXMOX 01",
-                    "value": "PROXMOX 01"
-                },
-                "datasource": null,
-                "definition": "Zabbix - host",
-                "description": null,
-                "error": null,
-                "hide": 0,
-                "includeAll": false,
-                "label": null,
-                "multi": false,
-                "name": "host",
-                "options": [],
-                "query": {
-                    "application": "",
-                    "group": "/PROXMOX SERVERS/",
-                    "host": "/.*/",
-                    "item": "",
-                    "queryType": "host"
-                },
-                "refresh": 1,
-                "regex": "",
-                "skipUrlSync": false,
-                "sort": 0,
-                "type": "query"
-            },
-            {
-                "allValue": "",
-                "current": {
-                    "selected": false,
-                    "text": "pve",
-                    "value": "pve"
-                },
-                "datasource": null,
-                "definition": "Zabbix - item",
-                "description": null,
-                "error": null,
-                "hide": 0,
-                "includeAll": false,
-                "label": null,
-                "multi": true,
-                "name": "node",
-                "options": [],
-                "query": {
-                    "application": "node",
-                    "group": "$grupo",
-                    "host": "$host",
-                    "item": "/STATUS/",
-                    "queryType": "item"
-                },
-                "refresh": 1,
-                "regex": "/(.*) STATUS/",
-                "skipUrlSync": false,
-                "sort": 0,
-                "type": "query"
+              },
+              "params": [
+                "/Total de VM's (.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/Total de VM's (.*)/, $1)"
             }
+          ],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "host": {
+            "filter": "Zabbix server"
+          },
+          "item": {
+            "filter": "/.*/"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": 0,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "VM's - NODE - $node",
+      "type": "text"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 0,
+        "y": 1
+      },
+      "id": 9,
+      "interval": null,
+      "links": [],
+      "options": {
+        "content": "<br>\n<br>\n<center>\n    <img src=\"https://conectsantarem.com.br/mac/img/logo.png\"\n    width=\"\"\n    height=\"\">\n</center>",
+        "mode": "html"
+      },
+      "pluginVersion": "8.1.2",
+      "repeat": null,
+      "targets": [
+        {
+          "application": {
+            "filter": "proxmox total"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:113",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/Total de VM's (.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/Total de VM's (.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "host": {
+            "filter": "Zabbix server"
+          },
+          "item": {
+            "filter": "/.*/"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": 0,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": null,
+      "description": "Status ta VM (on ou off)",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "orange",
+                  "index": 0,
+                  "text": "OFF"
+                },
+                "1": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "ON"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "yellow",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 3,
+        "x": 3,
+        "y": 1
+      },
+      "id": 24,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {
+          "valueSize": 13
+        },
+        "textMode": "name"
+      },
+      "pluginVersion": "8.1.2",
+      "targets": [
+        {
+          "application": {
+            "filter": "vm"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:86",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/$node - (.*) STATUS/",
+                "$1"
+              ],
+              "text": "replaceAlias(/$node - (.*) STATUS/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "$grupo"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "/STATUS/"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": 0,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "VM",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Tempo que a VM está online",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "orange",
+                  "index": 0,
+                  "text": "OFF"
+                }
+              },
+              "type": "value"
+            },
+            {
+              "options": {
+                "from": 1,
+                "result": {
+                  "color": "blue",
+                  "index": 1,
+                  "text": "Starting..."
+                },
+                "to": 120
+              },
+              "type": "range"
+            }
+          ],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "yellow",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 1800
+              }
+            ]
+          },
+          "unit": "dtdhms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 3,
+        "x": 6,
+        "y": 1
+      },
+      "id": 3,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {
+          "valueSize": 13
+        },
+        "textMode": "value"
+      },
+      "pluginVersion": "8.1.2",
+      "targets": [
+        {
+          "application": {
+            "filter": "vm"
+          },
+          "functions": [],
+          "group": {
+            "filter": "$grupo"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "/$node (.*) UPTIME/"
+          },
+          "itemTag": {
+            "filter": "Application: vm"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "UPTIME",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Consumo de CPU da VM",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "%"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 5,
+        "x": 9,
+        "y": 1
+      },
+      "id": 2,
+      "options": {
+        "displayMode": "lcd",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {}
+      },
+      "pluginVersion": "8.1.2",
+      "targets": [
+        {
+          "application": {
+            "filter": "vm"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:142",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/$node - (.*) CPU/",
+                "$1"
+              ],
+              "text": "replaceAlias(/$node - (.*) CPU/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "$grupo"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "/$node (.*) CPU/"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": 0,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "CPU",
+      "type": "bargauge"
+    },
+    {
+      "datasource": null,
+      "description": "-",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 5,
+        "x": 14,
+        "y": 1
+      },
+      "id": 22,
+      "options": {
+        "displayMode": "lcd",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {}
+      },
+      "pluginVersion": "8.1.2",
+      "targets": [
+        {
+          "application": {
+            "filter": "vm"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:138",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/$node - (.*) MAXMEM/",
+                "$1"
+              ],
+              "text": "replaceAlias(/$node - (.*) MAXMEM/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "$grupo"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "/$node (.*) MAXMEM/"
+          },
+          "itemTag": {
+            "filter": "Application: vm"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "MEMÓRIA",
+      "type": "bargauge"
+    },
+    {
+      "datasource": null,
+      "description": "Consumo de Memoria RAM da VM",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "%"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 5,
+        "x": 19,
+        "y": 1
+      },
+      "id": 26,
+      "options": {
+        "displayMode": "lcd",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {}
+      },
+      "pluginVersion": "8.1.2",
+      "targets": [
+        {
+          "application": {
+            "filter": "vm"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:62",
+              "added": false,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/$node - (.*) MEMPERCENT/",
+                "$1"
+              ],
+              "text": "replaceAlias(/$node - (.*) MEMPERCENT/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "$grupo"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "/$node (.*) MEMPERCENT/"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": 0,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "MEMÓRIA RAM EM %",
+      "type": "bargauge"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "description": "",
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 0,
+        "y": 4
+      },
+      "id": 7,
+      "interval": null,
+      "links": [],
+      "options": {
+        "content": "<br>\n<br>\n<center>\n    <img src=\"https://www.proxmox.com/images/proxmox/Proxmox-logo-white-orange-800.png\"\n    width=\"\"\n    height=\"\">\n</center>",
+        "mode": "html"
+      },
+      "pluginVersion": "8.1.2",
+      "targets": [
+        {
+          "application": {
+            "filter": "proxmox total"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:113",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/Total de VM's (.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/Total de VM's (.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "host": {
+            "filter": "Zabbix server"
+          },
+          "item": {
+            "filter": "/.*/"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": 0,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Offline"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Online"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
         ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 3,
+        "x": 0,
+        "y": 7
+      },
+      "id": 8,
+      "options": {
+        "displayLabels": [
+          "name",
+          "value"
+        ],
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom",
+          "values": []
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.1",
+      "targets": [
+        {
+          "application": {
+            "filter": "total"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:329",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/Total de VM's (.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/Total de VM's (.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "$grupo"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "/Total de VM's Online|Total de VM's Offline/"
+          },
+          "itemTag": {
+            "filter": "Application: total"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "type": "piechart"
     },
-    "time": {
-        "from": "now-1h",
-        "to": "now"
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
+      "id": 20,
+      "interval": null,
+      "links": [],
+      "options": {
+        "content": "",
+        "mode": "html"
+      },
+      "pluginVersion": "8.1.2",
+      "targets": [
+        {
+          "application": {
+            "filter": "proxmox total"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:113",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/Total de VM's (.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/Total de VM's (.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "host": {
+            "filter": "Zabbix server"
+          },
+          "item": {
+            "filter": "/.*/"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": 0,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "NODES - $node",
+      "type": "text"
     },
-    "timepicker": {
-        "hidden": false
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 0,
+        "y": 17
+      },
+      "id": 25,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.2",
+      "targets": [
+        {
+          "application": {
+            "filter": "total"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:408",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/Total de VM's (.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/Total de VM's (.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "$grupo"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Total de Nodes"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": 0,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "TOTAIS",
+      "type": "stat"
     },
-    "timezone": "browser",
-    "title": "PROXMOX",
-    "uid": "bj-487inz",
-    "version": 407
+    {
+      "datasource": null,
+      "description": "Status do node",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "yellow",
+                  "index": 0,
+                  "text": "OFFLINE"
+                },
+                "1": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "ONLINE"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 3,
+        "y": 17
+      },
+      "id": 30,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {
+          "valueSize": 13
+        },
+        "textMode": "name"
+      },
+      "pluginVersion": "8.1.2",
+      "targets": [
+        {
+          "application": {
+            "filter": "node"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:138",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/(.*) STATUS/",
+                "$1"
+              ],
+              "text": "replaceAlias(/(.*) STATUS/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "$grupo"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "/$node STATUS/"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": 0,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "NODE",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "Tempo que o NODE está online",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "orange",
+                  "index": 0,
+                  "text": "OFF"
+                }
+              },
+              "type": "value"
+            },
+            {
+              "options": {
+                "from": 1,
+                "result": {
+                  "color": "blue",
+                  "index": 1,
+                  "text": "Starting..."
+                },
+                "to": 120
+              },
+              "type": "range"
+            }
+          ],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "yellow",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 1800
+              }
+            ]
+          },
+          "unit": "dtdhms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 6,
+        "y": 17
+      },
+      "id": 29,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {
+          "valueSize": 13
+        },
+        "textMode": "value"
+      },
+      "pluginVersion": "8.1.2",
+      "targets": [
+        {
+          "application": {
+            "filter": "node"
+          },
+          "functions": [],
+          "group": {
+            "filter": "$grupo"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "/$node UPTIME/"
+          },
+          "itemTag": {
+            "filter": "Application: node"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "UPTIME",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 9,
+        "y": 17
+      },
+      "id": 21,
+      "options": {
+        "displayMode": "lcd",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {}
+      },
+      "pluginVersion": "8.1.2",
+      "targets": [
+        {
+          "application": {
+            "filter": "node"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:219",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/(.*) CPU PERCENT/",
+                "$1"
+              ],
+              "text": "replaceAlias(/(.*) CPU PERCENT/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "$grupo"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "/$node CPU PERCENT/"
+          },
+          "itemTag": {
+            "filter": "Application: node"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "CPU",
+      "type": "bargauge"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 14,
+        "y": 17
+      },
+      "id": 28,
+      "options": {
+        "displayMode": "lcd",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {}
+      },
+      "pluginVersion": "8.1.2",
+      "targets": [
+        {
+          "application": {
+            "filter": "node"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:59",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/$node - (.*) MAXMEM/",
+                "$1"
+              ],
+              "text": "replaceAlias(/$node - (.*) MAXMEM/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "$grupo"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "/$node MAXMEM/"
+          },
+          "itemTag": {
+            "filter": "Application: node"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "MEMÓRIA",
+      "type": "bargauge"
+    },
+    {
+      "datasource": null,
+      "description": "Consumo de Memoria RAM do NODE",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 19,
+        "y": 17
+      },
+      "id": 27,
+      "options": {
+        "displayMode": "lcd",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {}
+      },
+      "pluginVersion": "8.1.2",
+      "targets": [
+        {
+          "application": {
+            "filter": "node"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:246",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/$node - (.*) MEMPERCENT/",
+                "$1"
+              ],
+              "text": "replaceAlias(/$node - (.*) MEMPERCENT/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "$grupo"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "/$node MEMPERCENT/"
+          },
+          "itemTag": {
+            "filter": "Application: node"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "MEMÓRIA RAM EM %",
+      "type": "bargauge"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "description": "",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 20
+      },
+      "id": 18,
+      "interval": null,
+      "links": [],
+      "options": {
+        "content": "",
+        "mode": "html"
+      },
+      "pluginVersion": "8.1.2",
+      "targets": [
+        {
+          "application": {
+            "filter": "proxmox total"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:113",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/Total de VM's (.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/Total de VM's (.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "host": {
+            "filter": "Zabbix server"
+          },
+          "item": {
+            "filter": "/.*/"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": 0,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "STORAGES - NODE - $node",
+      "type": "text"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Indisponiveis"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 3,
+        "x": 0,
+        "y": 21
+      },
+      "id": 16,
+      "options": {
+        "displayLabels": [
+          "name",
+          "value"
+        ],
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom",
+          "values": []
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.1.1",
+      "targets": [
+        {
+          "application": {
+            "filter": "total"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:302",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/Total de Storages (.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/Total de Storages (.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "$grupo"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "/Total de Storages Indisponiveis|Total de Storages Disponiveis/"
+          },
+          "itemTag": {
+            "filter": "Application: total"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "TOTAIS",
+      "type": "piechart"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 5,
+        "x": 3,
+        "y": 21
+      },
+      "id": 17,
+      "options": {
+        "displayMode": "lcd",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {}
+      },
+      "pluginVersion": "8.1.2",
+      "targets": [
+        {
+          "application": {
+            "filter": "storage"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:192",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/$node - (.*) DISK PERCENT/",
+                "$1"
+              ],
+              "text": "replaceAlias(/$node - (.*) DISK PERCENT/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "$grupo"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "/$node (.*) DISK PERCENT/"
+          },
+          "itemTag": {
+            "filter": "Application: storage"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "type": "bargauge"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "NETIN TOTAL",
+            "axisPlacement": "auto",
+            "axisSoftMin": -1,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 5,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "stepBefore",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 21
+      },
+      "id": 14,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "pluginVersion": "8.0.5",
+      "targets": [
+        {
+          "application": {
+            "filter": "netin"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:32",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/(.*) NETIN TOTAL/",
+                "$1"
+              ],
+              "text": "replaceAlias(/(.*) NETIN TOTAL/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "$grupo"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "/.*/"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": 0,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "NETOUT TOTAL",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 5,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "stepBefore",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 21
+      },
+      "id": 15,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "pluginVersion": "8.0.5",
+      "targets": [
+        {
+          "application": {
+            "filter": "netout"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:59",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/(.*) NETOUT TOTAL/",
+                "$1"
+              ],
+              "text": "replaceAlias(/(.*) NETOUT TOTAL/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "$grupo"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "/.*/"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": 0,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 30,
+  "style": "dark",
+  "tags": [
+    "proxmox",
+    "servers",
+    "vm"
+  ],
+  "templating": {
+    "list": [
+      {
+        "description": null,
+        "error": null,
+        "hide": 2,
+        "label": null,
+        "name": "grupo",
+        "query": "PROXMOX SERVERS",
+        "skipUrlSync": false,
+        "type": "constant"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "PROXMOX 01",
+          "value": "PROXMOX 01"
+        },
+        "datasource": null,
+        "definition": "Zabbix - host",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "host",
+        "options": [],
+        "query": {
+          "application": "",
+          "group": "/PROXMOX SERVERS/",
+          "host": "/.*/",
+          "item": "",
+          "queryType": "host"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "allValue": "",
+        "current": {
+          "selected": false,
+          "text": "pve",
+          "value": "pve"
+        },
+        "datasource": null,
+        "definition": "Zabbix - item",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": true,
+        "name": "node",
+        "options": [],
+        "query": {
+          "application": "node",
+          "group": "$grupo",
+          "host": "$host",
+          "item": "/STATUS/",
+          "queryType": "item"
+        },
+        "refresh": 1,
+        "regex": "/(.*) STATUS/",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {
+    "hidden": false
+  },
+  "timezone": "browser",
+  "title": "PROXMOX",
+  "uid": "OdRTL4Vnk",
+  "version": 2
 }
