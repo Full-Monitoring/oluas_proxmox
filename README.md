@@ -16,60 +16,11 @@
 
 - [Dashborad Grafana](/contents/dash_grafana.json "Dashborad Grafana")
 
-<!-- ## Comandos Remotos
-
-> Instale e habilite os comando remotos no zabbix agent
-
-- Tutorial [Zabbix Remote Commands](https://blog.zabbix.com/zabbix-remote-commands/7500/ "blog.zabbix.com")
-
-![tutorial](./contents/img/zabbix_remote_command.jpg "Zabbix Remote Commands")
-
-- Video [Zabbix Remote Commands](https://www.youtube.com/embed/CMlpFuGBruE "Zabbix Remote Commands")
-
-![youtube](./contents/img/remote_commands_youtube.png "blog.zabbix.com")
-
-> Intale o zabbix-get no servidor zabbix
-
-```sh
-apt install zabbix-get
-```
-
-> Intale o zabbix-agent no servidor proxmox
-
-```sh
-apt install zabbix-agent
-```
-
-> Edite as configurações do agent para liberar o acesso ao server em...
-
-```sh
-nano /etc/zabbix/zabbix_agentd.conf
-```
-
-![-](./contents/img/allow_key.png "-")
-
-![-](./contents/img/server_zabbix_agent.png "-")
-
-![-](./contents/img/server_zabbix_agent2.png "-")
-
-> Para testar a conexão entre o zabbix server e o agent dê esse comando no server Zabbix.
-
-- zabbix_get -s IP_DO_PROXMOX -k "system.uptime"
-
-```sh
-# Exemplo:
-zabbix_get -s 172.31.255.2 -k "system.uptime"
-```
-
-> Se tudo estiver ok no zabbix o host ficará assim...
-
-![-](./contents/img/zabbix_ok.png "-") -->
-
 ## Sobre o Template Zabbix
 
 > Adicione suas macros no host
 
-![image](https://user-images.githubusercontent.com/23584038/129195354-fd709f30-2016-4398-9565-5a430326de62.png)
+![image](https://user-images.githubusercontent.com/23584038/132047991-5ed0de0e-1a0d-4a7b-be9e-25aa38593675.png)
 
 > Macros LLD
 
