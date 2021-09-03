@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2021-09-03T17:36:36Z</date>
+    <date>2021-09-03T17:53:04Z</date>
     <groups>
         <group>
             <name>PROXMOX SERVERS</name>
@@ -89,7 +89,7 @@
                         </application>
                     </applications>
                     <timeout>15s</timeout>
-                    <url>https://{$PVESERVER}:8006/api2/json/cluster/resources</url>
+                    <url>https://{HOST.IP}:8006/api2/json/cluster/resources</url>
                     <headers>
                         <header>
                             <name>Authorization</name>
@@ -114,7 +114,7 @@
                         </application>
                     </applications>
                     <timeout>15s</timeout>
-                    <url>https://{$PVESERVER}:8006/api2/json/cluster/tasks</url>
+                    <url>https://{HOST.IP}:8006/api2/json/cluster/tasks</url>
                     <headers>
                         <header>
                             <name>Authorization</name>
@@ -1227,10 +1227,6 @@
                     <macro>{$PVESECRET}</macro>
                     <type>SECRET_TEXT</type>
                     <description>SECRET DO TOKEN</description>
-                </macro>
-                <macro>
-                    <macro>{$PVESERVER}</macro>
-                    <description>IP DO SERVIDOR PROXMOX</description>
                 </macro>
                 <macro>
                     <macro>{$PVETOKENID}</macro>
