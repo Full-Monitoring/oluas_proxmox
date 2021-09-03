@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2021-08-16T17:57:23Z</date>
+    <date>2021-09-03T17:36:36Z</date>
     <groups>
         <group>
             <name>PROXMOX SERVERS</name>
