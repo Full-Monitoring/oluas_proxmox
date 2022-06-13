@@ -14,6 +14,8 @@
 
 ![print](./contents/img/alerta_telegram.png "Print")
 
+[Criar Token API](https://youtu.be/Iuyd2TXe8SA)
+
 - [Dashborad Grafana](/contents/dash_grafana.json "Dashborad Grafana")
 
 ## Sobre o Template Zabbix
